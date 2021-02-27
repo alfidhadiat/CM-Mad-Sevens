@@ -2,42 +2,80 @@
 //  Deck.swift
 //  MADSevens
 //
-//  Created by  Alfiuddin Rahadian Hadiat on 24/02/2021.
+//  Created by Marieke on 27/02/2021.
 //
 
 import Foundation
 
 class Deck {
     
-    let colors = ["Acorn", "Hearts", "Green", "Pumpkin"]
-    let values = ["Ace", "King", "Unter", "II", "VII", "VIII", "IX", "X"]
-    
-    var cards: [Card]!
-    
-    var stack: [Card]!
-    
-    var discard: [Card]!
-    
-    var playerHand: [Card]!
-    
-    var modelHand: [Card]!
-    
-    func drawcard(player: String) {
-        if player == "model" {
-            modelHand.append(stack.remove(at: 0))
-        } else if player == "player" {
-            playerHand.append(stack.remove(at: 0))
-        }
-    }
+    var stack = [Card]()
+    var discard = [Card]()
+    var playerHand = [Card]()
+    var modelHand = [Card]()
     
     init() {
-        for (i in colors) {
-            for (j in values) {
-                let card = Card(color = i, value = j)
+        initialize()
+    }
+
+    /** At initialization, all cards are added to the stack, it'll be shuffled, and the players receive their first set of cards.
+     */
+    func initialize() {
+        for i in Suit.allCases {
+            for j in Rank.allCases {
+            let card = Card(suit: i, rank: j)
                 stack.append(card)
             }
         }
+        print(stack)
         stack.shuffle()
+        // Give both the player and the model 5 cards
+        for _ in 0...4 {
+            drawcard(player: CurrentPlayer.player)
+            drawcard(player: CurrentPlayer.model)
+        }
+        // Opening card of the game
+        drawcard(player: CurrentPlayer.setup)
     }
     
+    /** Whenever a new game is started, all cards are being removed, and the game will be re-initialized.
+    */
+    func newGame() {
+        stack.removeAll()
+        discard.removeAll()
+        playerHand.removeAll()
+        modelHand.removeAll()
+        initialize()
+    }
+    
+    /** When someone wants to draw a card, first we check if there are any cards left in the stack. If not, we shuffle the discardpile (except for the top card) and add them to the stack. If there are no cards in the discardpile, we reached an impasse and the game will be terminated.
+    */
+    func drawcard(player: CurrentPlayer) {
+        if stack.isEmpty {
+            shuffleDiscardPile()
+        }
+        if stack.isEmpty {
+            print("ERROR, we've reached an impasse.")
+            exit(0)
+        }
+        if player == CurrentPlayer.model {
+            modelHand.append(stack.remove(at: stack.startIndex))
+        } else if player == CurrentPlayer.player {
+            playerHand.append(stack.remove(at: stack.startIndex))
+        } else if player == CurrentPlayer.setup {
+            discard.append(stack.remove(at: stack.startIndex))
+        }
+    }
+    
+    /** All cards in the discard pile, except for the top card, will be shuffled and added to the stack. The top card of the discard pile will remain the top card.
+    */
+    func shuffleDiscardPile() {
+        print("Shuffling discard pile")
+        let topCard = discard.remove(at: discard.endIndex)
+        discard.shuffle()
+        while !discard.isEmpty {
+            stack.append(discard.remove(at: discard.startIndex))
+        }
+        discard.append(topCard)
+    }
 }

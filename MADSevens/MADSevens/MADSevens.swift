@@ -2,13 +2,24 @@
 //  MADSevens.swift
 //  MADSevens
 //
-//  Created by  Alfiuddin Rahadian Hadiat on 24/02/2021.
+//  Created by Marieke on 27/02/2021.
 //
 
 import Foundation
 
-class MADSevense {
+class MADSevens {
     
-//    var Deck = Deck()
-//    Tessst
+    var deck: Deck
+    var currentPlayer = CurrentPlayer.setup
+    
+    init() {
+        print("Intitializing new MADSevens game \n")
+        deck = Deck()
+        currentPlayer = CurrentPlayer.player
+    }
+    
+    func newGame() {
+        deck.newGame()
+    }
+    
 }

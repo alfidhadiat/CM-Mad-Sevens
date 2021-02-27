@@ -2,19 +2,32 @@
 //  Card.swift
 //  MADSevens
 //
-//  Created by  Alfiuddin Rahadian Hadiat on 24/02/2021.
+//  Created by Marieke on 27/02/2021.
 //
 
 import Foundation
 
 struct Card {
     
-    var color: String
+    var suit: Suit
+    var rank: Rank
     
-    var value: String
+    init(suit: Suit, rank: Rank) {
+        self.suit = suit
+        self.rank = rank
+    }
     
-    init(color: String, value: String) {
-        self.color = color
-        self.value = value
+    func isLegalMove(discardSuit: Suit, discardRank: Rank) -> Int {
+        if discardSuit == self.suit {
+            return 1
+        }
+        if discardRank == self.rank {
+            return 1
+        }
+        //TODO Don't think this is correct, check with David
+        if rank == Rank.VII {
+            return 1
+        }
+        return 0
     }
 }

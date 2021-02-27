@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		18185AD025E68D2A0009577D /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18185ACF25E68D2A0009577D /* Card.swift */; };
-		18185AD225E68D3F0009577D /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18185AD125E68D3F0009577D /* Deck.swift */; };
-		18185AD425E692600009577D /* MADSevens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18185AD325E692600009577D /* MADSevens.swift */; };
+		2549232425EA45B50093A4A1 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2549232325EA45B50093A4A1 /* Deck.swift */; };
+		2549232C25EA45E50093A4A1 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2549232B25EA45E50093A4A1 /* Card.swift */; };
+		2549233425EA46E30093A4A1 /* MADSevens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2549233325EA46E30093A4A1 /* MADSevens.swift */; };
+		2549233C25EA48B50093A4A1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2549233B25EA48B50093A4A1 /* ViewController.swift */; };
+		2549234125EA7BD30093A4A1 /* Definitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2549234025EA7BD30093A4A1 /* Definitions.swift */; };
 		7F244CF525E686DD00080B80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F244CF425E686DD00080B80 /* AppDelegate.swift */; };
 		7F244CF725E686DD00080B80 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F244CF625E686DD00080B80 /* SceneDelegate.swift */; };
-		7F244CF925E686DD00080B80 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F244CF825E686DD00080B80 /* ViewController.swift */; };
 		7F244CFC25E686DD00080B80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F244CFA25E686DD00080B80 /* Main.storyboard */; };
 		7F244CFE25E686E000080B80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F244CFD25E686E000080B80 /* Assets.xcassets */; };
 		7F244D0125E686E000080B80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F244CFF25E686E000080B80 /* LaunchScreen.storyboard */; };
@@ -55,13 +56,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		18185ACF25E68D2A0009577D /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		18185AD125E68D3F0009577D /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
-		18185AD325E692600009577D /* MADSevens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MADSevens.swift; sourceTree = "<group>"; };
+		2549232325EA45B50093A4A1 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
+		2549232B25EA45E50093A4A1 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		2549233325EA46E30093A4A1 /* MADSevens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MADSevens.swift; sourceTree = "<group>"; };
+		2549233B25EA48B50093A4A1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2549234025EA7BD30093A4A1 /* Definitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Definitions.swift; sourceTree = "<group>"; };
 		7F244CF125E686DD00080B80 /* MADSevens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MADSevens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F244CF425E686DD00080B80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F244CF625E686DD00080B80 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7F244CF825E686DD00080B80 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7F244CFB25E686DD00080B80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7F244CFD25E686E000080B80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F244D0025E686E000080B80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -141,15 +143,16 @@
 			children = (
 				7F244CF425E686DD00080B80 /* AppDelegate.swift */,
 				7F244CF625E686DD00080B80 /* SceneDelegate.swift */,
-				7F244CF825E686DD00080B80 /* ViewController.swift */,
 				7F244CFA25E686DD00080B80 /* Main.storyboard */,
 				7F244CFD25E686E000080B80 /* Assets.xcassets */,
 				7F244CFF25E686E000080B80 /* LaunchScreen.storyboard */,
 				7F244D0225E686E000080B80 /* Info.plist */,
-				18185AD125E68D3F0009577D /* Deck.swift */,
-				18185ACF25E68D2A0009577D /* Card.swift */,
-				18185AD325E692600009577D /* MADSevens.swift */,
 				7F244D2725E6871700080B80 /* Core ACT-R */,
+				2549233325EA46E30093A4A1 /* MADSevens.swift */,
+				2549232325EA45B50093A4A1 /* Deck.swift */,
+				2549234025EA7BD30093A4A1 /* Definitions.swift */,
+				2549232B25EA45E50093A4A1 /* Card.swift */,
+				2549233B25EA48B50093A4A1 /* ViewController.swift */,
 			);
 			path = MADSevens;
 			sourceTree = "<group>";
@@ -328,27 +331,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F244D3A25E6871800080B80 /* BufferCondition.swift in Sources */,
-				7F244CF925E686DD00080B80 /* ViewController.swift in Sources */,
 				7F244D4825E6871800080B80 /* Production.swift in Sources */,
 				7F244D3C25E6871800080B80 /* Procedural.swift in Sources */,
 				7F244D3D25E6871800080B80 /* Instantiation.swift in Sources */,
 				7F244D4525E6871800080B80 /* Parser.swift in Sources */,
 				7F244D3E25E6871800080B80 /* Temporal.swift in Sources */,
 				7F244CF525E686DD00080B80 /* AppDelegate.swift in Sources */,
+				2549233C25EA48B50093A4A1 /* ViewController.swift in Sources */,
 				7F244D4325E6871800080B80 /* FocusRing.swift in Sources */,
 				7F244D3B25E6871800080B80 /* Model.swift in Sources */,
 				7F244D4125E6871800080B80 /* SlotCondition.swift in Sources */,
 				7F244D4025E6871800080B80 /* Tokenizer.swift in Sources */,
+				2549232425EA45B50093A4A1 /* Deck.swift in Sources */,
+				2549233425EA46E30093A4A1 /* MADSevens.swift in Sources */,
 				7F244D4925E6871800080B80 /* ACTRWindowView.swift in Sources */,
-				18185AD425E692600009577D /* MADSevens.swift in Sources */,
 				7F244D3F25E6871800080B80 /* Vision.swift in Sources */,
 				7F244D4425E6871800080B80 /* Support.swift in Sources */,
 				7F244CF725E686DD00080B80 /* SceneDelegate.swift in Sources */,
-				18185AD025E68D2A0009577D /* Card.swift in Sources */,
+				2549232C25EA45E50093A4A1 /* Card.swift in Sources */,
 				7F244D3925E6871800080B80 /* SlotAction.swift in Sources */,
 				7F244D4625E6871800080B80 /* Declarative.swift in Sources */,
 				7F244D4225E6871800080B80 /* BufferAction.swift in Sources */,
-				18185AD225E68D3F0009577D /* Deck.swift in Sources */,
+				2549234125EA7BD30093A4A1 /* Definitions.swift in Sources */,
 				7F244D4725E6871800080B80 /* Chunk.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
