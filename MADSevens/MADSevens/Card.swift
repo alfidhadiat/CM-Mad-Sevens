@@ -17,17 +17,16 @@ struct Card {
         self.rank = rank
     }
     
-    func isLegalMove(discardSuit: Suit, discardRank: Rank) -> Int {
+    func isLegalMove(discardSuit: Suit, discardRank: Rank) -> Bool {
         if discardSuit == self.suit {
-            return 1
+            return true
         }
         if discardRank == self.rank {
-            return 1
+            return true
         }
-        //TODO Don't think this is correct, check with David
         if rank == Rank.VII {
-            return 1
+            return true
         }
-        return 0
+        return false
     }
 }

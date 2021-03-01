@@ -10,7 +10,7 @@ import Foundation
 class MADSevens {
     
     var deck: Deck
-    var currentPlayer = CurrentPlayer.setup
+    var currentPlayer: CurrentPlayer
     
     init() {
         print("Intitializing new MADSevens game \n")
@@ -19,7 +19,7 @@ class MADSevens {
     }
     
     func newGame() {
+        print("Starting new MADSevens game")
         deck.newGame()
     }
-    
 }

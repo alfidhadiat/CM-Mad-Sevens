@@ -26,8 +26,12 @@ class ViewController: UIViewController {
         game.newGame()
 
     }
-    @IBAction func DrawCard(_ sender: Any) {
+    
+    @IBAction func DrawCard(_ sender: UIButton) {
         game.deck.drawcard(player: game.currentPlayer)
+        print("A new card has been drawn.")
+        print("Playerhand: \n \(game.deck.playerHand))")
+        print("Modelhand: \n \(game.deck.modelHand))")
     }
 }
 

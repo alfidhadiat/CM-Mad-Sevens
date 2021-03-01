@@ -27,8 +27,9 @@ class Deck {
                 stack.append(card)
             }
         }
-        print(stack)
+        print("The stack has been initialized! Stack: \n\(stack)")
         stack.shuffle()
+        print("The initialized stack has been shuffled! Stack: \n\(stack)")
         // Give both the player and the model 5 cards
         for _ in 0...4 {
             drawcard(player: CurrentPlayer.player)
@@ -70,7 +71,6 @@ class Deck {
     /** All cards in the discard pile, except for the top card, will be shuffled and added to the stack. The top card of the discard pile will remain the top card.
     */
     func shuffleDiscardPile() {
-        print("Shuffling discard pile")
         let topCard = discard.remove(at: discard.endIndex)
         discard.shuffle()
         while !discard.isEmpty {
