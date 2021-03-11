@@ -27,11 +27,17 @@ class ViewController: UIViewController {
 
     @IBAction func NewGame(_ sender: UIButton) {
         game.newGame()
-
     }
     
     @IBAction func DrawCard(_ sender: UIButton) {
+        // draw card, add it to hand
+        // give turn to next player
         game.drawCard(player: game.currentPlayer)
+        if (game.currentPlayer == CurrentPlayer.model) {
+            game.currentPlayer
+        }
+        
+        
 //        print("A new card has been drawn.")
 //        print("Stack: \(game.deck.stack)")
 //        print("Discard: \(game.deck.discard)")
