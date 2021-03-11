@@ -32,11 +32,11 @@ class Deck {
         print("The initialized stack has been shuffled! Stack: \n\(stack)")
         // Give both the player and the model 5 cards
         for _ in 0...4 {
-            drawcard(player: CurrentPlayer.player)
-            drawcard(player: CurrentPlayer.model)
+            drawCard(player: CurrentPlayer.player)
+            drawCard(player: CurrentPlayer.model)
         }
         // Opening card of the game
-        drawcard(player: CurrentPlayer.setup)
+        drawCard(player: CurrentPlayer.setup)
     }
     
     /** Whenever a new game is started, all cards are being removed, and the game will be re-initialized.
@@ -51,7 +51,7 @@ class Deck {
     
     /** When someone wants to draw a card, first we check if there are any cards left in the stack. If not, we shuffle the discardpile (except for the top card) and add them to the stack. If there are no cards in the discardpile, we reached an impasse and the game will be terminated.
     */
-    func drawcard(player: CurrentPlayer) {
+    func drawCard(player: CurrentPlayer) {
         if stack.isEmpty {
             shuffleDiscardPile()
         }
@@ -71,11 +71,19 @@ class Deck {
     /** All cards in the discard pile, except for the top card, will be shuffled and added to the stack. The top card of the discard pile will remain the top card.
     */
     func shuffleDiscardPile() {
+        print("Shuffling!")
         let topCard = discard.remove(at: discard.endIndex)
         discard.shuffle()
         while !discard.isEmpty {
             stack.append(discard.remove(at: discard.startIndex))
         }
         discard.append(topCard)
+    }
+    
+    func getTopDiscardCard() -> Card {
+        print("EndIndex of discard: \(discard.endIndex)")
+        print("Discard pile: \(discard)")
+        return discard[discard.endIndex-1]
+//        TODO: deze -1 moet weg denk ik, maar gaf een indexing error, dit lijkt de correcte kaart te pakken
     }
 }

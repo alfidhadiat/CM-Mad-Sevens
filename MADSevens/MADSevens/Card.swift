@@ -24,7 +24,7 @@ struct Card {
         if discardRank == self.rank {
             return true
         }
-        if rank == Rank.VII {
+        if self.rank == Rank.VII {
             return true
         }
         return false

@@ -22,4 +22,12 @@ class MADSevens {
         print("Starting new MADSevens game")
         deck.newGame()
     }
+    
+    func drawCard(player: CurrentPlayer) {
+        self.deck.drawCard(player: player)
+    }
+    
+    func getTopDiscardCard() -> Card {
+        return deck.getTopDiscardCard()
+    }
 }

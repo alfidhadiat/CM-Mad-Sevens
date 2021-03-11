@@ -17,9 +17,12 @@ class ViewController: UIViewController {
     }
     
     @IBAction func start(_ sender: UIButton) {
-        print("Started the game")
-        print("Playerhand: \n \(game.deck.playerHand))")
-        print("Modelhand: \n \(game.deck.modelHand))")
+//        let newcard = Card(suit: Suit.Hearts, rank: Rank.VIII)
+//        let randomcard = Card(suit: Suit.Acorn, rank: Rank.King)
+//        print("newcard is legal move? \(newcard.isLegalMove(discardSuit:  randomcard.suit, discardRank: randomcard.rank))")
+//        print("Started the game")
+//        print("Playerhand: \n \(game.deck.playerHand))")
+//        print("Modelhand: \n \(game.deck.modelHand))")
     }
 
     @IBAction func NewGame(_ sender: UIButton) {
@@ -28,10 +31,16 @@ class ViewController: UIViewController {
     }
     
     @IBAction func DrawCard(_ sender: UIButton) {
-        game.deck.drawcard(player: game.currentPlayer)
-        print("A new card has been drawn.")
-        print("Playerhand: \n \(game.deck.playerHand))")
-        print("Modelhand: \n \(game.deck.modelHand))")
+        game.drawCard(player: game.currentPlayer)
+//        print("A new card has been drawn.")
+//        print("Stack: \(game.deck.stack)")
+//        print("Discard: \(game.deck.discard)")
+//        print("Playerhand: \n \(game.deck.playerHand))")
+//        print("Modelhand: \n \(game.deck.modelHand))")
+    }
+    
+    @IBAction func TopDiscardCard(_ sender: UIButton) {
+        print("topcard: \(game.getTopDiscardCard())")
     }
 }
 
