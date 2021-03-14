@@ -9,10 +9,10 @@ import Foundation
 
 class Deck {
     
-    var stack = [Card]()
-    var discard = [Card]()
-    var playerHand = [Card]()
-    var modelHand = [Card]()
+    private var stack = [Card]()
+    private var discard = [Card]()
+    private var playerHand = [Card]()
+    private var modelHand = [Card]()
     
     init() {
         initialize()
@@ -80,19 +80,53 @@ class Deck {
         discard.append(topCard)
     }
     
-    func playFirstCard(player: CurrentPlayer) {
-        if player == CurrentPlayer.model {
-            discard.append(modelHand.remove(at: 0))
-        }
-        if player == CurrentPlayer.player {
-            discard.append(playerHand.remove(at: 0))
-        }
-    }
+//    func playFirstCard(player: CurrentPlayer) {
+//        if player == CurrentPlayer.model {
+//            discard.append(modelHand.remove(at: 0))
+//        }
+//        if player == CurrentPlayer.player {
+//            discard.append(playerHand.remove(at: 0))
+//        }
+//    }
     
     func getTopDiscardCard() -> Card {
         print("EndIndex of discard: \(discard.endIndex)")
         print("Discard pile: \(discard)")
         return discard[discard.endIndex-1]
-//        TODO: deze -1 moet weg denk ik, maar gaf een indexing error, dit lijkt de correcte kaart te pakken
     }
+    
+    func playCard(card: Card, player: CurrentPlayer) {
+        switch player {
+        case CurrentPlayer.player:
+            var index = -1
+            for i in 0..<playerHand.endIndex {
+                if (playerHand[i].getSuit() == card.getSuit() && playerHand[i].getRank() == card.getRank()) {
+                    index = i
+                }
+            }
+            if (index != -1) {
+                discard.append(playerHand.remove(at: index))
+            } else {
+                //TODO: what to do now?
+                print("Invalid move!")
+            }
+        case CurrentPlayer.model:
+            var index = -1
+            for i in 0..<modelHand.endIndex {
+                if (modelHand[i].getSuit() == card.getSuit() && modelHand[i].getRank() == card.getRank()) {
+                    index = i
+                }
+            }
+            if (index != -1) {
+                discard.append(modelHand.remove(at: index))
+            } else {
+                //TODO: what to do now?
+                print("Invalid move!")
+            }
+        default:
+            print("Unknown who wants to play a card")
+        }
+    }
+    
+    
 }

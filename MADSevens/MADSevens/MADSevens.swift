@@ -27,7 +27,16 @@ class MADSevens {
         self.deck.drawCard(player: player)
     }
     
+    func passTurn() {
+        if (self.currentPlayer == CurrentPlayer.model) {
+            self.currentPlayer = CurrentPlayer.player
+        } else {
+            self.currentPlayer = CurrentPlayer.model
+        }
+    }
+    
     func getTopDiscardCard() -> Card {
         return deck.getTopDiscardCard()
     }
+    
 }

@@ -9,8 +9,8 @@ import Foundation
 
 struct Card {
     
-    var suit: Suit
-    var rank: Rank
+    private var suit: Suit
+    private var rank: Rank
     
     init(suit: Suit, rank: Rank) {
         self.suit = suit
@@ -28,5 +28,13 @@ struct Card {
             return true
         }
         return false
+    }
+    
+    func getSuit() -> Suit {
+        return self.suit
+    }
+    
+    func getRank() -> Rank {
+        return self.rank
     }
 }
