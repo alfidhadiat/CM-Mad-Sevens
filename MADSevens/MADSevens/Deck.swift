@@ -80,6 +80,15 @@ class Deck {
         discard.append(topCard)
     }
     
+    func playFirstCard(player: CurrentPlayer) {
+        if player == CurrentPlayer.model {
+            discard.append(modelHand.remove(at: 0))
+        }
+        if player == CurrentPlayer.player {
+            discard.append(playerHand.remove(at: 0))
+        }
+    }
+    
     func getTopDiscardCard() -> Card {
         print("EndIndex of discard: \(discard.endIndex)")
         print("Discard pile: \(discard)")
