@@ -45,6 +45,14 @@ class ViewController: UIViewController {
 //        print("Modelhand: \n \(game.deck.modelHand))")
     }
     
+    @IBAction func PlayFirstCard(_ sender: UIButton) {
+        game.deck.playFirstCard(player: game.currentPlayer)
+        print("A card has been added to the discard pile")
+        print("Playerhand: \n \(game.deck.playerHand))")
+        print("Modelhand: \n \(game.deck.modelHand))")
+        print("Discardpile: \n \(game.deck.discard)")
+    }
+    
     @IBAction func TopDiscardCard(_ sender: UIButton) {
         print("topcard: \(game.getTopDiscardCard())")
     }
