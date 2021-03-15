@@ -128,5 +128,11 @@ class Deck {
         }
     }
     
+    func playerHandEmpty() -> Bool {
+        return playerHand.isEmpty
+    }
     
+    func modelHandEmpty() -> Bool {
+        return modelHand.isEmpty
+    }
 }
