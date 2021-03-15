@@ -13,6 +13,7 @@ class Deck {
     private var discard = [Card]()
     private var playerHand = [Card]()
     private var modelHand = [Card]()
+    private var discardSuit: Suit?
     
     init() {
         initialize()
@@ -21,6 +22,7 @@ class Deck {
     /** At initialization, all cards are added to the stack, it'll be shuffled, and the players receive their first set of cards.
      */
     func initialize() {
+        discardSuit = nil
         for i in Suit.allCases {
             for j in Rank.allCases {
             let card = Card(suit: i, rank: j)
@@ -32,11 +34,11 @@ class Deck {
         print("The initialized stack has been shuffled! Stack: \n\(stack)")
         // Give both the player and the model 5 cards
         for _ in 0...4 {
-            drawCard(player: CurrentPlayer.player)
-            drawCard(player: CurrentPlayer.model)
+            drawCard(player: Player.player)
+            drawCard(player: Player.model)
         }
         // Opening card of the game
-        drawCard(player: CurrentPlayer.setup)
+        drawCard(player: Player.setup)
     }
     
     /** Whenever a new game is started, all cards are being removed, and the game will be re-initialized.
@@ -51,7 +53,7 @@ class Deck {
     
     /** When someone wants to draw a card, first we check if there are any cards left in the stack. If not, we shuffle the discardpile (except for the top card) and add them to the stack. If there are no cards in the discardpile, we reached an impasse and the game will be terminated.
     */
-    func drawCard(player: CurrentPlayer) {
+    func drawCard(player: Player) {
         if stack.isEmpty {
             shuffleDiscardPile()
         }
@@ -59,11 +61,11 @@ class Deck {
             print("ERROR, we've reached an impasse.")
             exit(0)
         }
-        if player == CurrentPlayer.model {
+        if player == Player.model {
             modelHand.append(stack.remove(at: stack.startIndex))
-        } else if player == CurrentPlayer.player {
+        } else if player == Player.player {
             playerHand.append(stack.remove(at: stack.startIndex))
-        } else if player == CurrentPlayer.setup {
+        } else if player == Player.setup { //Needed for setting up the game
             discard.append(stack.remove(at: stack.startIndex))
         }
     }
@@ -72,32 +74,18 @@ class Deck {
     */
     func shuffleDiscardPile() {
         print("Shuffling!")
-        let topCard = discard.remove(at: discard.endIndex)
+        let topCard = discard.remove(at: discard.endIndex-1)
         discard.shuffle()
         while !discard.isEmpty {
             stack.append(discard.remove(at: discard.startIndex))
         }
         discard.append(topCard)
     }
+
     
-//    func playFirstCard(player: CurrentPlayer) {
-//        if player == CurrentPlayer.model {
-//            discard.append(modelHand.remove(at: 0))
-//        }
-//        if player == CurrentPlayer.player {
-//            discard.append(playerHand.remove(at: 0))
-//        }
-//    }
-    
-    func getTopDiscardCard() -> Card {
-        print("EndIndex of discard: \(discard.endIndex)")
-        print("Discard pile: \(discard)")
-        return discard[discard.endIndex-1]
-    }
-    
-    func playCard(card: Card, player: CurrentPlayer) {
+    func playCard(card: Card, player: Player, newSuit: Suit?) {
         switch player {
-        case CurrentPlayer.player:
+        case Player.player:
             var index = -1
             for i in 0..<playerHand.endIndex {
                 if (playerHand[i].getSuit() == card.getSuit() && playerHand[i].getRank() == card.getRank()) {
@@ -110,7 +98,7 @@ class Deck {
                 //TODO: what to do now?
                 print("Invalid move!")
             }
-        case CurrentPlayer.model:
+        case Player.model:
             var index = -1
             for i in 0..<modelHand.endIndex {
                 if (modelHand[i].getSuit() == card.getSuit() && modelHand[i].getRank() == card.getRank()) {
@@ -126,6 +114,7 @@ class Deck {
         default:
             print("Unknown who wants to play a card")
         }
+        discardSuit = newSuit
     }
     
     func playerHandEmpty() -> Bool {
@@ -135,4 +124,53 @@ class Deck {
     func modelHandEmpty() -> Bool {
         return modelHand.isEmpty
     }
+
+    
+    /**
+     Functions to determine valid moves
+     */
+    func getCurrentRank() -> Rank {
+        return discard[discard.endIndex-1].getRank()
+    }
+    
+    func getCurrentSuit() -> Suit {
+        if discardSuit != nil {
+            return discard[discard.endIndex-1].getSuit()
+        } else {
+            return discardSuit!
+        }
+    }
+
+    func isLegalMove(card: Card) -> Bool {
+        if card.getRank() == getCurrentRank() {
+            return true
+        }
+        if card.getSuit() == getCurrentSuit() {
+            return true
+        }
+        if card.getRank() == Rank.VII {
+            return true
+        }
+        return false
+    }
+    
+
+    
+    
+    
+    
+//    func playFirstCard(player: CurrentPlayer) {
+//        if player == CurrentPlayer.model {
+//            discard.append(modelHand.remove(at: 0))
+//        }
+//        if player == CurrentPlayer.player {
+//            discard.append(playerHand.remove(at: 0))
+//        }
+//    }
+    
+//    func getTopDiscardCard() -> Card {
+//        print("EndIndex of discard: \(discard.endIndex)")
+//        print("Discard pile: \(discard)")
+//        return discard[discard.endIndex-1]
+//    }
 }

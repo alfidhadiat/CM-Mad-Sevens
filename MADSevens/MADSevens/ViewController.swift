@@ -40,12 +40,10 @@ class ViewController: UIViewController {
      discard pile. The turn is now given to the model.
      */
     @IBAction func doMove(_ sender: UIButton) {
-        // Make sure selected card is a legal move, if so execute move and pass turn to model
-        let card = Card(suit: Suit.Hearts, rank: Rank.Ace) //TODO figure out how to find a selected card
-        let topDiscardCard = game.getTopDiscardCard()
-        if card.isLegalMove(discardSuit: topDiscardCard.getSuit(), discardRank: topDiscardCard.getRank()) {
-            // Move card from players hand to discard pile
-            game.playCard(card: card, player: game.getCurrentPlayer())
+        //TODO figure out how to find a selected card
+        let card = Card(suit: Suit.Hearts, rank: Rank.Ace)
+        //TODO if a new suit is chosen (in case its a 7 for example), pass that value when playing the card
+        if game.playCard(card: card, player: game.getCurrentPlayer(), newSuit: nil) {
             // Pass turn to the model
             game.passTurn()
         } else {
@@ -65,16 +63,13 @@ class ViewController: UIViewController {
         }
     }
     
-    
-    /**
-     Just a test function
-     */
-    @IBAction func topDiscardCard(_ sender: UIButton) {
-        print("topcard: \(game.getTopDiscardCard())")
-    }
-    
-    
-    
+//    /**
+//     Just a test function
+//     */
+//    @IBAction func topDiscardCard(_ sender: UIButton) {
+//        print("topcard: \(game.getTopDiscardCard())")
+//    }
+//
     
     
 //    @IBAction func PlayFirstCard(_ sender: UIButton) {
