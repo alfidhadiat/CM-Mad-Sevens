@@ -10,10 +10,14 @@ import UIKit
 class ViewController: UIViewController {
     
     lazy var game = MADSevens()
+    
+    private var deck = Deck()
+    
 
+    @IBOutlet private var cardViews: [PlayingCardView]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
     /**
