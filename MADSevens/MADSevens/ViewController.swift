@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     private var deck = Deck()
     
 
-    @IBOutlet private var cardViews: [PlayingCardView]!
+//    @IBOutlet private var cardViews: [PlayingCardView]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
