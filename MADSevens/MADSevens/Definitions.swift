@@ -10,7 +10,7 @@ import Foundation
 /**
 Describes the player whose turn it is. At init, setup is the player, which draws a card from the stack to the discard pile to start the game. Then, the turn is given to the player after which model and player alternate turns.
  */
-enum CurrentPlayer: String {
+enum Player: String {
     case model
     case player
     case setup

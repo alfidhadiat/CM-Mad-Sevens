@@ -8,25 +8,34 @@
 import Foundation
 
 struct Card {
+    //Reminder: value semantics!
     
-    var suit: Suit
-    var rank: Rank
+    private var suit: Suit
+    private var rank: Rank
     
     init(suit: Suit, rank: Rank) {
         self.suit = suit
         self.rank = rank
     }
     
-    func isLegalMove(discardSuit: Suit, discardRank: Rank) -> Bool {
-        if discardSuit == self.suit {
-            return true
-        }
-        if discardRank == self.rank {
-            return true
-        }
-        if rank == Rank.VII {
-            return true
-        }
-        return false
+    func getSuit() -> Suit {
+        return suit
     }
+    
+    func getRank() -> Rank {
+        return rank
+    }
+    
+    //    func isLegalMove(discardSuit: Suit, discardRank: Rank) -> Bool {
+    //        if discardSuit == self.suit {
+    //            return true
+    //        }
+    //        if discardRank == self.rank {
+    //            return true
+    //        }
+    //        if self.rank == Rank.VII {
+    //            return true
+    //        }
+    //        return false
+    //    }
 }
