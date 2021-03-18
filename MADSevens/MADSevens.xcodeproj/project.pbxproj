@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1847291D25FA466600B2C301 /* PlayingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1847291C25FA466600B2C301 /* PlayingCardView.swift */; };
+		18ABE571260387F5003C0836 /* OpponentCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABE570260387F5003C0836 /* OpponentCardView.swift */; };
+		18ABE576260389C4003C0836 /* DeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABE575260389C4003C0836 /* DeckView.swift */; };
+		18ABE57B26038BB2003C0836 /* CardInPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABE57A26038BB2003C0836 /* CardInPlayView.swift */; };
 		2549232425EA45B50093A4A1 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2549232325EA45B50093A4A1 /* Deck.swift */; };
 		2549232C25EA45E50093A4A1 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2549232B25EA45E50093A4A1 /* Card.swift */; };
 		2549233425EA46E30093A4A1 /* MADSevens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2549233325EA46E30093A4A1 /* MADSevens.swift */; };
@@ -58,6 +61,10 @@
 
 /* Begin PBXFileReference section */
 		1847291C25FA466600B2C301 /* PlayingCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingCardView.swift; sourceTree = "<group>"; };
+		18ABE566260387AF003C0836 /* MADSevens-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MADSevens-Bridging-Header.h"; sourceTree = "<group>"; };
+		18ABE570260387F5003C0836 /* OpponentCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpponentCardView.swift; sourceTree = "<group>"; };
+		18ABE575260389C4003C0836 /* DeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckView.swift; sourceTree = "<group>"; };
+		18ABE57A26038BB2003C0836 /* CardInPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInPlayView.swift; sourceTree = "<group>"; };
 		2549232325EA45B50093A4A1 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		2549232B25EA45E50093A4A1 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		2549233325EA46E30093A4A1 /* MADSevens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MADSevens.swift; sourceTree = "<group>"; };
@@ -146,6 +153,9 @@
 				7F244CF425E686DD00080B80 /* AppDelegate.swift */,
 				7F244CF625E686DD00080B80 /* SceneDelegate.swift */,
 				7F244CFA25E686DD00080B80 /* Main.storyboard */,
+				18ABE57A26038BB2003C0836 /* CardInPlayView.swift */,
+				18ABE575260389C4003C0836 /* DeckView.swift */,
+				18ABE570260387F5003C0836 /* OpponentCardView.swift */,
 				7F244CFD25E686E000080B80 /* Assets.xcassets */,
 				1847291C25FA466600B2C301 /* PlayingCardView.swift */,
 				7F244CFF25E686E000080B80 /* LaunchScreen.storyboard */,
@@ -156,6 +166,7 @@
 				2549234025EA7BD30093A4A1 /* Definitions.swift */,
 				2549232B25EA45E50093A4A1 /* Card.swift */,
 				2549233B25EA48B50093A4A1 /* ViewController.swift */,
+				18ABE566260387AF003C0836 /* MADSevens-Bridging-Header.h */,
 			);
 			path = MADSevens;
 			sourceTree = "<group>";
@@ -270,6 +281,7 @@
 				TargetAttributes = {
 					7F244CF025E686DD00080B80 = {
 						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1240;
 					};
 					7F244D0625E686E000080B80 = {
 						CreatedOnToolsVersion = 12.4;
@@ -334,9 +346,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F244D3A25E6871800080B80 /* BufferCondition.swift in Sources */,
+				18ABE571260387F5003C0836 /* OpponentCardView.swift in Sources */,
 				7F244D4825E6871800080B80 /* Production.swift in Sources */,
 				7F244D3C25E6871800080B80 /* Procedural.swift in Sources */,
 				1847291D25FA466600B2C301 /* PlayingCardView.swift in Sources */,
+				18ABE57B26038BB2003C0836 /* CardInPlayView.swift in Sources */,
+				18ABE576260389C4003C0836 /* DeckView.swift in Sources */,
 				7F244D3D25E6871800080B80 /* Instantiation.swift in Sources */,
 				7F244D4525E6871800080B80 /* Parser.swift in Sources */,
 				7F244D3E25E6871800080B80 /* Temporal.swift in Sources */,
@@ -533,6 +548,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MADSevens/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -541,6 +557,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "RUG-CogMod.MADSevens";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MADSevens/MADSevens-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -551,6 +569,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MADSevens/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -559,6 +578,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "RUG-CogMod.MADSevens";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MADSevens/MADSevens-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
