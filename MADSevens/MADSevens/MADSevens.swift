@@ -71,7 +71,7 @@ class MADSevens {
     func modelTurn() {
         //Here, the model is called, and afterwards his move is executed
         //E.g. decide to draw a card:
-        drawCard(player: Player.model)
+        drawCard(player: currentPlayer)
         passTurn()
         // check if the game is done.
     }
@@ -94,6 +94,30 @@ class MADSevens {
     
     func isLegalMove(card: Card) -> Bool {
         return deck.isLegalMove(card: card)
+    }
+    
+    func getPlayerHand() -> [Card] {
+        return deck.getPlayerHand()
+    }
+    
+    func getModelHand() -> [Card] {
+        return deck.getModelHand()
+    }
+    
+    func printGame() {
+        print("Current situation:")
+        print("Current player: \(currentPlayer)")
+        let modelhand = deck.getModelHand()
+        let playerhand = deck.getPlayerHand()
+        print("\n Model's hand:")
+        for i in 0..<modelhand.endIndex {
+            print("\(modelhand[i].getSuit()) - \(modelhand[i].getRank())")
+        }
+        print("\n Player's hand:")
+        for i in 0..<playerhand.endIndex {
+            print("\(playerhand[i].getSuit()) - \(playerhand[i].getRank())")
+        }
+        print("\n Top of the discard pile: \(deck.getTopDiscardCard().getSuit()) - \(deck.getTopDiscardCard().getRank())")
     }
     
 }

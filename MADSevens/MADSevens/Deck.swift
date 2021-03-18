@@ -96,7 +96,7 @@ class Deck {
                 discard.append(playerHand.remove(at: index))
             } else {
                 //TODO: what to do now?
-                print("Invalid move!")
+                print("You don't have this card!")
             }
         case Player.model:
             var index = -1
@@ -109,12 +109,14 @@ class Deck {
                 discard.append(modelHand.remove(at: index))
             } else {
                 //TODO: what to do now?
-                print("Invalid move!")
+                print("You don't have this card!")
             }
         default:
             print("Unknown who wants to play a card")
         }
-        discardSuit = newSuit
+        if newSuit != nil {
+            discardSuit = newSuit
+        }
     }
     
     func playerHandEmpty() -> Bool {
@@ -154,8 +156,13 @@ class Deck {
         return false
     }
     
+    func getPlayerHand() -> [Card] {
+        return playerHand
+    }
 
-    
+    func getModelHand() -> [Card] {
+        return modelHand
+    }
     
     
     
@@ -168,9 +175,7 @@ class Deck {
 //        }
 //    }
     
-//    func getTopDiscardCard() -> Card {
-//        print("EndIndex of discard: \(discard.endIndex)")
-//        print("Discard pile: \(discard)")
-//        return discard[discard.endIndex-1]
-//    }
+    func getTopDiscardCard() -> Card {
+        return discard[discard.endIndex-1]
+    }
 }
