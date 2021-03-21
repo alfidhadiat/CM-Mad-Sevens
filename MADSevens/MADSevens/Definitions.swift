@@ -23,7 +23,7 @@ enum Suit: String, CaseIterable {
     case Hearts
     case Acorn
     case Leaves
-    case Pumpkin
+    case Pumpkins
 }
 
 /**

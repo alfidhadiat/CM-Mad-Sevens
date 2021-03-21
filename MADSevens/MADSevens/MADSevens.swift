@@ -32,9 +32,9 @@ class MADSevens {
         deck.drawCard(player: player)
     }
     
-//    func getTopDiscardCard() -> Card {
-//        return deck.getTopDiscardCard()
-//    }
+    func getTopDiscardCard() -> Card {
+        return deck.getTopDiscardCard()
+    }
     
     func getCurrentSuit() -> Suit {
         return deck.getCurrentSuit()
@@ -42,6 +42,10 @@ class MADSevens {
     
     func getCurrentRank() -> Rank {
         return deck.getCurrentRank()
+    }
+    
+    func getDeckCount() -> Int {
+        return deck.getDeckCount()
     }
     
     func playCard(card: Card, player: Player, newSuit: Suit?) -> Bool {

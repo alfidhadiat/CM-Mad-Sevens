@@ -7,13 +7,10 @@
 
 import UIKit
 
-class OpponentCardView: UIView {
+class ModelCardView: UIView {
 
-    @IBInspectable
-    var rank: String = "Ace" {didSet {setNeedsDisplay(); setNeedsLayout() } }
-    @IBInspectable
-    var suit: String = "Pumpkins" {didSet {setNeedsDisplay(); setNeedsLayout() } }
-    @IBInspectable
+    var rank = Rank.Ace {didSet {setNeedsDisplay(); setNeedsLayout() } }
+    var suit = Suit.Acorn {didSet {setNeedsDisplay(); setNeedsLayout() } }
     var isFaceUp: Bool = false {didSet {setNeedsDisplay(); setNeedsLayout() } }
     
     override func draw(_ rect: CGRect) {
@@ -23,7 +20,7 @@ class OpponentCardView: UIView {
         roundedRect.fill()
 
         if isFaceUp {
-            if let CardImage = UIImage(named: suit+rank) {
+            if let CardImage = UIImage(named: suit.rawValue+rank.rawValue) {
                 CardImage.draw(in: bounds.zoom(by: SizeRatio.faceCardImageSizeToBoundsSize))
             }
         } else {
@@ -32,16 +29,21 @@ class OpponentCardView: UIView {
             }
         }
         
-        
-        
-        
+    }
+    
+    func setRank(newRank: Rank) {
+        self.rank = newRank
+    }
+    
+    func setSuit(newSuit: Suit) {
+        self.suit = newSuit
     }
 
     
 }
 
 // Extension with simple but useful utilities
-extension OpponentCardView {
+extension ModelCardView {
     
     /// Ratios that determine the card's size
     private struct SizeRatio {

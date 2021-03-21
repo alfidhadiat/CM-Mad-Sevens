@@ -9,11 +9,8 @@ import UIKit
 
 class PlayingCardView: UIView {
 
-    @IBInspectable
-    var rank: String = "Ace" {didSet {setNeedsDisplay(); setNeedsLayout() } }
-    @IBInspectable
-    var suit: String = "Pumpkins" {didSet {setNeedsDisplay(); setNeedsLayout() } }
-    @IBInspectable
+    var rank = Rank.Ace {didSet {setNeedsDisplay(); setNeedsLayout() } }
+    var suit = Suit.Acorn {didSet {setNeedsDisplay(); setNeedsLayout() } }
     var isFaceUp: Bool = true {didSet {setNeedsDisplay(); setNeedsLayout() } }
     
     override func draw(_ rect: CGRect) {
@@ -23,7 +20,8 @@ class PlayingCardView: UIView {
         roundedRect.fill()
 
         if isFaceUp {
-            if let CardImage = UIImage(named: suit+rank) {
+            print("Raw value: \(suit.rawValue)")
+            if let CardImage = UIImage(named: suit.rawValue+rank.rawValue) {
                 CardImage.draw(in: bounds.zoom(by: SizeRatio.faceCardImageSizeToBoundsSize))
             }
         } else {
@@ -35,6 +33,14 @@ class PlayingCardView: UIView {
         
         
         
+    }
+    
+    func setRank(newRank: Rank) {
+        self.rank = newRank
+    }
+    
+    func setSuit(newSuit: Suit) {
+        self.suit = newSuit
     }
 
     

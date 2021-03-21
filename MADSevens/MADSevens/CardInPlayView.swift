@@ -9,13 +9,12 @@ import UIKit
 
 class CardInPlayView: UIView {
 
-    @IBInspectable
-    var rank: String = "X" {didSet {setNeedsDisplay(); setNeedsLayout() } }
-    @IBInspectable
-    var suit: String = "Pumpkins" {didSet {setNeedsDisplay(); setNeedsLayout() } }
-    @IBInspectable
+    var rank = Rank.Ace {didSet {setNeedsDisplay(); setNeedsLayout() } }
+    var suit = Suit.Acorn {didSet {setNeedsDisplay(); setNeedsLayout() } }
     var isFaceUp: Bool = true {didSet {setNeedsDisplay(); setNeedsLayout() } }
     
+    
+
     override func draw(_ rect: CGRect) {
         let roundedRect = UIBezierPath(roundedRect: bounds, cornerRadius: 16)
         roundedRect.addClip()
@@ -23,7 +22,7 @@ class CardInPlayView: UIView {
         roundedRect.fill()
 
         if isFaceUp {
-            if let CardImage = UIImage(named: suit+rank) {
+            if let CardImage = UIImage(named: suit.rawValue+rank.rawValue) {
                 CardImage.draw(in: bounds.zoom(by: SizeRatio.faceCardImageSizeToBoundsSize))
             }
         } else {
@@ -32,12 +31,19 @@ class CardInPlayView: UIView {
             }
         }
         
-        
-        
-        
     }
-
     
+    func setRank(newRank: Rank) {
+        print("Setting the value of new cards")
+        print("Current values: \(self.rank), \(self.suit)")
+        self.rank = newRank
+        print("New values: \(self.rank), \(self.suit)")
+
+    }
+    
+    func setSuit(newSuit: Suit) {
+        self.suit = newSuit
+    }
 }
 
 // Extension with simple but useful utilities
@@ -65,5 +71,7 @@ extension CardInPlayView {
     private var cornerFontSize: CGFloat {
         return bounds.size.height * SizeRatio.cornerFontSizeToBoundsHeight
     }
+    
+ 
 }
 
