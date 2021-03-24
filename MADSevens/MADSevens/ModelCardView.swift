@@ -1,5 +1,5 @@
 //
-//  DeckView.swift
+//  OpponentCardView.swift
 //  MADSevens
 //
 //  Created by D.L. Kovacs on 18/03/2021.
@@ -7,12 +7,11 @@
 
 import UIKit
 
-class DeckView: UIView {
+class ModelCardView: UIView {
 
-    @IBInspectable
-    var state: String = "full" {didSet {setNeedsDisplay(); setNeedsLayout() } }
-    @IBInspectable
-    var isFaceUp: Bool = true {didSet {setNeedsDisplay(); setNeedsLayout() } }
+    var rank = Rank.Ace {didSet {setNeedsDisplay(); setNeedsLayout() } }
+    var suit = Suit.Acorn {didSet {setNeedsDisplay(); setNeedsLayout() } }
+    var isFaceUp: Bool = false {didSet {setNeedsDisplay(); setNeedsLayout() } }
     
     override func draw(_ rect: CGRect) {
         let roundedRect = UIBezierPath(roundedRect: bounds, cornerRadius: 16)
@@ -21,7 +20,7 @@ class DeckView: UIView {
         roundedRect.fill()
 
         if isFaceUp {
-            if let CardImage = UIImage(named: state+"Deck") {
+            if let CardImage = UIImage(named: suit.rawValue+rank.rawValue) {
                 CardImage.draw(in: bounds.zoom(by: SizeRatio.faceCardImageSizeToBoundsSize))
             }
         } else {
@@ -30,22 +29,28 @@ class DeckView: UIView {
             }
         }
         
-        
-        
-        
     }
-        
-}
     
+    func setRank(newRank: Rank) {
+        self.rank = newRank
+    }
+    
+    func setSuit(newSuit: Suit) {
+        self.suit = newSuit
+    }
+
+    
+}
+
 // Extension with simple but useful utilities
-extension DeckView {
+extension ModelCardView {
     
     /// Ratios that determine the card's size
     private struct SizeRatio {
         static let cornerFontSizeToBoundsHeight: CGFloat = 0.085
         static let cornerRadiusToBoundsHeight: CGFloat = 0.06
         static let cornerOffsetToCornerRadius: CGFloat = 0.33
-        static let faceCardImageSizeToBoundsSize: CGFloat = 1.05
+        static let faceCardImageSizeToBoundsSize: CGFloat = 0.95
     }
     
     /// Corner radius
@@ -63,3 +68,5 @@ extension DeckView {
         return bounds.size.height * SizeRatio.cornerFontSizeToBoundsHeight
     }
 }
+
+
