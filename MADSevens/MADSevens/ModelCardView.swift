@@ -1,5 +1,5 @@
 //
-//  CardInPlayView.swift
+//  OpponentCardView.swift
 //  MADSevens
 //
 //  Created by D.L. Kovacs on 18/03/2021.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-class CardInPlayView: UIView {
+class ModelCardView: UIView {
 
     var rank = Rank.Ace {didSet {setNeedsDisplay(); setNeedsLayout() } }
     var suit = Suit.Acorn {didSet {setNeedsDisplay(); setNeedsLayout() } }
-    var isFaceUp: Bool = true {didSet {setNeedsDisplay(); setNeedsLayout() } }
+    var isFaceUp: Bool = false {didSet {setNeedsDisplay(); setNeedsLayout() } }
     
     override func draw(_ rect: CGRect) {
         let roundedRect = UIBezierPath(roundedRect: bounds, cornerRadius: 16)
@@ -28,24 +28,22 @@ class CardInPlayView: UIView {
                 BackImage.draw(in: bounds.zoom(by: SizeRatio.faceCardImageSizeToBoundsSize))
             }
         }
+        
     }
-
     
     func setRank(newRank: Rank) {
-        print("Setting the value of new cards")
-        print("Current values: \(self.rank), \(self.suit)")
         self.rank = newRank
-        print("New values: \(self.rank), \(self.suit)")
-
     }
     
     func setSuit(newSuit: Suit) {
         self.suit = newSuit
     }
+
+    
 }
 
 // Extension with simple but useful utilities
-extension CardInPlayView {
+extension ModelCardView {
     
     /// Ratios that determine the card's size
     private struct SizeRatio {
@@ -69,6 +67,6 @@ extension CardInPlayView {
     private var cornerFontSize: CGFloat {
         return bounds.size.height * SizeRatio.cornerFontSizeToBoundsHeight
     }
-
 }
+
 

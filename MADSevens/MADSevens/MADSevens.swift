@@ -32,9 +32,15 @@ class MADSevens {
         deck.drawCard(player: player)
     }
     
+<<<<<<< HEAD
 //    func getTopDiscardCard() -> Card {
 //        return deck.getTopDiscardCard()
 //    }
+=======
+    func getTopDiscardCard() -> Card {
+        return deck.getTopDiscardCard()
+    }
+>>>>>>> main
     
     func getCurrentSuit() -> Suit {
         return deck.getCurrentSuit()
@@ -44,6 +50,13 @@ class MADSevens {
         return deck.getCurrentRank()
     }
     
+<<<<<<< HEAD
+=======
+    func getDeckCount() -> Int {
+        return deck.getDeckCount()
+    }
+    
+>>>>>>> main
     func playCard(card: Card, player: Player, newSuit: Suit?) -> Bool {
         if deck.isLegalMove(card: card) {
             deck.playCard(card: card, player: player, newSuit: newSuit)

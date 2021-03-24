@@ -7,12 +7,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MADSevensViewController: UIViewController {
     
     lazy var game = MADSevens()
     
     private var deck = Deck()
     
+<<<<<<< HEAD
 
     @IBOutlet private var cardViews: [PlayingCardView]!
     
@@ -27,6 +28,39 @@ class ViewController: UIViewController {
         game.newGame()
         game.printGame()
     }
+=======
+    @IBOutlet private var playerCardView: [PlayingCardView]!
+    @IBOutlet private var modelCardView: [ModelCardView]!
+    @IBOutlet private var discardCardView: CardInPlayView!
+    @IBOutlet private var DeckView: [DeckView]!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let playerCards = game.getPlayerHand()
+        let modelCards = game.getModelHand()
+        let discardCard = game.getTopDiscardCard()
+        //let deckCard = deck.updateDeck()
+        
+        for i in 0 ..< playerCards.count {
+            playerCardView[i].isFaceUp = true
+            playerCardView[i].setRank(newRank: playerCards[i].getRank())
+            playerCardView[i].setSuit(newSuit: playerCards[i].getSuit())
+        }
+        for i in 0 ..< modelCards.count {
+            modelCardView[i].isFaceUp = false
+            modelCardView[i].setRank(newRank: modelCards[i].getRank())
+            modelCardView[i].setSuit(newSuit: modelCards[i].getSuit())
+        }
+        
+        
+        
+        discardCardView = CardInPlayView()
+        discardCardView.setRank(newRank: discardCard.getRank())
+        discardCardView.setSuit(newSuit: discardCard.getSuit())
+    }
+
+
+>>>>>>> main
     
     /**
     Draws a card for the current player, gives the turn to its opponent.
@@ -39,8 +73,30 @@ class ViewController: UIViewController {
         game.drawCard(player: game.getCurrentPlayer())
         game.printGame()
         game.passTurn()
+<<<<<<< HEAD
     }
         
+=======
+        let state = updateDeck()
+        
+    }
+        
+//    marieke pls move back to deck
+    func updateDeck() -> String {
+        var state = "full"
+        let stackCount = game.getDeckCount()
+        if (stackCount <= 17) {
+            state = "threeq"
+        } else if (stackCount <= 13) {
+            state = "half"
+        } else if (stackCount <= 9){
+            state = "oneq"
+        } else if (stackCount <= 5) {
+            state = "low"
+        }
+            return state
+    }
+>>>>>>> main
     /**
      The selected card (TODO: multiple cards yet to be implemented) will be taken from the player's hand and added to the
      discard pile. The turn is now given to the model.
@@ -76,6 +132,7 @@ class ViewController: UIViewController {
         }
     }
     
+<<<<<<< HEAD
     func suitStringToSuit(suitString: String) -> Suit {
         switch suitString {
         case "hearts":
@@ -92,6 +149,32 @@ class ViewController: UIViewController {
         }
     }
     
+=======
+    func getHand(player: Player) -> [Card] {
+        if player == Player.model {
+            return game.getModelHand()
+        } else {
+            return game.getPlayerHand()
+        }
+    }
+    
+    func suitStringToSuit(suitString: String) -> Suit {
+        switch suitString {
+        case "hearts":
+            return Suit.Hearts
+        case "acorn":
+            return Suit.Acorn
+        case "leaves":
+            return Suit.Leaves
+        case "pumpkin":
+            return Suit.Pumpkins
+        default:
+            print("Error, used default suit: Hearts")
+            return Suit.Hearts
+        }
+    }
+    
+>>>>>>> main
     func rankStringToRank(suitString: String) -> Rank {
         switch suitString {
         case "II":

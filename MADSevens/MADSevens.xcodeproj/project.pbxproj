@@ -8,14 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		1847291D25FA466600B2C301 /* PlayingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1847291C25FA466600B2C301 /* PlayingCardView.swift */; };
+<<<<<<< HEAD
 		18ABE571260387F5003C0836 /* OpponentCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABE570260387F5003C0836 /* OpponentCardView.swift */; };
 		18ABE576260389C4003C0836 /* DeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABE575260389C4003C0836 /* DeckView.swift */; };
 		18ABE57B26038BB2003C0836 /* CardInPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABE57A26038BB2003C0836 /* CardInPlayView.swift */; };
+=======
+		18ABE576260389C4003C0836 /* DeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABE575260389C4003C0836 /* DeckView.swift */; };
+		18ABE57B26038BB2003C0836 /* CardInPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABE57A26038BB2003C0836 /* CardInPlayView.swift */; };
+		18ABE5832603A761003C0836 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABE5822603A761003C0836 /* MenuViewController.swift */; };
+>>>>>>> main
 		2549232425EA45B50093A4A1 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2549232325EA45B50093A4A1 /* Deck.swift */; };
 		2549232C25EA45E50093A4A1 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2549232B25EA45E50093A4A1 /* Card.swift */; };
 		2549233425EA46E30093A4A1 /* MADSevens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2549233325EA46E30093A4A1 /* MADSevens.swift */; };
 		2549233C25EA48B50093A4A1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2549233B25EA48B50093A4A1 /* ViewController.swift */; };
 		2549234125EA7BD30093A4A1 /* Definitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2549234025EA7BD30093A4A1 /* Definitions.swift */; };
+		25F9EB1F260789B900A8EC88 /* ModelCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F9EB1E260789B900A8EC88 /* ModelCardView.swift */; };
 		7F244CF525E686DD00080B80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F244CF425E686DD00080B80 /* AppDelegate.swift */; };
 		7F244CF725E686DD00080B80 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F244CF625E686DD00080B80 /* SceneDelegate.swift */; };
 		7F244CFC25E686DD00080B80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F244CFA25E686DD00080B80 /* Main.storyboard */; };
@@ -61,15 +68,22 @@
 
 /* Begin PBXFileReference section */
 		1847291C25FA466600B2C301 /* PlayingCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingCardView.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		18ABE566260387AF003C0836 /* MADSevens-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MADSevens-Bridging-Header.h"; sourceTree = "<group>"; };
 		18ABE570260387F5003C0836 /* OpponentCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpponentCardView.swift; sourceTree = "<group>"; };
 		18ABE575260389C4003C0836 /* DeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckView.swift; sourceTree = "<group>"; };
 		18ABE57A26038BB2003C0836 /* CardInPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInPlayView.swift; sourceTree = "<group>"; };
+=======
+		18ABE575260389C4003C0836 /* DeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckView.swift; sourceTree = "<group>"; };
+		18ABE57A26038BB2003C0836 /* CardInPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInPlayView.swift; sourceTree = "<group>"; };
+		18ABE5822603A761003C0836 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+>>>>>>> main
 		2549232325EA45B50093A4A1 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		2549232B25EA45E50093A4A1 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		2549233325EA46E30093A4A1 /* MADSevens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MADSevens.swift; sourceTree = "<group>"; };
 		2549233B25EA48B50093A4A1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2549234025EA7BD30093A4A1 /* Definitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Definitions.swift; sourceTree = "<group>"; };
+		25F9EB1E260789B900A8EC88 /* ModelCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCardView.swift; sourceTree = "<group>"; };
 		7F244CF125E686DD00080B80 /* MADSevens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MADSevens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F244CF425E686DD00080B80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F244CF625E686DD00080B80 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -153,9 +167,16 @@
 				7F244CF425E686DD00080B80 /* AppDelegate.swift */,
 				7F244CF625E686DD00080B80 /* SceneDelegate.swift */,
 				7F244CFA25E686DD00080B80 /* Main.storyboard */,
+<<<<<<< HEAD
 				18ABE57A26038BB2003C0836 /* CardInPlayView.swift */,
 				18ABE575260389C4003C0836 /* DeckView.swift */,
 				18ABE570260387F5003C0836 /* OpponentCardView.swift */,
+=======
+				18ABE5822603A761003C0836 /* MenuViewController.swift */,
+				18ABE57A26038BB2003C0836 /* CardInPlayView.swift */,
+				25F9EB1E260789B900A8EC88 /* ModelCardView.swift */,
+				18ABE575260389C4003C0836 /* DeckView.swift */,
+>>>>>>> main
 				7F244CFD25E686E000080B80 /* Assets.xcassets */,
 				1847291C25FA466600B2C301 /* PlayingCardView.swift */,
 				7F244CFF25E686E000080B80 /* LaunchScreen.storyboard */,
@@ -354,6 +375,7 @@
 				18ABE576260389C4003C0836 /* DeckView.swift in Sources */,
 				7F244D3D25E6871800080B80 /* Instantiation.swift in Sources */,
 				7F244D4525E6871800080B80 /* Parser.swift in Sources */,
+				18ABE5832603A761003C0836 /* MenuViewController.swift in Sources */,
 				7F244D3E25E6871800080B80 /* Temporal.swift in Sources */,
 				7F244CF525E686DD00080B80 /* AppDelegate.swift in Sources */,
 				2549233C25EA48B50093A4A1 /* ViewController.swift in Sources */,
@@ -367,6 +389,7 @@
 				7F244D3F25E6871800080B80 /* Vision.swift in Sources */,
 				7F244D4425E6871800080B80 /* Support.swift in Sources */,
 				7F244CF725E686DD00080B80 /* SceneDelegate.swift in Sources */,
+				25F9EB1F260789B900A8EC88 /* ModelCardView.swift in Sources */,
 				2549232C25EA45E50093A4A1 /* Card.swift in Sources */,
 				7F244D3925E6871800080B80 /* SlotAction.swift in Sources */,
 				7F244D4625E6871800080B80 /* Declarative.swift in Sources */,

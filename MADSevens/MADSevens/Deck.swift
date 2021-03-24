@@ -119,6 +119,11 @@ class Deck {
         }
     }
     
+<<<<<<< HEAD
+=======
+    // marieke pls help: right here we wanted to do something that counts nr of cards in deck. Depending on this count, a string should be obtained. Then we could use this string to update the state variable within the DeckView, which would lead to a deck getting displayed in different levels (half, full, low, etc.). We're not sure where the update should be.
+    
+>>>>>>> main
     func playerHandEmpty() -> Bool {
         return playerHand.isEmpty
     }
@@ -127,6 +132,12 @@ class Deck {
         return modelHand.isEmpty
     }
 
+<<<<<<< HEAD
+=======
+    func getDeckCount() -> Int {
+        return stack.count
+    }
+>>>>>>> main
     
     /**
      Functions to determine valid moves
@@ -136,7 +147,11 @@ class Deck {
     }
     
     func getCurrentSuit() -> Suit {
+<<<<<<< HEAD
         if discardSuit != nil {
+=======
+        if discardSuit == nil {
+>>>>>>> main
             return discard[discard.endIndex-1].getSuit()
         } else {
             return discardSuit!
