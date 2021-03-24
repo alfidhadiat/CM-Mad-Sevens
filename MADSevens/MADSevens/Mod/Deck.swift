@@ -29,9 +29,9 @@ class Deck {
                 stack.append(card)
             }
         }
-        print("The stack has been initialized! Stack: \n\(stack)")
+//        print("The stack has been initialized! Stack: \n\(stack)")
         stack.shuffle()
-        print("The initialized stack has been shuffled! Stack: \n\(stack)")
+//        print("The initialized stack has been shuffled! Stack: \n\(stack)")
         // Give both the player and the model 5 cards
         for _ in 0...4 {
             drawCard(player: Player.player)
@@ -69,20 +69,7 @@ class Deck {
             discard.append(stack.remove(at: stack.startIndex))
         }
     }
-    
-    /** All cards in the discard pile, except for the top card, will be shuffled and added to the stack. The top card of the discard pile will remain the top card.
-    */
-    func shuffleDiscardPile() {
-        print("Shuffling!")
-        let topCard = discard.remove(at: discard.endIndex-1)
-        discard.shuffle()
-        while !discard.isEmpty {
-            stack.append(discard.remove(at: discard.startIndex))
-        }
-        discard.append(topCard)
-    }
 
-    
     func playCard(card: Card, player: Player, newSuit: Suit?) {
         switch player {
         case Player.player:
@@ -112,11 +99,38 @@ class Deck {
                 print("You don't have this card!")
             }
         default:
-            print("Unknown who wants to play a card")
+            print("Unknown who wants to play a card, error!")
         }
         if newSuit != nil {
             discardSuit = newSuit
         }
+    }
+    
+    /** All cards in the discard pile, except for the top card, will be shuffled and added to the stack. The top card of the discard pile will remain the top card.
+    */
+    func shuffleDiscardPile() {
+        print("Shuffling!")
+        let topCard = discard.remove(at: discard.endIndex-1)
+        discard.shuffle()
+        while !discard.isEmpty {
+            stack.append(discard.remove(at: discard.startIndex))
+        }
+        discard.append(topCard)
+    }
+    
+    func updateDeck() -> String {
+        var state = "full"
+        let stackCount = stack.count
+        if (stackCount <= 17) {
+            state = "threeq"
+        } else if (stackCount <= 13) {
+            state = "half"
+        } else if (stackCount <= 9){
+            state = "oneq"
+        } else if (stackCount <= 5) {
+            state = "low"
+        }
+            return state
     }
     
     // marieke pls help: right here we wanted to do something that counts nr of cards in deck. Depending on this count, a string should be obtained. Then we could use this string to update the state variable within the DeckView, which would lead to a deck getting displayed in different levels (half, full, low, etc.). We're not sure where the update should be.
@@ -128,27 +142,8 @@ class Deck {
     func modelHandEmpty() -> Bool {
         return modelHand.isEmpty
     }
-
-    func getDeckCount() -> Int {
-        return stack.count
-    }
     
-    /**
-     Functions to determine valid moves
-     */
-    func getCurrentRank() -> Rank {
-        return discard[discard.endIndex-1].getRank()
-    }
-    
-    func getCurrentSuit() -> Suit {
-        if discardSuit == nil {
-            return discard[discard.endIndex-1].getSuit()
-        } else {
-            return discardSuit!
-        }
-    }
-
-    func isLegalMove(card: Card) -> Bool {
+    func legalMove(card: Card) -> Bool {
         if card.getRank() == getCurrentRank() {
             return true
         }
@@ -160,6 +155,22 @@ class Deck {
         }
         return false
     }
+
+    func getDeckCount() -> Int {
+        return stack.count
+    }
+    
+    func getCurrentRank() -> Rank {
+        return discard[discard.endIndex-1].getRank()
+    }
+    
+    func getCurrentSuit() -> Suit {
+        if discardSuit == nil {
+            return discard[discard.endIndex-1].getSuit()
+        } else {
+            return discardSuit!
+        }
+    }
     
     func getPlayerHand() -> [Card] {
         return playerHand
@@ -168,7 +179,6 @@ class Deck {
     func getModelHand() -> [Card] {
         return modelHand
     }
-    
     
     
 //    func playFirstCard(player: CurrentPlayer) {

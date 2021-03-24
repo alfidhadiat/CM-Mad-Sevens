@@ -11,25 +11,81 @@ class MADSevens {
     
     private var deck: Deck
     private var currentPlayer: Player
-    private var finished: Bool
 //    private var model: ACTRModel
     
     init() {
-        print("Intitializing new MADSevens game \n")
+        print("Intitializing MADSevens game\n")
         deck = Deck()
         currentPlayer = Player.player
-        finished = false
     }
     
     func newGame() {
         print("Starting new MADSevens game")
         deck.newGame()
         currentPlayer = Player.player
-        finished = false
+        printGame()
     }
     
-    func drawCard(player: Player) {
-        deck.drawCard(player: player)
+    func drawCard() {
+        deck.drawCard(player: currentPlayer)
+    }
+    
+    func playCard(card: Card, newSuit: Suit?) -> Bool {
+        if deck.legalMove(card: card) {
+            deck.playCard(card: card, player: currentPlayer, newSuit: newSuit)
+            return true
+        }
+        return false
+    }
+
+    func modelTurn() {
+        //Here, the model is called, and afterwards his move is executed
+        //E.g. decide to draw a card:
+        print("Model draws a card")
+        drawCard()
+        printGame()
+        passTurn()
+    }
+    
+    /**
+     Pass the turn to the other player, check if someone has no cards left and therefore won the game
+     */
+    func passTurn() {
+        if (currentPlayer == Player.model) {
+            currentPlayer = Player.player
+        } else {
+            currentPlayer = Player.model
+        }
+    }
+    
+    /**
+     Checks wether the end of the game has been reached. If so, displays a message and restarts the game.
+     */
+    func checkpoint() -> String {
+        if (playerWon() || modelWon()) {
+            if playerWon(){
+                return "Player"
+            } else if modelWon() {
+                return "Model"
+            }
+        }
+        return "None"
+    }
+    
+//    func done() -> Bool {
+//        return finished
+//    }
+    
+    func legalMove(card: Card) -> Bool {
+        return deck.legalMove(card: card)
+    }
+    
+    func playerWon() -> Bool {
+        return deck.playerHandEmpty()
+    }
+    
+    func modelWon() -> Bool {
+        return deck.modelHandEmpty()
     }
     
     func getTopDiscardCard() -> Card {
@@ -48,56 +104,8 @@ class MADSevens {
         return deck.getDeckCount()
     }
     
-    func playCard(card: Card, player: Player, newSuit: Suit?) -> Bool {
-        if deck.isLegalMove(card: card) {
-            deck.playCard(card: card, player: player, newSuit: newSuit)
-            return true
-        }
-        return false
-    }
-
-    
-    /**
-     Pass the turn to the other player, check if someone has no cards left and therefore won the game
-     */
-    func passTurn() {
-        if (currentPlayer == Player.model) {
-            currentPlayer = Player.player
-        } else {
-            currentPlayer = Player.model
-        }
-        // When passing the turn, check if the game has ended
-        if (playerWon() || modelWon()) {
-            finished = true
-        }
-    }
-    
-    func modelTurn() {
-        //Here, the model is called, and afterwards his move is executed
-        //E.g. decide to draw a card:
-        drawCard(player: currentPlayer)
-        passTurn()
-        // check if the game is done.
-    }
-    
-    func playerWon() -> Bool {
-        return deck.playerHandEmpty()
-    }
-    
-    func modelWon() -> Bool {
-        return deck.modelHandEmpty()
-    }
-    
-    func isDone() -> Bool {
-        return finished
-    }
-    
     func getCurrentPlayer() -> Player {
         return currentPlayer
-    }
-    
-    func isLegalMove(card: Card) -> Bool {
-        return deck.isLegalMove(card: card)
     }
     
     func getPlayerHand() -> [Card] {
@@ -123,5 +131,4 @@ class MADSevens {
         }
         print("\n Top of the discard pile: \(deck.getTopDiscardCard().getSuit()) - \(deck.getTopDiscardCard().getRank())")
     }
-    
 }

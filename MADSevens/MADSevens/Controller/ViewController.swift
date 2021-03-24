@@ -9,7 +9,7 @@ import UIKit
 
 class MADSevensViewController: UIViewController {
     
-    lazy var game = MADSevens()
+    public lazy var game = MADSevens()
     
     private var deck = Deck()
     
@@ -17,6 +17,8 @@ class MADSevensViewController: UIViewController {
     @IBOutlet private var modelCardView: [ModelCardView]!
     @IBOutlet private var discardCardView: CardInPlayView!
     @IBOutlet private var DeckView: [DeckView]!
+    @IBOutlet weak var rankField: UITextField!
+    @IBOutlet weak var suitField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,14 +37,10 @@ class MADSevensViewController: UIViewController {
             modelCardView[i].setRank(newRank: modelCards[i].getRank())
             modelCardView[i].setSuit(newSuit: modelCards[i].getSuit())
         }
-        
-        
-        
         discardCardView = CardInPlayView()
         discardCardView.setRank(newRank: discardCard.getRank())
         discardCardView.setSuit(newSuit: discardCard.getSuit())
     }
-
 
     
     /**
@@ -53,108 +51,49 @@ class MADSevensViewController: UIViewController {
         // draw card, add it to hand
         // give turn to next player
         //TODO: since button is pressed, it's always the player calling this function
-        game.drawCard(player: game.getCurrentPlayer())
+        print("Current player: \(game.getCurrentPlayer()), drawing a card right now!")
+        game.drawCard()
         game.printGame()
         game.passTurn()
-        let state = updateDeck()
-        
+        game.modelTurn()
+//        let state = updateDeck()
     }
         
-//    marieke pls move back to deck
-    func updateDeck() -> String {
-        var state = "full"
-        let stackCount = game.getDeckCount()
-        if (stackCount <= 17) {
-            state = "threeq"
-        } else if (stackCount <= 13) {
-            state = "half"
-        } else if (stackCount <= 9){
-            state = "oneq"
-        } else if (stackCount <= 5) {
-            state = "low"
-        }
-            return state
-    }
     /**
      The selected card (TODO: multiple cards yet to be implemented) will be taken from the player's hand and added to the
      discard pile. The turn is now given to the model.
      */
     @IBAction func doMove(_ sender: UIButton) {
         //TODO figure out how to find a selected card
-//        print("Please insert Suit:")
-//        let inputSuitString = readLine()!
-//        let inputSuit = suitStringToSuit(suitString: inputSuitString)
-//        print("Please insert Rank:")
-//        let inputRankString = readLine()!
-//        let inputRank = rankStringToRank(suitString: inputRankString)
-//        let card = Card(suit: inputSuit, rank: inputRank)
-        let card = Card(suit: Suit.Hearts, rank: Rank.II)
-        //TODO if a new suit is chosen (in case its a 7 for example), pass that value when playing the card
-        if game.playCard(card: card, player: game.getCurrentPlayer(), newSuit: nil) {
-            // Pass turn to the model
-            game.passTurn()
-        } else {
-            print("Invalid move, error!")
-        }
         
-        // Check if player has emptied his hand, if so he won.
-        if game.isDone() {
-            if game.playerWon(){
-                // Display a "You won the game!" message
-            } else if game.modelWon() {
-                // Display a "You lost the game!" message
-            }
-        } else {
-            // If game hasn't ended, we give the turn to the model.
-            game.modelTurn()
+        // do the move
+        let inputRank = rankField!
+        let inputSuit = suitField!
+        print("inputRank: \(inputRank.text!), inputSuit: \(inputSuit.text!)")
+        let card = Card(suit: suitStringToSuit(suitString: inputSuit.text!), rank: rankStringToRank(rankString: inputRank.text!))
+        print("Playing this card: \(card)")
+        //TODO if a new suit is chosen (in case its a 7 for example), pass that value when playing the card
+        if !game.playCard(card: card, newSuit: nil) {
+            print("Invalid move, a card is drawn for you!")
         }
+        game.passTurn()
+        checkpoint()
+        game.modelTurn()
+        checkpoint()
     }
     
-    func getHand(player: Player) -> [Card] {
-        if player == Player.model {
-            return game.getModelHand()
-        } else {
-            return game.getPlayerHand()
-        }
-    }
-    
-    func suitStringToSuit(suitString: String) -> Suit {
-        switch suitString {
-        case "hearts":
-            return Suit.Hearts
-        case "acorn":
-            return Suit.Acorn
-        case "leaves":
-            return Suit.Leaves
-        case "pumpkin":
-            return Suit.Pumpkins
+    func checkpoint() {
+        //TODO: Convert print statements to popups
+        let checkpoint = game.checkpoint()
+        switch checkpoint {
+        case "Player":
+            print("Player won the game!")
+            game.newGame()
+        case "Model":
+            print("Model won the game!")
+            game.newGame()
         default:
-            print("Error, used default suit: Hearts")
-            return Suit.Hearts
-        }
-    }
-    
-    func rankStringToRank(suitString: String) -> Rank {
-        switch suitString {
-        case "II":
-            return Rank.II
-        case "VII":
-            return Rank.VII
-        case "VIII":
-            return Rank.VIII
-        case "IX":
-            return Rank.IX
-        case "X":
-            return Rank.X
-        case "Ace":
-            return Rank.Ace
-        case "Unter":
-            return Rank.Unter
-        case "King":
-            return Rank.King
-        default:
-            print("Error, used default rank: II")
-            return Rank.II
+            break
         }
     }
     
@@ -165,6 +104,15 @@ class MADSevensViewController: UIViewController {
 //        print("topcard: \(game.getTopDiscardCard())")
 //    }
 //
+    
+    
+    //    func getHand(player: Player) -> [Card] {
+    //        if player == Player.model {
+    //            return game.getModelHand()
+    //        } else {
+    //            return game.getPlayerHand()
+    //        }
+    //    }
     
     
 //    @IBAction func PlayFirstCard(_ sender: UIButton) {

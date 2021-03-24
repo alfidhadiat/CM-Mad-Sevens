@@ -20,7 +20,7 @@ class PlayingCardView: UIView {
         roundedRect.fill()
 
         if isFaceUp {
-            print("Raw value: \(suit.rawValue)")
+//            print("Raw value: \(suit.rawValue)")
             if let CardImage = UIImage(named: suit.rawValue+rank.rawValue) {
                 CardImage.draw(in: bounds.zoom(by: SizeRatio.faceCardImageSizeToBoundsSize))
             }
