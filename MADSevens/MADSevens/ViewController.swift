@@ -11,6 +11,9 @@ class MADSevensViewController: UIViewController {
     
     lazy var game = MADSevens()
     
+    // Initialize model with the .actr file
+    actr = actr("sevens")
+
     private var deck = Deck()
     
     @IBOutlet private var playerCardView: [PlayingCardView]!
@@ -93,6 +96,10 @@ class MADSevensViewController: UIViewController {
         if game.playCard(card: card, player: game.getCurrentPlayer(), newSuit: nil) {
             // Pass turn to the model
             game.passTurn()
+            if card.rank == Rank.Ace {
+                actr.storeAce()
+            }
+            actrTurn()
         } else {
             print("Invalid move, error!")
         }
@@ -106,7 +113,56 @@ class MADSevensViewController: UIViewController {
             }
         } else {
             // If game hasn't ended, we give the turn to the model.
-            game.modelTurn()
+            game.passTurn()
+            actrTurn()
+        }
+    }
+
+    /**
+    The procedure for the ACT-R's turn
+    **/
+    func actrTurn() {
+
+        // First, put current ACTR hand and top discard into ACTR
+        actr.hand = getHand(player.Model)
+        actr.top = deck.getTopDiscardCard()
+
+        // Go through the model's turn to generate a "choice"
+        choice = actr.turn()
+
+        // Switch cases depending on the choice made
+        // After a choice is played, pass the turn again
+        switch choice {
+
+            // When ACT-R has no legal hand, the choice is "draw"
+            case "draw":
+                game.drawCard(player: game.getCurrentPlayer())
+                game.passTurn()
+
+            // When ACT-R has only one legal, the choice is "playOne"
+            case "playOne":
+                for (card in actr.hand) {
+                    if deck.isLegalMove(card: card) == True {
+                        let onlyLegal = card
+                    }
+                }
+                if onlyLegal.rank == Rank.VII {
+                    let newSuit = actr.predictSuit()
+                } else {
+                    let newSuit = nil
+                }
+                game.playCard(card: onlyLegal, player: game.getCurrentPlayer(), newSuit: newSuit)
+                game.passTurn()
+
+            // When ace is legal against a two, choice is "playAce"
+            case "playAce":
+                for (card in actr.hand) {
+                    if card.rank == Rank.Ace {
+                        let aceCard = card
+                    }
+                }
+                game.playCard(card: aceCard, player: game.getCurrentPlayer(), newSuit: newSuit)
+                game.passTurn()
         }
     }
     
