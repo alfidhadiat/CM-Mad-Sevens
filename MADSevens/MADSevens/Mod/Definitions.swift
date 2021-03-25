@@ -48,7 +48,7 @@ func suitStringToSuit(suitString: String) -> Suit {
         return Suit.Acorn
     case "Leaves":
         return Suit.Leaves
-    case "Pumpkin":
+    case "Pumpkins":
         return Suit.Pumpkins
     default:
         print("Error, used default suit: Hearts")
