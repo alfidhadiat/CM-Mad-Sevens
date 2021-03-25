@@ -17,23 +17,19 @@ class MADSevensViewController: UIViewController {
     @IBOutlet private var modelCardView: [ModelCardView]!
     @IBOutlet private var discardCardView: CardInPlayView!
     @IBOutlet private var DeckView: [DeckView]!
-    @IBOutlet weak var playerStack: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let playerCards = game.getPlayerHand()
         let modelCards = game.getModelHand()
         let discardCard = game.getTopDiscardCard()
-        print("This is a dicard card \(discardCard)")
-        
-        
+        //let deckCard = deck.updateDeck()
         
         for i in 0 ..< playerCards.count {
             playerCardView[i].isFaceUp = true
             playerCardView[i].setRank(newRank: playerCards[i].getRank())
             playerCardView[i].setSuit(newSuit: playerCards[i].getSuit())
         }
-        
         for i in 0 ..< modelCards.count {
             modelCardView[i].isFaceUp = false
             modelCardView[i].setRank(newRank: modelCards[i].getRank())
@@ -41,58 +37,11 @@ class MADSevensViewController: UIViewController {
         }
         
         
-        discardCardView.isFaceUp = true
+        
+        discardCardView = CardInPlayView()
         discardCardView.setRank(newRank: discardCard.getRank())
         discardCardView.setSuit(newSuit: discardCard.getSuit())
-            
-        
-
-        for cardview in playerCardView {
-            cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(moveCard(_ :))))
-            }
-        for dealview in DeckView {
-            dealview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(moveCard2(_:))))
-        }
-    
-        
     }
-    
-    
-    @objc func moveCard(_ recognizer: UITapGestureRecognizer) {
-        switch recognizer.state {
-        case .ended:
-            if let chosenCardView = recognizer.view as? PlayingCardView
-            {
-                UIView.transition(from: chosenCardView,
-                                  to: playerStack,
-                                  duration: 0.6,
-                                  options: .transitionFlipFromTop)
-            }
-        default:
-            break
-        }
-    }
-    
-    
-    
-    @objc func moveCard2(_ recognizer: UITapGestureRecognizer) {
-        switch recognizer.state {
-        case .ended:
-            if let chosenCardView = recognizer.view as? DeckView
-            {
-                UIView.transition(from: chosenCardView,
-                                  to: playerStack,
-                                  duration: 0.6,
-                                  options: .transitionFlipFromTop)
-            }
-        default:
-            break
-        }
-    }
-    
-    
-    
-
 
 
     
