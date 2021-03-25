@@ -129,6 +129,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		254C5DCD260B6F66002F941F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				18ABE57A26038BB2003C0836 /* CardInPlayView.swift */,
+				7F244CFA25E686DD00080B80 /* Main.storyboard */,
+				25F9EB1E260789B900A8EC88 /* ModelCardView.swift */,
+				18ABE575260389C4003C0836 /* DeckView.swift */,
+				1847291C25FA466600B2C301 /* PlayingCardView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		254C5DCE260B6F6D002F941F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				18ABE5822603A761003C0836 /* MenuViewController.swift */,
+				2549233B25EA48B50093A4A1 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		254C5DCF260B6F75002F941F /* Mod */ = {
+			isa = PBXGroup;
+			children = (
+				2549233325EA46E30093A4A1 /* MADSevens.swift */,
+				2549232325EA45B50093A4A1 /* Deck.swift */,
+				2549234025EA7BD30093A4A1 /* Definitions.swift */,
+				2549232B25EA45E50093A4A1 /* Card.swift */,
+			);
+			path = Mod;
+			sourceTree = "<group>";
+		};
 		7F244CE825E686DD00080B80 = {
 			isa = PBXGroup;
 			children = (
@@ -152,23 +184,15 @@
 		7F244CF325E686DD00080B80 /* MADSevens */ = {
 			isa = PBXGroup;
 			children = (
+				254C5DCF260B6F75002F941F /* Mod */,
+				254C5DCE260B6F6D002F941F /* Controller */,
+				254C5DCD260B6F66002F941F /* View */,
 				7F244CF425E686DD00080B80 /* AppDelegate.swift */,
 				7F244CF625E686DD00080B80 /* SceneDelegate.swift */,
-				7F244CFA25E686DD00080B80 /* Main.storyboard */,
-				18ABE57A26038BB2003C0836 /* CardInPlayView.swift */,
-				18ABE575260389C4003C0836 /* DeckView.swift */,
-				18ABE570260387F5003C0836 /* OpponentCardView.swift */,
 				7F244CFD25E686E000080B80 /* Assets.xcassets */,
-				1847291C25FA466600B2C301 /* PlayingCardView.swift */,
 				7F244CFF25E686E000080B80 /* LaunchScreen.storyboard */,
 				7F244D0225E686E000080B80 /* Info.plist */,
 				7F244D2725E6871700080B80 /* Core ACT-R */,
-				2549233325EA46E30093A4A1 /* MADSevens.swift */,
-				2549232325EA45B50093A4A1 /* Deck.swift */,
-				2549234025EA7BD30093A4A1 /* Definitions.swift */,
-				2549232B25EA45E50093A4A1 /* Card.swift */,
-				2549233B25EA48B50093A4A1 /* ViewController.swift */,
-				18ABE566260387AF003C0836 /* MADSevens-Bridging-Header.h */,
 			);
 			path = MADSevens;
 			sourceTree = "<group>";
