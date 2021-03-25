@@ -42,7 +42,7 @@ class MADSevensViewController: UIViewController {
         }
         
         
-        discardCardView = CardInPlayView()
+        discardCardView.isFaceUp = true
         discardCardView.setRank(newRank: discardCard.getRank())
         discardCardView.setSuit(newSuit: discardCard.getSuit())
 
