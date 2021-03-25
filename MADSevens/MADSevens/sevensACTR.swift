@@ -28,8 +28,12 @@ class actr {
 	
 	// Function that counts legal cards in ACT-R hand
     func countLegals() -> legals:String{
-        // seperate if two is played
-        if top.rank == "two" {
+		
+		let topSuit = top.getSuit().rawValue
+		let topRank = top.getRank().rawValue
+		
+        // Seperate procedure between Two and Non-Two
+        if topSuit == "II" {
 			
 			// Set state of two in model
 			self.twoState = "yes"
@@ -39,9 +43,12 @@ class actr {
 			
 			// Count all 2's and matching ace in ACT-R's hand
 			for card in actr.hand {
-				if card.rank == "two" {
+				let rank = card.getRank().rawValue
+				let suit = card.getSuit().rawValue
+				
+				if rank == "II" {
 					legal += 1
-				} else if card.rank == "ace" && card.suit == top.suit {
+				} else if rank == "Ace" && suit == topSuit{
 					legal += 1
 					self.aceHand = "yes"
 				}
@@ -55,9 +62,13 @@ class actr {
 
 			// Count all cards that match in suit and rank of top card
 			for card in actr.hand {
-				if card.rank == top.rank {
+
+				let rank = card.getRank().rawValue
+				let suit = card.getSuit().rawValue
+
+				if rank == topRank {
 					legal += 1
-				} else if card.suit == top.suit {
+				} else if suit == topSuit {
 					legal += 1
 				}
 			}
@@ -77,13 +88,15 @@ class actr {
 	func storeAce() {
 
 		// Double check if top really was ace
-		if top.rank == "ace" {
+		let topRank = top.getRank().rawValue
+		if topRank == "Ace" {
 			
 			// Generate chunk of ace that holds the ace's suit
-			var aceSuit = "ace" + top.suit
+			let topSuit = top.getSuit().rawValue
+			var aceSuit = "ace" + topSuit
 			aceChunk = Chunk(aceSuit, model)
 			aceChunk.slotvals["isa"] = "discardedAce"
-			aceChunk.slotvals["aceSuit"] = top.suit
+			aceChunk.slotvals["aceSuit"] = topSuit
 
 			// Add ace chunk into model
 			model.dm.addToDm(aceChunk)
@@ -92,6 +105,8 @@ class actr {
 	
 	// Stores suit and rank of card that caused player to draw
 	func storePlayerDraw(card: Card) {
+		let suit = card.suit
+		let rank = card.rank
 		
 	}
 	
@@ -144,6 +159,13 @@ class actr {
 		// Run the model
 		model.run()
 
+		// If two played, try to remember if ace was played
+		// If ace was played it is safe and the II should be played
+		// Else, no ace remembered and a suit of the II will be predicted
+		if model.buffers["goal"]!.slotValue("state") == "checkAce" {
+			if model.lastAction("
+		}
+
 		// If two played, then check for ace
 		if model.buffers["goal"]!.slotValue("state") == "checkAce" {
 			if model.lastAction("choice") == "nil" {
@@ -157,36 +179,45 @@ class actr {
 			
 			// Count all legal options into a dictionary
 			var legalCounts = [String:Int]()
+			let topRank = top.getRank().rawValue
+			let topSuit = top.getSuit().rawValue
+
 			for card in actr.hand {
-				if card.rank == top.rank {
-					legalCounts[card.rank] += 1
-				} else if card.suit == top.suit {
-					legalCounts[card.suit] += 1
+
+				let rank = card.getRank().rawValue
+				let suit = card.getSuit().rawValue
+
+				if rank == topRank {
+					legalCounts[rank] += 1
+				} else if suit == topSuit {
+					// Cannot play multiple suits, so always 1 if present
+					legalCounts[suit] = 1
 				}
 			}
 			
 			// Grab max value of dictionary
 			// Only hold suits and ranks with max count
-			var maxSuitValues: [String]()
-			let maxSuitValue = legalCounts.max{a, b in a.rank < b.rank}
-			for (suitValue, count) in legalCounts {
-				if (count == maxSuitValue) {
-					maxSuitValues.append(suitValue)
+			var maxSuitRanks: [String]()
+			let maxSuitRank = legalCounts.max{a, b in a.rank < b.rank}
+			for (suitRank, count) in legalCounts {
+				if (count == maxSuitRank) {
+					maxSuitRanks.append(suitRank)
 				}
 			}	 
 
-			// If only one suitValue, return it; else, predict suit
-			if maxSuitValues.count == 1 {
-				model.buffers["action"]!.setSlot("choice", maxSuitValues[0])
+			// If only one suitRank, then clearly a rank with more than one count
+			// Play the rank;
+			// If more than one suitRank, predictSuit and play card with suit if possible
+			if maxSuitRanks.count == 1 {
+				model.buffers["action"]!.setSlot("choice", "bestRank")
+				model.buffers["action"]!.setSlot("rank", maxSuitRanks[0])
 			} else {
-				model.buffers["goal"]!.setSlot("state", "predictSuit")
-				model.run()
+				model.predictSuit()
 			}
 		}
 
 		// Return the choice made
-		// If it is a prediction, grab "predict" slot from action buffer for suitValue
+		// If it is a prediction, grab "predict" slot from action buffer for suitRank
 		return model.lastAction("choice")
 	}
-		
 }	

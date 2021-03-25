@@ -124,11 +124,11 @@ class MADSevensViewController: UIViewController {
     func actrTurn() {
 
         // First, put current ACTR hand and top discard into ACTR
-        actr.hand = getHand(player.Model)
-        actr.top = deck.getTopDiscardCard()
+        let actr.hand = getHand(player.Model)
+        let actr.top = deck.getTopDiscardCard()
 
         // Go through the model's turn to generate a "choice"
-        choice = actr.turn()
+        let choice = actr.turn()
 
         // Switch cases depending on the choice made
         // After a choice is played, pass the turn again
@@ -163,7 +163,21 @@ class MADSevensViewController: UIViewController {
                 }
                 game.playCard(card: aceCard, player: game.getCurrentPlayer(), newSuit: newSuit)
                 game.passTurn()
-        }
+			
+			// When not against two and legal option with more than one count,
+			// it can only be a rank, so choice is "bestRank"
+			case "bestRank":
+				let rank = actr.model.lastAction("rank")
+				var cards: [Card]
+				for (card in actr.hand) {
+					let rank = card.getRank().rawValue
+					let suit = card.getSuit().rawValue
+					
+					if rank == suitRank {
+						cards.append(card)	
+					}
+        		}
+				// !!! Need a game method that plays multiple rank cards
     }
     
     func getHand(player: Player) -> [Card] {
