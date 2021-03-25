@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YB6-Qx-P0B">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -16,21 +16,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="How to play:" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="16" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XDl-Ul-N2D">
-                                <rect key="frame" x="20" y="20" width="624" height="781"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="P0T-8s-N84">
+                                <rect key="frame" x="8" y="8" width="398" height="792"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How to play:                 " textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="16" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XDl-Ul-N2D">
+                                <rect key="frame" x="20" y="20" width="374" height="725.66666666666663"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="38"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5Z2-iG-H6o"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="tertiaryLabelColor"/>
+                        <constraints>
+                            <constraint firstItem="XDl-Ul-N2D" firstAttribute="top" secondItem="3kM-CC-wfJ" secondAttribute="top" constant="20" symbolic="YES" id="8e8-lI-H5n"/>
+                            <constraint firstItem="5Z2-iG-H6o" firstAttribute="trailing" secondItem="P0T-8s-N84" secondAttribute="trailing" constant="8" id="Ohj-b0-m8w"/>
+                            <constraint firstItem="XDl-Ul-N2D" firstAttribute="leading" secondItem="3kM-CC-wfJ" secondAttribute="leadingMargin" id="Sj7-xM-p0b"/>
+                            <constraint firstItem="5Z2-iG-H6o" firstAttribute="bottom" secondItem="P0T-8s-N84" secondAttribute="bottom" constant="8" id="X2f-Tx-o1n"/>
+                            <constraint firstItem="XDl-Ul-N2D" firstAttribute="centerX" secondItem="P0T-8s-N84" secondAttribute="centerX" id="bbg-tA-L2S"/>
+                            <constraint firstItem="P0T-8s-N84" firstAttribute="top" secondItem="5Z2-iG-H6o" secondAttribute="top" constant="8" id="bxo-qm-r5X"/>
+                            <constraint firstItem="P0T-8s-N84" firstAttribute="leading" secondItem="5Z2-iG-H6o" secondAttribute="leading" constant="8" id="skt-Br-yLZ"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qZ-FJ-fMh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-865.21739130434787" y="82.366071428571431"/>
+            <point key="canvasLocation" x="-701.44927536231887" y="539.0625"/>
         </scene>
         <!--Sevens View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -40,118 +51,167 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Color: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tV2-Fl-1EP">
-                                <rect key="frame" x="196" y="213" width="143" height="65"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemTealColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MeD-rw-olk">
-                                <rect key="frame" x="112" y="213" width="76" height="146"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor"/>
-                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Drawcard"/>
-                                <connections>
-                                    <action selector="drawCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E9j-wf-pWI"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t2a-az-SJY">
-                                <rect key="frame" x="20" y="215" width="79" height="144"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Do move"/>
-                                <connections>
-                                    <action selector="doMove:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YMc-ll-5Q2"/>
-                                </connections>
-                            </button>
-                            <view opaque="NO" contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fqg-uP-Srq" customClass="PlayingCardView" customModule="MADSevens" customModuleProvider="target">
-                                <rect key="frame" x="171" y="636" width="73" height="133"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="vha-o6-n97">
+                                <rect key="frame" x="8" y="8" width="398" height="792"/>
+                            </imageView>
+                            <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="W7i-oM-bK6" customClass="CardInPlayView" customModule="MADSevens" customModuleProvider="target">
+                                <rect key="frame" x="163" y="317" width="89" height="149"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="89" id="eeG-iX-sxK"/>
+                                    <constraint firstAttribute="height" constant="149" id="tkW-zS-pH3"/>
+                                </constraints>
                             </view>
-                            <view opaque="NO" contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hSI-Jl-U7O" customClass="PlayingCardView" customModule="MADSevens" customModuleProvider="target">
-                                <rect key="frame" x="252" y="636" width="73" height="133"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VsQ-66-vg4">
+                                <rect key="frame" x="8" y="44" width="398" height="133"/>
+                                <subviews>
+                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="BRN-tF-qCN" customClass="ModelCardView" customModule="MADSevens" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="73.333333333333329" height="133"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="6qp-Lh-J7x" customClass="ModelCardView" customModule="MADSevens" customModuleProvider="target">
+                                        <rect key="frame" x="81.333333333333329" y="0.0" width="72.999999999999986" height="133"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="V8C-a1-dQg" customClass="ModelCardView" customModule="MADSevens" customModuleProvider="target">
+                                        <rect key="frame" x="162.33333333333334" y="0.0" width="73.333333333333343" height="133"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="VRj-lO-bSP" customClass="ModelCardView" customModule="MADSevens" customModuleProvider="target">
+                                        <rect key="frame" x="243.66666666666663" y="0.0" width="73" height="133"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="XhM-Fw-ESb" customClass="ModelCardView" customModule="MADSevens" customModuleProvider="target">
+                                        <rect key="frame" x="324.66666666666669" y="0.0" width="73.333333333333314" height="133"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="133" id="pvy-pG-KCE"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="redraw" axis="vertical" distribution="fillEqually" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="h2K-ro-QaH">
+                                <rect key="frame" x="20" y="333" width="66" height="126"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t2a-az-SJY">
+                                        <rect key="frame" x="0.0" y="0.0" width="66" height="30"/>
+                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Do move"/>
+                                        <connections>
+                                            <action selector="doMove:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YMc-ll-5Q2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MeD-rw-olk">
+                                        <rect key="frame" x="0.0" y="48" width="66" height="30"/>
+                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Drawcard"/>
+                                        <connections>
+                                            <action selector="drawCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E9j-wf-pWI"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color: " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tV2-Fl-1EP" userLabel="Color:">
+                                        <rect key="frame" x="0.0" y="96" width="66" height="30"/>
+                                        <color key="backgroundColor" systemColor="systemTealColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="66" id="BJz-2q-RPy"/>
+                                    <constraint firstAttribute="height" constant="126" id="JJ7-4q-tSZ"/>
+                                </constraints>
+                            </stackView>
+                            <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ijm-bB-ntr" customClass="DeckView" customModule="MADSevens" customModuleProvider="target">
+                                <rect key="frame" x="306" y="309" width="100" height="165"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="165" id="Hb3-bT-a2Y"/>
+                                    <constraint firstAttribute="width" constant="100" id="h58-q7-1Ir"/>
+                                </constraints>
                             </view>
-                            <view opaque="NO" contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qzg-6T-Zt7" customClass="PlayingCardView" customModule="MADSevens" customModuleProvider="target">
-                                <rect key="frame" x="333" y="636" width="73" height="133"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <view opaque="NO" contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BRN-tF-qCN" customClass="ModelCardView" customModule="MADSevens" customModuleProvider="target">
-                                <rect key="frame" x="9" y="44" width="73" height="133"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <view opaque="NO" contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ijm-bB-ntr" customClass="DeckView" customModule="MADSevens" customModuleProvider="target">
-                                <rect key="frame" x="279" y="367" width="100" height="165"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <view opaque="NO" contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6qp-Lh-J7x" customClass="ModelCardView" customModule="MADSevens" customModuleProvider="target">
-                                <rect key="frame" x="90" y="44" width="73" height="133"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <view opaque="NO" contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V8C-a1-dQg" customClass="ModelCardView" customModule="MADSevens" customModuleProvider="target">
-                                <rect key="frame" x="171" y="44" width="73" height="133"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <view opaque="NO" contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VRj-lO-bSP" customClass="ModelCardView" customModule="MADSevens" customModuleProvider="target">
-                                <rect key="frame" x="252" y="44" width="73" height="133"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <view opaque="NO" contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XhM-Fw-ESb" customClass="ModelCardView" customModule="MADSevens" customModuleProvider="target">
-                                <rect key="frame" x="333" y="44" width="73" height="133"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <view opaque="NO" contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W7i-oM-bK6" customClass="CardInPlayView" customModule="MADSevens" customModuleProvider="target">
-                                <rect key="frame" x="108" y="383" width="89" height="149"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <view opaque="NO" contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oky-6Z-fGw" customClass="PlayingCardView" customModule="MADSevens" customModuleProvider="target">
-                                <rect key="frame" x="9" y="636" width="73" height="133"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <view opaque="NO" contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LIv-Yo-81W" customClass="PlayingCardView" customModule="MADSevens" customModuleProvider="target">
-                                <rect key="frame" x="90" y="636" width="73" height="133"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
+                            <stackView opaque="NO" contentMode="center" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="tiS-8U-OX1">
+                                <rect key="frame" x="8" y="636" width="398" height="133"/>
+                                <subviews>
+                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="oky-6Z-fGw" customClass="PlayingCardView" customModule="MADSevens" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="73.333333333333329" height="133"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Qzg-6T-Zt7" customClass="PlayingCardView" customModule="MADSevens" customModuleProvider="target">
+                                        <rect key="frame" x="81.333333333333329" y="0.0" width="72.999999999999986" height="133"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="hSI-Jl-U7O" customClass="PlayingCardView" customModule="MADSevens" customModuleProvider="target">
+                                        <rect key="frame" x="162.33333333333334" y="0.0" width="73.333333333333343" height="133"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="fqg-uP-Srq" customClass="PlayingCardView" customModule="MADSevens" customModuleProvider="target">
+                                        <rect key="frame" x="243.66666666666663" y="0.0" width="73" height="133"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="LIv-Yo-81W" customClass="PlayingCardView" customModule="MADSevens" customModuleProvider="target">
+                                        <rect key="frame" x="324.66666666666669" y="0.0" width="73.333333333333314" height="133"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="133" id="foa-4R-3nI"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <color key="backgroundColor" systemColor="tertiaryLabelColor"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="VsQ-66-vg4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="ALe-Za-Pki"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ijm-bB-ntr" secondAttribute="trailing" constant="8" id="AdL-ag-ePL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vha-o6-n97" secondAttribute="trailing" constant="8" id="Ask-so-h86"/>
+                            <constraint firstItem="tiS-8U-OX1" firstAttribute="top" secondItem="ijm-bB-ntr" secondAttribute="bottom" constant="162" id="Bxn-PZ-evn"/>
+                            <constraint firstItem="ijm-bB-ntr" firstAttribute="top" secondItem="VsQ-66-vg4" secondAttribute="bottom" constant="132" id="Ft4-BW-uBS"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="tiS-8U-OX1" secondAttribute="bottom" constant="39" id="JKq-QX-7gy"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VsQ-66-vg4" secondAttribute="trailing" constant="8" id="O2Q-Hs-eDj"/>
+                            <constraint firstItem="W7i-oM-bK6" firstAttribute="top" secondItem="VsQ-66-vg4" secondAttribute="bottom" constant="140" id="PWE-qf-uJL"/>
+                            <constraint firstItem="VsQ-66-vg4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="44" id="QBy-dW-ZKM"/>
+                            <constraint firstItem="vha-o6-n97" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="U11-OQ-qaH"/>
+                            <constraint firstItem="tiS-8U-OX1" firstAttribute="top" secondItem="W7i-oM-bK6" secondAttribute="bottom" constant="170" id="X9l-ix-KA2"/>
+                            <constraint firstItem="W7i-oM-bK6" firstAttribute="leading" secondItem="h2K-ro-QaH" secondAttribute="trailing" constant="77" id="Xtb-2Y-F17"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tiS-8U-OX1" secondAttribute="trailing" priority="750" constant="8" id="YD3-P9-aiJ"/>
+                            <constraint firstItem="W7i-oM-bK6" firstAttribute="top" secondItem="VsQ-66-vg4" secondAttribute="bottom" constant="140" id="gEX-oV-BrM"/>
+                            <constraint firstItem="h2K-ro-QaH" firstAttribute="top" secondItem="VsQ-66-vg4" secondAttribute="bottom" constant="156" id="gys-CI-ptp"/>
+                            <constraint firstItem="W7i-oM-bK6" firstAttribute="leading" secondItem="h2K-ro-QaH" secondAttribute="trailing" constant="77" id="p4g-Zn-zav"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="vha-o6-n97" secondAttribute="bottom" constant="8" id="qzH-fs-uWz"/>
+                            <constraint firstItem="h2K-ro-QaH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="sGO-Ka-RXA"/>
+                            <constraint firstItem="ijm-bB-ntr" firstAttribute="leading" secondItem="W7i-oM-bK6" secondAttribute="trailing" constant="54" id="scY-tp-lXy"/>
+                            <constraint firstItem="tiS-8U-OX1" firstAttribute="top" secondItem="h2K-ro-QaH" secondAttribute="bottom" constant="177" id="toh-oc-Hmc"/>
+                            <constraint firstItem="tiS-8U-OX1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" priority="750" constant="8" id="wcw-rV-FVt"/>
+                            <constraint firstItem="ijm-bB-ntr" firstAttribute="leading" secondItem="W7i-oM-bK6" secondAttribute="trailing" constant="54" id="x5h-vn-kIp"/>
+                            <constraint firstItem="vha-o6-n97" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="z0l-Jm-8d7"/>
+                            <constraint firstItem="tiS-8U-OX1" firstAttribute="top" secondItem="W7i-oM-bK6" secondAttribute="bottom" constant="170" id="zg6-Fe-bFr"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="A86-jq-Xf7"/>
                     <connections>
                         <outlet property="discardCardView" destination="W7i-oM-bK6" id="uai-oG-bdv"/>
-                        <outletCollection property="playerCardView" destination="oky-6Z-fGw" collectionClass="NSMutableArray" id="w3o-3Y-6Nm"/>
-                        <outletCollection property="playerCardView" destination="LIv-Yo-81W" collectionClass="NSMutableArray" id="0eX-XJ-Vky"/>
-                        <outletCollection property="playerCardView" destination="fqg-uP-Srq" collectionClass="NSMutableArray" id="DRl-OP-DzJ"/>
-                        <outletCollection property="playerCardView" destination="hSI-Jl-U7O" collectionClass="NSMutableArray" id="N2K-tk-bg7"/>
-                        <outletCollection property="playerCardView" destination="Qzg-6T-Zt7" collectionClass="NSMutableArray" id="8Ff-dl-ZOd"/>
+                        <outlet property="playerStack" destination="tiS-8U-OX1" id="PNi-vJ-pKM"/>
+                        <outletCollection property="DeckView" destination="ijm-bB-ntr" collectionClass="NSMutableArray" id="6Fg-lL-p7P"/>
                         <outletCollection property="modelCardView" destination="BRN-tF-qCN" collectionClass="NSMutableArray" id="TRL-GT-oJo"/>
                         <outletCollection property="modelCardView" destination="6qp-Lh-J7x" collectionClass="NSMutableArray" id="0SW-Ic-Yvm"/>
                         <outletCollection property="modelCardView" destination="V8C-a1-dQg" collectionClass="NSMutableArray" id="njf-Q7-Psi"/>
                         <outletCollection property="modelCardView" destination="VRj-lO-bSP" collectionClass="NSMutableArray" id="nJ6-u9-Pf1"/>
                         <outletCollection property="modelCardView" destination="XhM-Fw-ESb" collectionClass="NSMutableArray" id="3Hr-H0-xqw"/>
-                        <outletCollection property="DeckView" destination="ijm-bB-ntr" collectionClass="NSMutableArray" id="6Fg-lL-p7P"/>
+                        <outletCollection property="playerCardView" destination="oky-6Z-fGw" collectionClass="NSMutableArray" id="w3o-3Y-6Nm"/>
+                        <outletCollection property="playerCardView" destination="Qzg-6T-Zt7" collectionClass="NSMutableArray" id="8Ff-dl-ZOd"/>
+                        <outletCollection property="playerCardView" destination="hSI-Jl-U7O" collectionClass="NSMutableArray" id="N2K-tk-bg7"/>
+                        <outletCollection property="playerCardView" destination="fqg-uP-Srq" collectionClass="NSMutableArray" id="DRl-OP-DzJ"/>
+                        <outletCollection property="playerCardView" destination="LIv-Yo-81W" collectionClass="NSMutableArray" id="0eX-XJ-Vky"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
+            <point key="canvasLocation" x="-701.44927536231887" y="-205.58035714285714"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="Jn6-E7-4nI">
@@ -161,53 +221,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFH-JG-VYo">
-                                <rect key="frame" x="99" y="246" width="225" height="66"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
-                                <state key="normal" title="Instructions">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Ifa-7k-d5g" kind="popoverPresentation" popoverAnchorView="hFH-JG-VYo" id="iH6-Fa-V7N">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffT-Zv-6pn">
-                                <rect key="frame" x="99" y="111" width="217" height="66"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
-                                <state key="normal" title="Start Game">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="newGame:" destination="YB6-Qx-P0B" eventType="touchUpInside" id="Fpt-g0-hff"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="IH5-bg-fer"/>
-                                </connections>
-                            </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Av7-Vw-GeE">
-                                <rect key="frame" x="51" y="427" width="312" height="382"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Av7-Vw-GeE">
+                                <rect key="frame" x="8" y="52" width="398" height="802"/>
                             </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="56" translatesAutoresizingMaskIntoConstraints="NO" id="bjE-eM-s2D">
+                                <rect key="frame" x="90" y="111" width="234" height="188"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffT-Zv-6pn">
+                                        <rect key="frame" x="0.0" y="0.0" width="234" height="66"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                        <state key="normal" title="Start Game">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="newGame:" destination="YB6-Qx-P0B" eventType="touchUpInside" id="Fpt-g0-hff"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" id="IH5-bg-fer"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFH-JG-VYo">
+                                        <rect key="frame" x="0.0" y="122" width="234" height="66"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                        <state key="normal" title="Instructions">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="Ifa-7k-d5g" kind="popoverPresentation" popoverAnchorView="hFH-JG-VYo" id="iH6-Fa-V7N">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VqP-MU-Dh0"/>
                         <color key="backgroundColor" systemColor="tertiaryLabelColor"/>
+                        <constraints>
+                            <constraint firstItem="VqP-MU-Dh0" firstAttribute="trailing" secondItem="Av7-Vw-GeE" secondAttribute="trailing" constant="8" id="ABN-2f-nyV"/>
+                            <constraint firstItem="bjE-eM-s2D" firstAttribute="leading" secondItem="VqP-MU-Dh0" secondAttribute="leading" constant="90" id="QV9-vP-3M9"/>
+                            <constraint firstItem="Av7-Vw-GeE" firstAttribute="top" secondItem="VqP-MU-Dh0" secondAttribute="top" constant="8" id="Ufm-RW-Yct"/>
+                            <constraint firstItem="VqP-MU-Dh0" firstAttribute="bottom" secondItem="Av7-Vw-GeE" secondAttribute="bottom" constant="8" id="VMj-bA-3kv"/>
+                            <constraint firstItem="Av7-Vw-GeE" firstAttribute="leading" secondItem="VqP-MU-Dh0" secondAttribute="leading" constant="8" id="hYh-6h-koz"/>
+                            <constraint firstItem="VqP-MU-Dh0" firstAttribute="trailing" secondItem="bjE-eM-s2D" secondAttribute="trailing" constant="90" id="iNK-8q-3eh"/>
+                            <constraint firstItem="bjE-eM-s2D" firstAttribute="top" secondItem="VqP-MU-Dh0" secondAttribute="top" constant="67" id="shc-iw-VAB"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g0m-JN-TNd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1214.4927536231885" y="61.607142857142854"/>
+            <point key="canvasLocation" x="-1581.1594202898552" y="117.85714285714285"/>
         </scene>
     </scenes>
     <resources>
         <image name="background" width="853" height="1280"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
