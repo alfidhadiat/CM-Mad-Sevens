@@ -8,13 +8,9 @@
 import UIKit
 
 class MenuViewController: UIViewController {
-
-    lazy var viewController = MADSevensViewController()
-//    lazy var game = MADSevens()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
     
@@ -22,8 +18,7 @@ class MenuViewController: UIViewController {
      Initiates a new game
      */
     @IBAction func newGame(_ sender: UIButton) {
-        viewController.game.newGame()
-        viewController.game.printGame()
+        print("Button start game was pressed, starting a new game on viewController.game instance")
     }
 
     /*

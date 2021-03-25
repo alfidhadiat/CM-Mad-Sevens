@@ -14,15 +14,17 @@ class MADSevens {
 //    private var model: ACTRModel
     
     init() {
-        print("Intitializing MADSevens game\n")
+        print("Intitializing MADSevens game (INIT OF MADSevens)")
         deck = Deck()
         currentPlayer = Player.player
+        printGame()
     }
     
     func newGame() {
         print("Starting new MADSevens game")
         deck.newGame()
         currentPlayer = Player.player
+        print("Started a new MADSevens game, this is the current situation")
         printGame()
     }
     

@@ -9,10 +9,8 @@ import UIKit
 
 class MADSevensViewController: UIViewController {
     
-    public lazy var game = MADSevens()
-    
-    private var deck = Deck()
-    
+    public var game = MADSevens()
+        
     @IBOutlet private var playerCardView: [PlayingCardView]!
     @IBOutlet private var modelCardView: [ModelCardView]!
     @IBOutlet private var discardCardView: CardInPlayView!

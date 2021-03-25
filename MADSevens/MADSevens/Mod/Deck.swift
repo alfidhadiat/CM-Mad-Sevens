@@ -16,12 +16,14 @@ class Deck {
     private var discardSuit: Suit?
     
     init() {
+        print("INIT Deck! -----------------------------")
         initialize()
     }
 
     /** At initialization, all cards are added to the stack, it'll be shuffled, and the players receive their first set of cards.
      */
     func initialize() {
+        print("INITILIZING Deck! -----------------------------")
         discardSuit = nil
         for i in Suit.allCases {
             for j in Rank.allCases {
