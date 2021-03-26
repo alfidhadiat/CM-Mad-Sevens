@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YB6-Qx-P0B">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="3TR-ls-y6J">
+            <objects>
+                <viewController id="Ifa-7k-d5g" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3kM-CC-wfJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="P0T-8s-N84">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How to play:                 " textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="16" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XDl-Ul-N2D">
+                                <rect key="frame" x="20" y="20" width="374" height="726"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5Z2-iG-H6o"/>
+                        <color key="backgroundColor" systemColor="tertiaryLabelColor"/>
+                        <constraints>
+                            <constraint firstItem="P0T-8s-N84" firstAttribute="top" secondItem="5Z2-iG-H6o" secondAttribute="top" id="0Ff-F6-2S0"/>
+                            <constraint firstItem="XDl-Ul-N2D" firstAttribute="top" secondItem="3kM-CC-wfJ" secondAttribute="top" constant="20" symbolic="YES" id="8e8-lI-H5n"/>
+                            <constraint firstItem="XDl-Ul-N2D" firstAttribute="leading" secondItem="3kM-CC-wfJ" secondAttribute="leadingMargin" id="Sj7-xM-p0b"/>
+                            <constraint firstItem="P0T-8s-N84" firstAttribute="leading" secondItem="5Z2-iG-H6o" secondAttribute="leading" id="VoI-W1-4n0"/>
+                            <constraint firstItem="XDl-Ul-N2D" firstAttribute="centerX" secondItem="P0T-8s-N84" secondAttribute="centerX" id="bbg-tA-L2S"/>
+                            <constraint firstItem="5Z2-iG-H6o" firstAttribute="trailing" secondItem="P0T-8s-N84" secondAttribute="trailing" id="hUW-Nk-pxT"/>
+                            <constraint firstItem="5Z2-iG-H6o" firstAttribute="bottom" secondItem="P0T-8s-N84" secondAttribute="bottom" id="u23-Dr-eI0"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3qZ-FJ-fMh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-891" y="712"/>
+        </scene>
+        <!--Sevens View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MADSevensViewController" customModule="MADSevens" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="redraw" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="vha-o6-n97">
+                                <rect key="frame" x="8" y="8" width="398" height="792"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="redraw" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VsQ-66-vg4" userLabel="Model Stack View">
+                                <rect key="frame" x="8" y="60" width="398" height="135"/>
+                                <subviews>
+                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="BRN-tF-qCN" customClass="ModelCardView" customModule="MADSevens" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="73" height="135"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="6qp-Lh-J7x" customClass="ModelCardView" customModule="MADSevens" customModuleProvider="target">
+                                        <rect key="frame" x="81" y="0.0" width="73.5" height="135"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="V8C-a1-dQg" customClass="ModelCardView" customModule="MADSevens" customModuleProvider="target">
+                                        <rect key="frame" x="162.5" y="0.0" width="73" height="135"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="VRj-lO-bSP" customClass="ModelCardView" customModule="MADSevens" customModuleProvider="target">
+                                        <rect key="frame" x="243.5" y="0.0" width="73.5" height="135"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="XhM-Fw-ESb" customClass="ModelCardView" customModule="MADSevens" customModuleProvider="target">
+                                        <rect key="frame" x="325" y="0.0" width="73" height="135"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="115" id="C6z-b1-S4w"/>
+                                    <constraint firstAttribute="width" constant="399.5" id="vPk-F3-gHz"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="C6z-b1-S4w"/>
+                                        <exclude reference="vPk-F3-gHz"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="C6z-b1-S4w"/>
+                                        <include reference="vPk-F3-gHz"/>
+                                    </mask>
+                                </variation>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="redraw" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="WYI-PA-kW6" userLabel="Player Stack View">
+                                <rect key="frame" x="8" y="627" width="398" height="135"/>
+                                <subviews>
+                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Hca-h0-Qh6" customClass="PlayingCardView" customModule="MADSevens" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="74" height="135"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="220-jD-0rB" customClass="PlayingCardView" customModule="MADSevens" customModuleProvider="target">
+                                        <rect key="frame" x="81" y="0.0" width="74" height="135"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="CDR-Kr-PhI" customClass="PlayingCardView" customModule="MADSevens" customModuleProvider="target">
+                                        <rect key="frame" x="162" y="0.0" width="74" height="135"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="CY1-pT-bNl" customClass="PlayingCardView" customModule="MADSevens" customModuleProvider="target">
+                                        <rect key="frame" x="243" y="0.0" width="74" height="135"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="9fO-UV-ZSs" customClass="PlayingCardView" customModule="MADSevens" customModuleProvider="target">
+                                        <rect key="frame" x="324" y="0.0" width="74" height="135"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="115" id="Li0-6u-tcM"/>
+                                    <constraint firstAttribute="width" constant="398" id="psA-K9-HFg"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Li0-6u-tcM"/>
+                                        <exclude reference="psA-K9-HFg"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="Li0-6u-tcM"/>
+                                        <include reference="psA-K9-HFg"/>
+                                    </mask>
+                                </variation>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="OPR-GK-ske">
+                                <rect key="frame" x="15" y="353" width="384" height="143.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="redraw" axis="vertical" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2Ml-Sk-PmV">
+                                        <rect key="frame" x="0.0" y="0.0" width="90" height="143.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t2a-az-SJY">
+                                                <rect key="frame" x="0.0" y="0.0" width="90" height="53.5"/>
+                                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Do move"/>
+                                                <connections>
+                                                    <action selector="doMove:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YMc-ll-5Q2"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MeD-rw-olk">
+                                                <rect key="frame" x="0.0" y="61.5" width="90" height="53.5"/>
+                                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Drawcard"/>
+                                                <connections>
+                                                    <action selector="drawCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E9j-wf-pWI"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Color: " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tV2-Fl-1EP" userLabel="Color:">
+                                                <rect key="frame" x="0.0" y="123" width="90" height="20.5"/>
+                                                <color key="backgroundColor" systemColor="systemTealColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="wK5-dq-BAJ" customClass="CardInPlayView" customModule="MADSevens" customModuleProvider="target">
+                                        <rect key="frame" x="150" y="0.0" width="100.5" height="143.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="rjK-3C-bHf" customClass="DeckView" customModule="MADSevens" customModuleProvider="target">
+                                        <rect key="frame" x="310.5" y="0.0" width="73.5" height="143.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="wK5-dq-BAJ" firstAttribute="leading" secondItem="OPR-GK-ske" secondAttribute="leading" constant="150" id="7ae-Md-xKz"/>
+                                    <constraint firstItem="rjK-3C-bHf" firstAttribute="leading" secondItem="OPR-GK-ske" secondAttribute="leading" constant="310.5" id="7nh-XG-qGs"/>
+                                    <constraint firstItem="rjK-3C-bHf" firstAttribute="leading" secondItem="OPR-GK-ske" secondAttribute="leading" constant="259.5" id="b00-Ag-kU9"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="7ae-Md-xKz"/>
+                                        <exclude reference="7nh-XG-qGs"/>
+                                        <exclude reference="b00-Ag-kU9"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="b00-Ag-kU9"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="7ae-Md-xKz"/>
+                                        <include reference="7nh-XG-qGs"/>
+                                    </mask>
+                                </variation>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="tertiaryLabelColor"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="vha-o6-n97" secondAttribute="bottom" constant="8" id="4IP-qO-AWS"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vha-o6-n97" secondAttribute="trailing" constant="8" id="4qy-cJ-dfJ"/>
+                            <constraint firstItem="vha-o6-n97" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="5fQ-1I-Wv7"/>
+                            <constraint firstItem="WYI-PA-kW6" firstAttribute="top" secondItem="OPR-GK-ske" secondAttribute="bottom" constant="130.5" id="7mm-NN-vnG"/>
+                            <constraint firstItem="vha-o6-n97" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="8CP-HW-Srx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OPR-GK-ske" secondAttribute="trailing" constant="8" id="8Gv-QP-cra"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="OPR-GK-ske" secondAttribute="bottom" constant="125" id="DW9-T8-l0h"/>
+                            <constraint firstItem="WYI-PA-kW6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="E7B-U7-eNn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VsQ-66-vg4" secondAttribute="trailing" constant="8" id="IS1-tW-I4o"/>
+                            <constraint firstItem="VsQ-66-vg4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="Jgw-8O-BUv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vha-o6-n97" secondAttribute="trailing" constant="8" id="L0m-gT-ibO"/>
+                            <constraint firstItem="OPR-GK-ske" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="353" id="M2S-7P-gFI"/>
+                            <constraint firstItem="OPR-GK-ske" firstAttribute="top" secondItem="VsQ-66-vg4" secondAttribute="bottom" constant="158" id="ON2-u6-ANp"/>
+                            <constraint firstItem="vha-o6-n97" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="Orq-nk-vGt"/>
+                            <constraint firstItem="WYI-PA-kW6" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="627" id="QbS-NW-JZU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="WYI-PA-kW6" secondAttribute="bottom" constant="46" id="SJy-xd-Iof"/>
+                            <constraint firstItem="WYI-PA-kW6" firstAttribute="top" secondItem="VsQ-66-vg4" secondAttribute="bottom" constant="147" id="UcK-vS-sy4"/>
+                            <constraint firstItem="VsQ-66-vg4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="Vxy-VM-aeq"/>
+                            <constraint firstItem="OPR-GK-ske" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="455" id="Wa3-RX-y4S"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OPR-GK-ske" secondAttribute="trailing" constant="15" id="ZCD-h3-X47"/>
+                            <constraint firstItem="WYI-PA-kW6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="e31-fz-EN9"/>
+                            <constraint firstItem="WYI-PA-kW6" firstAttribute="top" secondItem="OPR-GK-ske" secondAttribute="bottom" constant="130.5" id="eYq-sc-PPb"/>
+                            <constraint firstItem="VsQ-66-vg4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="gGu-7c-ZP4"/>
+                            <constraint firstItem="vha-o6-n97" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="i4s-p9-mM8"/>
+                            <constraint firstItem="VsQ-66-vg4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="lXk-Gw-Don"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="vha-o6-n97" secondAttribute="bottom" constant="8" id="n0f-gj-mCk"/>
+                            <constraint firstItem="OPR-GK-ske" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="125" id="nCe-QJ-dkL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WYI-PA-kW6" secondAttribute="trailing" constant="8" id="oj4-Uq-SsI"/>
+                            <constraint firstItem="WYI-PA-kW6" firstAttribute="top" secondItem="VsQ-66-vg4" secondAttribute="bottom" constant="147" id="rfQ-9J-6Qu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="WYI-PA-kW6" secondAttribute="bottom" constant="8" id="uIK-ou-Bhg"/>
+                            <constraint firstItem="OPR-GK-ske" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="xth-U1-gHt"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="4IP-qO-AWS"/>
+                                <exclude reference="4qy-cJ-dfJ"/>
+                                <exclude reference="8Gv-QP-cra"/>
+                                <exclude reference="DW9-T8-l0h"/>
+                                <exclude reference="IS1-tW-I4o"/>
+                                <exclude reference="L0m-gT-ibO"/>
+                                <exclude reference="SJy-xd-Iof"/>
+                                <exclude reference="ZCD-h3-X47"/>
+                                <exclude reference="n0f-gj-mCk"/>
+                                <exclude reference="oj4-Uq-SsI"/>
+                                <exclude reference="uIK-ou-Bhg"/>
+                                <exclude reference="5fQ-1I-Wv7"/>
+                                <exclude reference="8CP-HW-Srx"/>
+                                <exclude reference="Orq-nk-vGt"/>
+                                <exclude reference="i4s-p9-mM8"/>
+                                <exclude reference="Jgw-8O-BUv"/>
+                                <exclude reference="Vxy-VM-aeq"/>
+                                <exclude reference="gGu-7c-ZP4"/>
+                                <exclude reference="lXk-Gw-Don"/>
+                                <exclude reference="M2S-7P-gFI"/>
+                                <exclude reference="ON2-u6-ANp"/>
+                                <exclude reference="Wa3-RX-y4S"/>
+                                <exclude reference="nCe-QJ-dkL"/>
+                                <exclude reference="xth-U1-gHt"/>
+                                <exclude reference="7mm-NN-vnG"/>
+                                <exclude reference="E7B-U7-eNn"/>
+                                <exclude reference="QbS-NW-JZU"/>
+                                <exclude reference="UcK-vS-sy4"/>
+                                <exclude reference="e31-fz-EN9"/>
+                                <exclude reference="eYq-sc-PPb"/>
+                                <exclude reference="rfQ-9J-6Qu"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="4IP-qO-AWS"/>
+                                <include reference="4qy-cJ-dfJ"/>
+                                <include reference="8Gv-QP-cra"/>
+                                <include reference="DW9-T8-l0h"/>
+                                <include reference="uIK-ou-Bhg"/>
+                                <include reference="5fQ-1I-Wv7"/>
+                                <include reference="8CP-HW-Srx"/>
+                                <include reference="Jgw-8O-BUv"/>
+                                <include reference="lXk-Gw-Don"/>
+                                <include reference="Wa3-RX-y4S"/>
+                                <include reference="nCe-QJ-dkL"/>
+                                <include reference="UcK-vS-sy4"/>
+                                <include reference="e31-fz-EN9"/>
+                                <include reference="rfQ-9J-6Qu"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="IS1-tW-I4o"/>
+                                <include reference="L0m-gT-ibO"/>
+                                <include reference="SJy-xd-Iof"/>
+                                <include reference="ZCD-h3-X47"/>
+                                <include reference="n0f-gj-mCk"/>
+                                <include reference="oj4-Uq-SsI"/>
+                                <include reference="Orq-nk-vGt"/>
+                                <include reference="i4s-p9-mM8"/>
+                                <include reference="Vxy-VM-aeq"/>
+                                <include reference="gGu-7c-ZP4"/>
+                                <include reference="M2S-7P-gFI"/>
+                                <include reference="ON2-u6-ANp"/>
+                                <include reference="xth-U1-gHt"/>
+                                <include reference="7mm-NN-vnG"/>
+                                <include reference="E7B-U7-eNn"/>
+                                <include reference="QbS-NW-JZU"/>
+                                <include reference="eYq-sc-PPb"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="A86-jq-Xf7"/>
+                    <connections>
+                        <outlet property="discardCardView" destination="wK5-dq-BAJ" id="uh6-Yq-4lI"/>
+                        <outlet property="playerStack" destination="WYI-PA-kW6" id="UDR-vF-O1K"/>
+                        <outletCollection property="modelCardView" destination="6qp-Lh-J7x" collectionClass="NSMutableArray" id="0SW-Ic-Yvm"/>
+                        <outletCollection property="modelCardView" destination="VRj-lO-bSP" collectionClass="NSMutableArray" id="nJ6-u9-Pf1"/>
+                        <outletCollection property="modelCardView" destination="BRN-tF-qCN" collectionClass="NSMutableArray" id="TRL-GT-oJo"/>
+                        <outletCollection property="modelCardView" destination="V8C-a1-dQg" collectionClass="NSMutableArray" id="njf-Q7-Psi"/>
+                        <outletCollection property="modelCardView" destination="XhM-Fw-ESb" collectionClass="NSMutableArray" id="3Hr-H0-xqw"/>
+                        <outletCollection property="playerCardView" destination="Hca-h0-Qh6" collectionClass="NSMutableArray" id="Efo-N9-rwb"/>
+                        <outletCollection property="playerCardView" destination="220-jD-0rB" collectionClass="NSMutableArray" id="F39-Lg-71x"/>
+                        <outletCollection property="playerCardView" destination="CDR-Kr-PhI" collectionClass="NSMutableArray" id="s7C-Ba-sH5"/>
+                        <outletCollection property="playerCardView" destination="CY1-pT-bNl" collectionClass="NSMutableArray" id="wRj-rP-hYr"/>
+                        <outletCollection property="playerCardView" destination="9fO-UV-ZSs" collectionClass="NSMutableArray" id="xir-1X-2ux"/>
+                        <outletCollection property="DeckView" destination="rjK-3C-bHf" collectionClass="NSMutableArray" id="b9O-XB-TNd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-875.89285714285711" y="-504.34782608695656"/>
+        </scene>
+        <!--Menu View Controller-->
+        <scene sceneID="Jn6-E7-4nI">
+            <objects>
+                <viewController id="YB6-Qx-P0B" customClass="MenuViewController" customModule="MADSevens" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IZZ-MQ-Wwl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Av7-Vw-GeE">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="56" translatesAutoresizingMaskIntoConstraints="NO" id="bjE-eM-s2D">
+                                <rect key="frame" x="90" y="111" width="234" height="188"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffT-Zv-6pn">
+                                        <rect key="frame" x="0.0" y="0.0" width="234" height="66"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                        <state key="normal" title="Start Game">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="newGame:" destination="YB6-Qx-P0B" eventType="touchUpInside" id="Fpt-g0-hff"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" id="IH5-bg-fer"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFH-JG-VYo">
+                                        <rect key="frame" x="0.0" y="122" width="234" height="66"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                        <state key="normal" title="Instructions">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="Ifa-7k-d5g" kind="popoverPresentation" popoverAnchorView="hFH-JG-VYo" id="iH6-Fa-V7N">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="VqP-MU-Dh0"/>
+                        <color key="backgroundColor" systemColor="tertiaryLabelColor"/>
+                        <constraints>
+                            <constraint firstItem="VqP-MU-Dh0" firstAttribute="trailing" secondItem="Av7-Vw-GeE" secondAttribute="trailing" id="5nt-th-HaJ"/>
+                            <constraint firstItem="VqP-MU-Dh0" firstAttribute="bottom" secondItem="Av7-Vw-GeE" secondAttribute="bottom" id="FDb-Jq-8d4"/>
+                            <constraint firstItem="Av7-Vw-GeE" firstAttribute="leading" secondItem="VqP-MU-Dh0" secondAttribute="leading" id="Nmo-bG-AQ4"/>
+                            <constraint firstItem="bjE-eM-s2D" firstAttribute="leading" secondItem="VqP-MU-Dh0" secondAttribute="leading" constant="90" id="QV9-vP-3M9"/>
+                            <constraint firstItem="Av7-Vw-GeE" firstAttribute="top" secondItem="VqP-MU-Dh0" secondAttribute="top" id="bca-T0-QHj"/>
+                            <constraint firstItem="VqP-MU-Dh0" firstAttribute="trailing" secondItem="bjE-eM-s2D" secondAttribute="trailing" constant="90" id="iNK-8q-3eh"/>
+                            <constraint firstItem="bjE-eM-s2D" firstAttribute="top" secondItem="VqP-MU-Dh0" secondAttribute="top" constant="67" id="shc-iw-VAB"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g0m-JN-TNd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1580" y="118"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="background" width="853" height="1280"/>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
