@@ -99,6 +99,7 @@ class MADSevensViewController: UIViewController {
         newCard.autoresizingMask = [.flexibleWidth,.flexibleHeight]
         newCard.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(moveCard(_:))))
         newCard.backgroundColor = UIColor.clear
+        deck.drawCard(player: Player.player)
         playerStack.autoresizingMask = [.flexibleHeight,.flexibleWidth]
         playerStack.autoresizesSubviews = true
         playerStack.addArrangedSubview(newCard)

@@ -170,11 +170,11 @@ class Deck {
     }
     
     func getNewRank() -> Rank {
-        return stack[stack.startIndex].getRank()
+        return stack[stack.startIndex+1].getRank()
     }
     
     func getNewSuit() -> Suit {
-        return stack[stack.startIndex].getSuit()
+        return stack[stack.startIndex+1].getSuit()
     }
     
     func getCurrentSuit() -> Suit {
