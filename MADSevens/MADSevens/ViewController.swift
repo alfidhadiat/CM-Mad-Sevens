@@ -51,11 +51,6 @@ class MADSevensViewController: UIViewController {
         for cardview in playerCardView {
             cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(moveCard(_ :))))
             }
-        for dealview in DeckView {
-            dealview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(moveCard2(_:))))
-        }
-    
-        
     }
     
     
@@ -84,29 +79,6 @@ class MADSevensViewController: UIViewController {
         }
     }
     
-    
-    
-    @objc func moveCard2(_ recognizer: UITapGestureRecognizer) {
-        switch recognizer.state {
-        case .ended:
-            if let chosenCardView = recognizer.view as? DeckView
-            {
-                UIView.transition(from: chosenCardView,
-                                  to: playerStack,
-                                  duration: 0.6,
-                                  options: .transitionFlipFromTop)
-            }
-        default:
-            break
-        }
-    }
-    
-    
-    
-
-
-
-    
     /**
     Draws a card for the current player, gives the turn to its opponent.
      TODO: Do we want to enable/disable this button whenever its the models turn?
@@ -120,8 +92,22 @@ class MADSevensViewController: UIViewController {
         game.printGame()
         game.passTurn()
         game.modelTurn()
-//        let state = updateDeck()
+        //drawCard2(player: Player.player)
+        let newCard = PlayingCardView()
+        newCard.setSuit(newSuit: deck.getNewSuit())
+        newCard.setRank(newRank: deck.getNewRank())
+        newCard.autoresizingMask = [.flexibleWidth,.flexibleHeight]
+        newCard.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(moveCard(_:))))
+        newCard.backgroundColor = UIColor.clear
+        playerStack.autoresizingMask = [.flexibleHeight,.flexibleWidth]
+        playerStack.autoresizesSubviews = true
+        playerStack.addArrangedSubview(newCard)
+        
+        //        let state = updateDeck()
     }
+    
+    
+
     
     
 //    marieke pls move back to deck
@@ -176,6 +162,7 @@ class MADSevensViewController: UIViewController {
             break
         }
     }
+    
     
     
     //    /**

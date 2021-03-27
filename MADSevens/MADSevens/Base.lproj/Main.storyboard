@@ -42,7 +42,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qZ-FJ-fMh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-812" y="711"/>
+            <point key="canvasLocation" x="-813" y="467"/>
         </scene>
         <!--Sevens View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -53,13 +53,38 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="vha-o6-n97">
-                                <rect key="frame" x="8" y="8" width="398" height="792"/>
+                                <rect key="frame" x="8" y="8" width="370" height="792"/>
                             </imageView>
+                            <stackView opaque="NO" contentMode="redraw" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="VsQ-66-vg4" userLabel="Model Stack View">
+                                <rect key="frame" x="8" y="60" width="370" height="135"/>
+                                <subviews>
+                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="BRN-tF-qCN" customClass="ModelCardView" customModule="MADSevens" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="74" height="135"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="6qp-Lh-J7x" customClass="ModelCardView" customModule="MADSevens" customModuleProvider="target">
+                                        <rect key="frame" x="74" y="0.0" width="74" height="135"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="V8C-a1-dQg" customClass="ModelCardView" customModule="MADSevens" customModuleProvider="target">
+                                        <rect key="frame" x="148" y="0.0" width="74" height="135"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="VRj-lO-bSP" customClass="ModelCardView" customModule="MADSevens" customModuleProvider="target">
+                                        <rect key="frame" x="222" y="0.0" width="74" height="135"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="XhM-Fw-ESb" customClass="ModelCardView" customModule="MADSevens" customModuleProvider="target">
+                                        <rect key="frame" x="296" y="0.0" width="74" height="135"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                            </stackView>
                             <stackView opaque="NO" contentMode="redraw" axis="vertical" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2Ml-Sk-PmV" userLabel="Button Stack View">
-                                <rect key="frame" x="15" y="353" width="66" height="143.5"/>
+                                <rect key="frame" x="15" y="353" width="61" height="143.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t2a-az-SJY">
-                                        <rect key="frame" x="0.0" y="0.0" width="66" height="53.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="61" height="53.5"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Do move"/>
@@ -68,7 +93,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MeD-rw-olk">
-                                        <rect key="frame" x="0.0" y="61.5" width="66" height="53.5"/>
+                                        <rect key="frame" x="0.0" y="61.5" width="61" height="53.5"/>
                                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Drawcard"/>
@@ -77,7 +102,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Color: " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tV2-Fl-1EP" userLabel="Color:">
-                                        <rect key="frame" x="0.0" y="123" width="66" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="123" width="61" height="20.5"/>
                                         <color key="backgroundColor" systemColor="systemTealColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -85,41 +110,16 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="redraw" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="WYI-PA-kW6" userLabel="Player Stack View">
-                                <rect key="frame" x="8" y="627" width="398" height="135"/>
-                                <subviews>
-                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Hca-h0-Qh6" customClass="PlayingCardView" customModule="MADSevens" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="74" height="135"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
-                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="220-jD-0rB" customClass="PlayingCardView" customModule="MADSevens" customModuleProvider="target">
-                                        <rect key="frame" x="81" y="0.0" width="74" height="135"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
-                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="CDR-Kr-PhI" customClass="PlayingCardView" customModule="MADSevens" customModuleProvider="target">
-                                        <rect key="frame" x="162" y="0.0" width="74" height="135"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
-                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="CY1-pT-bNl" customClass="PlayingCardView" customModule="MADSevens" customModuleProvider="target">
-                                        <rect key="frame" x="243" y="0.0" width="74" height="135"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
-                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="9fO-UV-ZSs" customClass="PlayingCardView" customModule="MADSevens" customModuleProvider="target">
-                                        <rect key="frame" x="324" y="0.0" width="74" height="135"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
-                                </subviews>
-                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="uTI-QH-DNz">
-                                <rect key="frame" x="141" y="353" width="258" height="143.5"/>
+                                <rect key="frame" x="136" y="353" width="235" height="143.5"/>
                                 <subviews>
                                     <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="wK5-dq-BAJ" customClass="CardInPlayView" customModule="MADSevens" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="100.5" height="143.5"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="rjK-3C-bHf" customClass="DeckView" customModule="MADSevens" customModuleProvider="target">
-                                        <rect key="frame" x="160.5" y="0.0" width="97.5" height="143.5"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="160.5" y="0.0" width="74.5" height="143.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -143,28 +143,43 @@
                                     </mask>
                                 </variation>
                             </stackView>
-                            <stackView opaque="NO" contentMode="redraw" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VsQ-66-vg4" userLabel="Model Stack View">
-                                <rect key="frame" x="8" y="60" width="398" height="135"/>
+                            <stackView autoresizesSubviews="NO" opaque="NO" contentMode="redraw" layoutMarginsFollowReadableWidth="YES" insetsLayoutMarginsFromSafeArea="NO" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="WYI-PA-kW6" userLabel="Player Stack View">
+                                <rect key="frame" x="8" y="627" width="370" height="135"/>
                                 <subviews>
-                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="BRN-tF-qCN" customClass="ModelCardView" customModule="MADSevens" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="73" height="135"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <view opaque="NO" contentMode="redraw" layoutMarginsFollowReadableWidth="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hca-h0-Qh6" customClass="PlayingCardView" customModule="MADSevens" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="74" height="135"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="74" id="X6W-fv-QHo"/>
+                                        </constraints>
                                     </view>
-                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="6qp-Lh-J7x" customClass="ModelCardView" customModule="MADSevens" customModuleProvider="target">
-                                        <rect key="frame" x="81" y="0.0" width="73.5" height="135"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <view opaque="NO" contentMode="redraw" layoutMarginsFollowReadableWidth="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="220-jD-0rB" customClass="PlayingCardView" customModule="MADSevens" customModuleProvider="target">
+                                        <rect key="frame" x="74" y="0.0" width="74" height="135"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="74" id="WFm-SA-6v2"/>
+                                        </constraints>
                                     </view>
-                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="V8C-a1-dQg" customClass="ModelCardView" customModule="MADSevens" customModuleProvider="target">
-                                        <rect key="frame" x="162.5" y="0.0" width="73" height="135"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <view opaque="NO" contentMode="redraw" layoutMarginsFollowReadableWidth="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDR-Kr-PhI" customClass="PlayingCardView" customModule="MADSevens" customModuleProvider="target">
+                                        <rect key="frame" x="148" y="0.0" width="74" height="135"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="74" id="a4x-49-p1e"/>
+                                        </constraints>
                                     </view>
-                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="VRj-lO-bSP" customClass="ModelCardView" customModule="MADSevens" customModuleProvider="target">
-                                        <rect key="frame" x="243.5" y="0.0" width="73.5" height="135"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <view opaque="NO" contentMode="redraw" layoutMarginsFollowReadableWidth="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CY1-pT-bNl" customClass="PlayingCardView" customModule="MADSevens" customModuleProvider="target">
+                                        <rect key="frame" x="222" y="0.0" width="74" height="135"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="74" id="hCv-73-YAQ"/>
+                                        </constraints>
                                     </view>
-                                    <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="XhM-Fw-ESb" customClass="ModelCardView" customModule="MADSevens" customModuleProvider="target">
-                                        <rect key="frame" x="325" y="0.0" width="73" height="135"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <view opaque="NO" contentMode="redraw" layoutMarginsFollowReadableWidth="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fO-UV-ZSs" customClass="PlayingCardView" customModule="MADSevens" customModuleProvider="target">
+                                        <rect key="frame" x="296" y="0.0" width="74" height="135"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="74" id="PL2-Vc-16x"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                             </stackView>
@@ -233,23 +248,14 @@
                                 <exclude reference="qeU-cI-MXJ"/>
                                 <exclude reference="w0h-Qd-Cg2"/>
                                 <exclude reference="yjw-dn-kV2"/>
-                                <exclude reference="6ku-7J-BlS"/>
-                                <exclude reference="GQX-90-xCY"/>
-                                <exclude reference="Uqh-3F-U99"/>
-                                <exclude reference="uOT-4J-vdD"/>
                                 <exclude reference="cu4-sM-I6S"/>
                                 <exclude reference="eD8-st-dmt"/>
                                 <exclude reference="erG-pA-Xzm"/>
                                 <exclude reference="ysI-vY-tgS"/>
-                                <exclude reference="2Di-uk-Vqm"/>
-                                <exclude reference="FWy-7A-PfH"/>
-                                <exclude reference="XzO-bH-NDI"/>
-                                <exclude reference="Zbc-Wr-EX2"/>
-                                <exclude reference="aOg-Dc-eGD"/>
-                                <exclude reference="bPS-E1-Mpt"/>
-                                <exclude reference="d7D-XY-lsK"/>
-                                <exclude reference="fUV-2x-QW9"/>
-                                <exclude reference="pfY-vc-OVI"/>
+                                <exclude reference="6ku-7J-BlS"/>
+                                <exclude reference="GQX-90-xCY"/>
+                                <exclude reference="Uqh-3F-U99"/>
+                                <exclude reference="uOT-4J-vdD"/>
                                 <exclude reference="3tN-0m-Ote"/>
                                 <exclude reference="4Xk-Yq-PP9"/>
                                 <exclude reference="FcW-i9-qSg"/>
@@ -262,6 +268,15 @@
                                 <exclude reference="jbo-z7-0Wv"/>
                                 <exclude reference="oP2-NJ-SYC"/>
                                 <exclude reference="qIP-Wp-njb"/>
+                                <exclude reference="2Di-uk-Vqm"/>
+                                <exclude reference="FWy-7A-PfH"/>
+                                <exclude reference="XzO-bH-NDI"/>
+                                <exclude reference="Zbc-Wr-EX2"/>
+                                <exclude reference="aOg-Dc-eGD"/>
+                                <exclude reference="bPS-E1-Mpt"/>
+                                <exclude reference="d7D-XY-lsK"/>
+                                <exclude reference="fUV-2x-QW9"/>
+                                <exclude reference="pfY-vc-OVI"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact-widthClass=regular">
@@ -274,19 +289,19 @@
                                 <include reference="eEU-kv-8kA"/>
                                 <include reference="hfv-6C-i3o"/>
                                 <include reference="w0h-Qd-Cg2"/>
-                                <include reference="6ku-7J-BlS"/>
-                                <include reference="Uqh-3F-U99"/>
                                 <include reference="eD8-st-dmt"/>
                                 <include reference="ysI-vY-tgS"/>
-                                <include reference="2Di-uk-Vqm"/>
-                                <include reference="FWy-7A-PfH"/>
-                                <include reference="XzO-bH-NDI"/>
-                                <include reference="pfY-vc-OVI"/>
+                                <include reference="6ku-7J-BlS"/>
+                                <include reference="Uqh-3F-U99"/>
                                 <include reference="4Xk-Yq-PP9"/>
                                 <include reference="OzP-So-K8t"/>
                                 <include reference="R5t-h6-Wob"/>
                                 <include reference="jbo-z7-0Wv"/>
                                 <include reference="qIP-Wp-njb"/>
+                                <include reference="2Di-uk-Vqm"/>
+                                <include reference="FWy-7A-PfH"/>
+                                <include reference="XzO-bH-NDI"/>
+                                <include reference="pfY-vc-OVI"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -297,15 +312,10 @@
                                 <include reference="Oox-KH-MRo"/>
                                 <include reference="qeU-cI-MXJ"/>
                                 <include reference="yjw-dn-kV2"/>
-                                <include reference="GQX-90-xCY"/>
-                                <include reference="uOT-4J-vdD"/>
                                 <include reference="cu4-sM-I6S"/>
                                 <include reference="erG-pA-Xzm"/>
-                                <include reference="Zbc-Wr-EX2"/>
-                                <include reference="aOg-Dc-eGD"/>
-                                <include reference="bPS-E1-Mpt"/>
-                                <include reference="d7D-XY-lsK"/>
-                                <include reference="fUV-2x-QW9"/>
+                                <include reference="GQX-90-xCY"/>
+                                <include reference="uOT-4J-vdD"/>
                                 <include reference="3tN-0m-Ote"/>
                                 <include reference="FcW-i9-qSg"/>
                                 <include reference="jSA-mU-VS7"/>
@@ -313,6 +323,11 @@
                                 <include reference="4aW-Rc-JUM"/>
                                 <include reference="EY0-At-UEE"/>
                                 <include reference="oP2-NJ-SYC"/>
+                                <include reference="Zbc-Wr-EX2"/>
+                                <include reference="aOg-Dc-eGD"/>
+                                <include reference="bPS-E1-Mpt"/>
+                                <include reference="d7D-XY-lsK"/>
+                                <include reference="fUV-2x-QW9"/>
                             </mask>
                         </variation>
                     </view>
@@ -335,7 +350,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-813" y="-492"/>
+            <point key="canvasLocation" x="-813" y="-203"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="Jn6-E7-4nI">

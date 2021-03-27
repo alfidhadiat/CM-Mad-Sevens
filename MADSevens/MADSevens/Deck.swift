@@ -9,7 +9,7 @@ import Foundation
 
 class Deck {
     
-    private var stack = [Card]()
+    public var stack = [Card]()
     private var discard = [Card]()
     private var playerHand = [Card]()
     private var modelHand = [Card]()
@@ -55,6 +55,7 @@ class Deck {
     
     /** When someone wants to draw a card, first we check if there are any cards left in the stack. If not, we shuffle the discardpile (except for the top card) and add them to the stack. If there are no cards in the discardpile, we reached an impasse and the game will be terminated.
     */
+    
     func drawCard(player: Player) {
         if stack.isEmpty {
             shuffleDiscardPile()
@@ -71,6 +72,8 @@ class Deck {
             discard.append(stack.remove(at: stack.startIndex))
         }
     }
+    
+    
 
     func playCard(card: Card, player: Player, newSuit: Suit?) {
         switch player {
@@ -166,6 +169,14 @@ class Deck {
         return discard[discard.endIndex-1].getRank()
     }
     
+    func getNewRank() -> Rank {
+        return stack[stack.startIndex].getRank()
+    }
+    
+    func getNewSuit() -> Suit {
+        return stack[stack.startIndex].getSuit()
+    }
+    
     func getCurrentSuit() -> Suit {
         if discardSuit == nil {
             return discard[discard.endIndex-1].getSuit()
@@ -195,4 +206,5 @@ class Deck {
     func getTopDiscardCard() -> Card {
         return discard[discard.endIndex-1]
     }
+    
 }
