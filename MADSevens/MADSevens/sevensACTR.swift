@@ -159,21 +159,6 @@ class actr {
 		// Run the model
 		model.run()
 
-		// If two played, try to remember if ace was played
-		// If ace was played it is safe and the II should be played
-		// Else, no ace remembered and a suit of the II will be predicted
-		if model.buffers["goal"]!.slotValue("state") == "checkAce" {
-			if model.lastAction("
-		}
-
-		// If two played, then check for ace
-		if model.buffers["goal"]!.slotValue("state") == "checkAce" {
-			if model.lastAction("choice") == "nil" {
-				model.buffer["goal"]!.setSlot("state", "predictSuit")
-				model.run()
-			}
-		}
-
 		// If two was not played, count legals and play accordingly
 		if model.lastAction("choice") == "countLegals" {
 			
@@ -221,3 +206,118 @@ class actr {
 		return model.lastAction("choice")
 	}
 }	
+
+    /*************************
+    The procedure for the ACT-R's turn
+    *************************/
+    func actrTurn() {
+
+        // First, put current ACTR hand and top discard into ACTR
+        actr.hand = getHand(player.Model)
+        actr.top = deck.getTopDiscardCard()
+
+        // Go through the model's turn to generate a "choice"
+        choice = actr.turn()
+
+        // Switch cases depending on the choice made
+        // After a choice is played, pass the turn again
+        switch choice {
+
+            // When ACT-R has no legal hand, the choice is "draw"
+            case "draw":
+                game.drawCard(player: game.getCurrentPlayer())
+                game.passTurn()
+
+            // When ACT-R has only one legal, the choice is "playOne"
+            case "playOne":
+                for (card in actr.hand) {
+                    if deck.isLegalMove(card: card) == True {
+                        let onlyLegal = card
+                    }
+                }
+                if onlyLegal.rank == Rank.VII {
+                    let newSuit = actr.predictSuit()
+                } else {
+                    let newSuit = nil
+                }
+                game.playCard(card: onlyLegal, player: game.getCurrentPlayer(), newSuit: newSuit)
+                game.passTurn()
+
+            // When ace is legal against a two, choice is "playAce"
+            case "playAce":
+                for (card in actr.hand) {
+                    if card.rank == Rank.Ace {
+                        let aceCard = card
+                    }
+                }
+                game.playCard(card: aceCard, player: game.getCurrentPlayer(), newSuit: newSuit)
+                game.passTurn()
+
+            // When choice is "prediction", try play a card with the suit
+            case "prediction":
+                var predictSuit = actr.model.lastAction("predict")
+                var cardSuit: String
+                var playCard: Card
+                var suitMatched = "no"
+                for (card in actr.hand) {
+                    cardSuit = card.getSuit().rawValue
+                    if (cardSuit == predictSuit) {
+                        playCard = card
+                        suitMatched = "yes"
+                    }
+                }
+                if (suitMatched = "no") {
+                    
+                }
+                game.playCard(card: playCard, player: game.getCurrentPlayer())
+                game.passTurn()
+			
+			// When not against two and legal option with more than one count,
+			// it can only be a rank, so choice is "bestRank"
+			case "bestRank":
+				let rank = actr.model.lastAction("rank")
+				var cards: [Card]
+				for (card in actr.hand) {
+					let rank = card.getRank().rawValue
+					if rank == suitRank {
+						cards.append(card)	
+					}
+        		}
+				// !!! Need a game method that plays multiple rank cards
+            
+            // If II played and no ace available, choice is "checkAce"
+            case "checkAce":
+                // If predict slot is not nil, check if ace suit is in hand
+                if actr.model.lastAction("predict") != "nil" {
+                    let aceSuit = model.lastAction("predict")
+                    var twoExists = "no"
+                    for (card in actr.hand) {
+                        let cardSuit = card.getSuit().rawValue
+                        let cardRank = card.getRank().rawValue
+                        if (cardRank == "II" && cardSuit == aceSuit) {
+                            let safeTwo = card
+                            twoExists = "yes"
+                        }
+                    }
+                    // If a II in hand matches suit with ace, play it
+                    // Else if no II matches suit, play a random II
+                    if twoExists == "yes" {
+                        let playTwo = safeTwo
+                    } else if twoExists == "no" {
+                        for (card in actr.hand) {
+                            let cardRank = card.getValue().rawValue
+                            var playTwo: Card
+                            if (cardRank == "II") {
+                                playTwo = card
+                            }
+                        }
+                    }
+                } else if actr.model.lastAction("predict") == "nil" {
+                    var playTwo: Card
+                    for (card in actr.hand) {
+                        let cardRank = card.getValue().rawValue
+                        if (cardRank == "II") {
+                            playTwo = card
+                        }
+                    }
+                }

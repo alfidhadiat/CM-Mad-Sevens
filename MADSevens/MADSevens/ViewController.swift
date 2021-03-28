@@ -13,6 +13,7 @@ class MADSevensViewController: UIViewController {
     
     // Initialize model with the .actr file
     actr = actr("sevens")
+    var choice: String
 
     private var deck = Deck()
     
@@ -118,17 +119,17 @@ class MADSevensViewController: UIViewController {
         }
     }
 
-    /**
+    /*************************
     The procedure for the ACT-R's turn
-    **/
+    *************************/
     func actrTurn() {
 
         // First, put current ACTR hand and top discard into ACTR
-        let actr.hand = getHand(player.Model)
-        let actr.top = deck.getTopDiscardCard()
+        actr.hand = getHand(player.Model)
+        actr.top = deck.getTopDiscardCard()
 
         // Go through the model's turn to generate a "choice"
-        let choice = actr.turn()
+        choice = actr.turn()
 
         // Switch cases depending on the choice made
         // After a choice is played, pass the turn again
@@ -163,6 +164,25 @@ class MADSevensViewController: UIViewController {
                 }
                 game.playCard(card: aceCard, player: game.getCurrentPlayer(), newSuit: newSuit)
                 game.passTurn()
+
+            // When choice is "prediction", try play a card with the suit
+            case "prediction":
+                var predictSuit = actr.model.lastAction("predict")
+                var cardSuit: String
+                var playCard: Card
+                var suitMatched = "no"
+                for (card in actr.hand) {
+                    cardSuit = card.getSuit().rawValue
+                    if (cardSuit == predictSuit) {
+                        playCard = card
+                        suitMatched = "yes"
+                    }
+                }
+                if (suitMatched = "no") {
+                    
+                }
+                game.playCard(card: playCard, player: game.getCurrentPlayer())
+                game.passTurn()
 			
 			// When not against two and legal option with more than one count,
 			// it can only be a rank, so choice is "bestRank"
@@ -171,13 +191,52 @@ class MADSevensViewController: UIViewController {
 				var cards: [Card]
 				for (card in actr.hand) {
 					let rank = card.getRank().rawValue
-					let suit = card.getSuit().rawValue
-					
 					if rank == suitRank {
 						cards.append(card)	
 					}
         		}
 				// !!! Need a game method that plays multiple rank cards
+            
+            // If II played and no ace available, choice is "checkAce"
+            case "checkAce":
+                // If predict slot is not nil, check if ace suit is in hand
+                if actr.model.lastAction("predict") != "nil" {
+                    let aceSuit = model.lastAction("predict")
+                    var twoExists = "no"
+                    for (card in actr.hand) {
+                        let cardSuit = card.getSuit().rawValue
+                        let cardRank = card.getRank().rawValue
+                        if (cardRank == "II" && cardSuit == aceSuit) {
+                            let safeTwo = card
+                            twoExists = "yes"
+                        }
+                    }
+                    // If a II in hand matches suit with ace, play it
+                    // Else if no II matches suit, play a random II
+                    if twoExists == "yes" {
+                        let playTwo = safeTwo
+                    } else if twoExists == "no" {
+                        for (card in actr.hand) {
+                            let cardRank = card.getValue().rawValue
+                            var playTwo: Card
+                            if (cardRank == "II") {
+                                playTwo = card
+                            }
+                        }
+                    }
+                } else if actr.model.lastAction("predict") == "nil" {
+                    var playTwo: Card
+                    for (card in actr.hand) {
+                        let cardRank = card.getValue().rawValue
+                        if (cardRank == "II") {
+                            playTwo = card
+                        }
+                    }
+                }
+
+                // Play the "playTwo" card
+                game.playCard(card: playTwo, player: game.getCurrentPlayer(), newSuit: newSuit)
+                game.passTurn()
     }
     
     func getHand(player: Player) -> [Card] {

@@ -118,7 +118,7 @@
 ==>
 	+action>
 		isa move
-		choice prediction
+		choice checkAce
 		predict =suit
 )
 		
