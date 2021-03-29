@@ -79,22 +79,7 @@ class MADSevensViewController: UIViewController {
         }
     }
     
-    
-    @objc func moveCard2(_ recognizer: UITapGestureRecognizer) {
-        switch recognizer.state {
-        case .ended:
-            if let chosenCardView = recognizer.view as? PlayingCardView
-            {
-                UIView.transition(from: chosenCardView,
-                                  to: playerStack,
-                                  duration: 0,
-                                  options: .showHideTransitionViews)
-                                  }
-        default:
-            break
-        }
-    }
-    
+        
     /**
     Draws a card for the current player, gives the turn to its opponent.
      TODO: Do we want to enable/disable this button whenever its the models turn?
