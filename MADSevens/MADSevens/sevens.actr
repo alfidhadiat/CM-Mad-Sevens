@@ -1,7 +1,6 @@
 ;;;; ACT-R model of Sevens card game
 ;;;;
 
-;;;; Declarative memory of the model
 (add-dm
         (predLeaves isa prediction specific suit suitRank Leaves)
         (predAcorn isa predition specific suit suitRank Acorn)
@@ -12,11 +11,11 @@
 		(predVIII isa prediction specific rank suitRank VIII)
 		(predIX isa prediction specific rank suitRank IX)
 		(predX isa prediction specific rank suitRank X)
+        (goal isa goal state start)
 )
 
 (set-all-baselevels -100 10) ;; Time offset and number of references
 
-;;;; Starting procedure
 (p setup
     =goal>
         isa goal
@@ -26,9 +25,7 @@
         isa beginning
 )
 
-;;;; First few procedures handle legal count procedures
-
-(p drawCard ;; Draw card when there is no legal move
+(p drawCard
 	=goal>
 		isa goal
 		state noLegal
@@ -38,7 +35,7 @@
 		choice draw
 )
 
-(p playOnlyLegal ;; play only legal move
+(p playOnlyLegal
 	=goal>
 		isa goal
 		state oneLegal
@@ -48,7 +45,7 @@
 		choice playOne
 )
 
-(p multipleLegalCheck ;; Check hand and top card when multiple legal
+(p multipleLegalCheck
 	=goal>
 		isa goal
 		state multipleLegal
@@ -58,9 +55,7 @@
 		choice multipleCheck
 )
 
-;;;; Next two procedures occur when a suit needs to be predicted
-
-(p predictSuit ;; Retrieve the suit and set state to choose suit
+(p predictSuit
 	=goal>
 		isa goal
 		state predictSuit
@@ -72,7 +67,7 @@
 		specific suit
 )
 
-(p chooseSuit ;; Return the suit when it is retrieved
+(p chooseSuit
 	=goal>
 		isa goal
 		state chooseSuit
@@ -86,9 +81,6 @@
 		predict =suit
 )
 
-
-;;;; Next procedure is when multiple legal against two and ace in hand
-
 (p playAceAgainstTwo
 	=goal>
 		isa goal
@@ -101,9 +93,7 @@
 		choice playAce
 )
 
-;;;; Next two procedures for when multiple legal against two with no ace
-
-(p checkPlayedAcesForTwos ;; Check if aces in discard have matching suits to twos in hand
+(p checkPlayedAcesForTwos
 	=goal>
 		isa goal
 		state multipleProcedure
@@ -116,7 +106,7 @@
 		isa discardedAce
 )
 
-(p playSuit ;; Return the suit if it exists, but Swift side predictSuit if not
+(p playSuit
 	=goal>
 		isa goal
 		state checkAce
@@ -129,10 +119,8 @@
 		choice checkAce
 		predict =suit
 )
-		
-;;;; Next procedure when multiple legal and not against two
 
-(p countLegalsInHand ;; Goes to hand to count all cards in hand
+(p countLegalsInHand
 	=goal>
 		isa goal
 		state multipleProcedure
@@ -143,3 +131,5 @@
 		isa move
 		choice countLegals
 )
+
+(goal-focus goal)

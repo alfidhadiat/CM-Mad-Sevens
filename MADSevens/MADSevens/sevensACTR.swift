@@ -20,6 +20,8 @@ class sevensACTR {
     init(actrName: String) {
         model = Model()
         model.loadModel(fileName: actrName)
+        model.run()
+        print("\(String(describing: model.buffers["goal"]))")
     }
 
     // --------------------
@@ -261,7 +263,7 @@ class sevensACTR {
     
     func getPredictedSuit() -> Suit {
         //TODO: Might return nil
-        return suitStringToSuit(suitString: self.model.lastAction(slot: "predict")!)
+        return suitStringToSuit(suitString: model.lastAction(slot: "predict")!)
     }
     
     func getBestRank() -> Rank {
