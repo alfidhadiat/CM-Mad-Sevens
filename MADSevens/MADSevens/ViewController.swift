@@ -10,7 +10,6 @@ import UIKit
 class MADSevensViewController: UIViewController {
     
     public var game = MADSevens()
-    
     private var deck = Deck()
     
     @IBOutlet private var playerCardView: [PlayingCardView]!
@@ -20,8 +19,8 @@ class MADSevensViewController: UIViewController {
     @IBOutlet weak var playerStack: UIStackView!
     @IBOutlet weak var modelStack: UIStackView!
     
-    //@IBOutlet weak var rankField: UITextField!
-    //@IBOutlet weak var suitField: UITextField!
+//    @IBOutlet weak var rankField: UITextField!
+//    @IBOutlet weak var suitField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,35 +48,15 @@ class MADSevensViewController: UIViewController {
         
         
         for cardview in playerCardView {
-            cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(moveCard(_ :))))
+            let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
+            if game.legalMove(card: currentCard) {
+                cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(moveCard(_ :))))
             }
-    }
-    
-    
-    @objc func moveCard(_ recognizer: UITapGestureRecognizer) {
-        switch recognizer.state {
-        case .ended:
-            if let chosenCardView = recognizer.view as? PlayingCardView
-            {
-                UIView.transition(from: chosenCardView,
-                                  to: discardCardView,
-                                  duration: 0,
-                                  options: .showHideTransitionViews,
-                                  completion: { finished in
-                                    //let discardCard = self.game.getTopDiscardCard()
-                                    UIView.transition(with: self.discardCardView,
-                                                      duration: 0.6,
-                                                      options: .transitionCurlDown,
-                                                      animations:{
-                                                        self.discardCardView.rank = chosenCardView.rank
-                                                        self.discardCardView.suit = chosenCardView.suit
-                                                      })
-                                  })
-            }
-        default:
-            break
         }
     }
+    
+    
+
     
         
     /**
@@ -94,15 +73,19 @@ class MADSevensViewController: UIViewController {
         
         let currentPlayer = game.getCurrentPlayer()
         if currentPlayer == Player.player{
-            let newCard = PlayingCardView()
-            newCard.setSuit(newSuit: deck.getNewSuit())
-            newCard.setRank(newRank: deck.getNewRank())
-            newCard.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(moveCard(_:))))
-            newCard.backgroundColor = UIColor.clear
+            let newCardView = PlayingCardView()
+            let newCard = Card(suit: newCardView.suit, rank: newCardView.rank)
+            if game.legalMove(card: newCard) {
+                newCardView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(moveCard(_ :))))
+            }
+            newCardView.setSuit(newSuit: game.getPlayerHand()[game.getPlayerHand().endIndex-1].getSuit())
+            newCardView.setRank(newRank: game.getPlayerHand()[game.getPlayerHand().endIndex-1].getRank())
+//            newCardView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(moveCard(_:))))
+            newCardView.backgroundColor = UIColor.clear
             playerStack.autoresizingMask = [.flexibleHeight,.flexibleWidth]
             playerStack.autoresizesSubviews = true
             playerStack.spacing = 0
-            playerStack.addArrangedSubview(newCard)
+            playerStack.addArrangedSubview(newCardView)
             deck.drawCard(player: Player.player)
         }
         if currentPlayer == Player.model{
@@ -118,37 +101,69 @@ class MADSevensViewController: UIViewController {
         }
         
         game.printGame()
-        DeckView[0].state = game.getDeckState()
         game.passTurn()
-        //game.modelTurn()
+        game.modelTurn()
+        DeckView[0].state = game.getDeckState()
     }
     
     
-
+    @objc func moveCard(_ recognizer: UITapGestureRecognizer) {
+        switch recognizer.state {
+        case .ended:
+            if let chosenCardView = recognizer.view as? PlayingCardView
+            {
+                let chosenCard = Card(suit: chosenCardView.suit, rank: chosenCardView.rank)
+                print("Playing this card: \(chosenCard)")
+                UIView.transition(from: chosenCardView,
+                                  to: discardCardView,
+                                  duration: 0,
+                                  options: .showHideTransitionViews,
+                                  completion: { finished in
+                                    //let discardCard = self.game.getTopDiscardCard()
+                                    UIView.transition(with: self.discardCardView,
+                                                      duration: 0.6,
+                                                      options: .transitionCurlDown,
+                                                      animations:{
+                                                        self.discardCardView.rank = chosenCardView.rank
+                                                        self.discardCardView.suit = chosenCardView.suit
+                                                      })
+                                  })
+                if !game.playCard(card: chosenCard, newSuit: nil) {
+                    print("Invalid move, a card is drawn for you!")
+                }
+                game.passTurn()
+                checkpoint()
+                game.modelTurn()
+                checkpoint()
+            }
+        default:
+            break
+        }
+    }
 
     /**
      The selected card (TODO: multiple cards yet to be implemented) will be taken from the player's hand and added to the
      discard pile. The turn is now given to the model.
      */
-    @IBAction func doMove(_ sender: UIButton) {
-        //TODO figure out how to find a selected card
-        
-        // do the move
-        //let inputRank = rankField!
-        //let inputSuit = suitField!
-        //print("inputRank: \(inputRank.text!), inputSuit: \(inputSuit.text!)")
-        //let card = Card(suit: suitStringToSuit(suitString: inputSuit.text!), rank: rankStringToRank(rankString: inputRank.text!))
-        //print("Playing this card: \(card)")
-        //TODO if a new suit is chosen (in case its a 7 for example), pass that value when playing the card
-        //if !game.playCard(card: card, newSuit: nil) {
-      //      print("Invalid move, a card is drawn for you!")
-    //}
-        game.passTurn()
-        checkpoint()
-        game.modelTurn()
-        checkpoint()
-    }
-    
+//    @IBAction func doMove(_ sender: UIButton) {
+//        //TODO figure out how to find a selected card
+//
+//        // do the move
+//        let inputRank = rankField!
+//        let inputSuit = suitField!
+//        print("inputRank: \(inputRank.text!), inputSuit: \(inputSuit.text!)")
+//        let card = Card(suit: suitStringToSuit(suitString: inputSuit.text!), rank: rankStringToRank(rankString: inputRank.text!))
+//        print("Playing this card: \(card)")
+////        TODO if a new suit is chosen (in case its a 7 for example), pass that value when playing the card
+//        if !game.playCard(card: card, newSuit: nil) {
+//            print("Invalid move, a card is drawn for you!")
+//    }
+//        game.passTurn()
+//        checkpoint()
+//        game.modelTurn()
+//        checkpoint()
+//    }
+//
     func checkpoint() {
         //TODO: Convert print statements to popups
         let checkpoint = game.checkpoint()
