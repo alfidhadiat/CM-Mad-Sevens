@@ -124,6 +124,14 @@ class MADSevens {
         actr.rememberSuitRank(topCard: deck.getTopDiscardCard())
     }
     
+    func getNewRank() -> Rank {
+        return deck.getNewRank()
+    }
+    
+    func getNewSuit() -> Suit {
+        return deck.getNewSuit()
+    }
+    
     func printGame() {
         print("Current situation:")
         print("Current player: \(currentPlayer)")

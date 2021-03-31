@@ -10,7 +10,7 @@ import UIKit
 class MADSevensViewController: UIViewController {
     
     public var game = MADSevens()
-    private var deck = Deck()
+//    private var deck = Deck()
     
     @IBOutlet private var playerCardView: [PlayingCardView]!
     @IBOutlet private var modelCardView: [ModelCardView]!
@@ -100,12 +100,12 @@ class MADSevensViewController: UIViewController {
 //        print("Current player should be player, is now \(game.getCurrentPlayer())")
         //drawCard2(player: Player.player)
         let newCard = PlayingCardView()
-        newCard.setSuit(newSuit: deck.getNewSuit())
-        newCard.setRank(newRank: deck.getNewRank())
+        newCard.setSuit(newSuit: game.getNewSuit())
+        newCard.setRank(newRank: game.getNewRank())
         newCard.autoresizingMask = [.flexibleWidth,.flexibleHeight]
         newCard.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(moveCard(_:))))
         newCard.backgroundColor = UIColor.clear
-        deck.drawCard(player: Player.player)
+        game.drawCard()
         playerStack.autoresizingMask = [.flexibleHeight,.flexibleWidth]
         playerStack.autoresizesSubviews = true
         playerStack.addArrangedSubview(newCard)
