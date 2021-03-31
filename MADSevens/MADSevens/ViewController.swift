@@ -10,7 +10,6 @@ import UIKit
 class MADSevensViewController: UIViewController {
     
     public var game = MADSevens()
-    private var deck = Deck()
     
     @IBOutlet private var playerCardView: [PlayingCardView]!
     @IBOutlet private var modelCardView: [ModelCardView]!
@@ -74,29 +73,29 @@ class MADSevensViewController: UIViewController {
         let currentPlayer = game.getCurrentPlayer()
         if currentPlayer == Player.player{
             let newCardView = PlayingCardView()
-            let newCard = Card(suit: newCardView.suit, rank: newCardView.rank)
-            if game.legalMove(card: newCard) {
-                newCardView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(moveCard(_ :))))
-            }
+//            let newCard = Card(suit: newCardView.suit, rank: newCardView.rank)
+//            if game.legalMove(card: newCard) {
+//                newCardView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(moveCard(_ :))))
+//            }
             newCardView.setSuit(newSuit: game.getPlayerHand()[game.getPlayerHand().endIndex-1].getSuit())
             newCardView.setRank(newRank: game.getPlayerHand()[game.getPlayerHand().endIndex-1].getRank())
-//            newCardView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(moveCard(_:))))
+            newCardView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(moveCard(_:))))
             newCardView.backgroundColor = UIColor.clear
             playerStack.autoresizingMask = [.flexibleHeight,.flexibleWidth]
             playerStack.autoresizesSubviews = true
             playerStack.spacing = 0
             playerStack.addArrangedSubview(newCardView)
-            deck.drawCard(player: Player.player)
+            //deck.drawCard(player: Player.player)
         }
         if currentPlayer == Player.model{
-            let newCard = ModelCardView()
-            newCard.setSuit(newSuit: deck.getNewSuit())
-            newCard.setRank(newRank: deck.getNewRank())
-            newCard.backgroundColor = UIColor.clear
+            let newCardView = ModelCardView()
+            newCardView.setSuit(newSuit: game.getPlayerHand()[game.getModelHand().endIndex-1].getSuit())
+            newCardView.setRank(newRank: game.getPlayerHand()[game.getModelHand().endIndex-1].getRank())
+            newCardView.backgroundColor = UIColor.clear
             modelStack.autoresizingMask = [.flexibleHeight,.flexibleWidth]
             modelStack.autoresizesSubviews = true
             modelStack.spacing = 0
-            modelStack.addArrangedSubview(newCard)
+            modelStack.addArrangedSubview(newCardView)
             //deck.drawCard(player: Player.model)
         }
         
@@ -126,6 +125,18 @@ class MADSevensViewController: UIViewController {
                                                       animations:{
                                                         self.discardCardView.rank = chosenCardView.rank
                                                         self.discardCardView.suit = chosenCardView.suit
+                                                        
+                                                        for cardview in self.playerCardView {
+                                                            let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
+                                                            if self.game.legalMove(card: currentCard) {
+                                                                cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
+                                                            }
+                                                            if !self.game.legalMove(card: currentCard){
+                                                                for recognizer in cardview.gestureRecognizers ?? [] {
+                                                                    cardview.removeGestureRecognizer(recognizer)
+                                                                }
+                                                            }
+                                                        }
                                                       })
                                   })
                 if !game.playCard(card: chosenCard, newSuit: nil) {
