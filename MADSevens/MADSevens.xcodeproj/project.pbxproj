@@ -16,6 +16,8 @@
 		2549233425EA46E30093A4A1 /* MADSevens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2549233325EA46E30093A4A1 /* MADSevens.swift */; };
 		2549233C25EA48B50093A4A1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2549233B25EA48B50093A4A1 /* ViewController.swift */; };
 		2549234125EA7BD30093A4A1 /* Definitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2549234025EA7BD30093A4A1 /* Definitions.swift */; };
+		25F7C6EF2614994C001A3F9A /* sevensACTR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F7C6EE2614994C001A3F9A /* sevensACTR.swift */; };
+		25F7C6F426149A67001A3F9A /* sevens.actr in Resources */ = {isa = PBXBuildFile; fileRef = 25F7C6F326149A67001A3F9A /* sevens.actr */; };
 		25F9EB1F260789B900A8EC88 /* ModelCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F9EB1E260789B900A8EC88 /* ModelCardView.swift */; };
 		7F244CF525E686DD00080B80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F244CF425E686DD00080B80 /* AppDelegate.swift */; };
 		7F244CF725E686DD00080B80 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F244CF625E686DD00080B80 /* SceneDelegate.swift */; };
@@ -70,6 +72,8 @@
 		2549233325EA46E30093A4A1 /* MADSevens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MADSevens.swift; sourceTree = "<group>"; };
 		2549233B25EA48B50093A4A1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2549234025EA7BD30093A4A1 /* Definitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Definitions.swift; sourceTree = "<group>"; };
+		25F7C6EE2614994C001A3F9A /* sevensACTR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sevensACTR.swift; sourceTree = "<group>"; };
+		25F7C6F326149A67001A3F9A /* sevens.actr */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sevens.actr; sourceTree = "<group>"; };
 		25F9EB1E260789B900A8EC88 /* ModelCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCardView.swift; sourceTree = "<group>"; };
 		7F244CF125E686DD00080B80 /* MADSevens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MADSevens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F244CF425E686DD00080B80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -155,6 +159,7 @@
 				7F244D2725E6871700080B80 /* Core ACT-R */,
 				7F244CF425E686DD00080B80 /* AppDelegate.swift */,
 				7F244CF625E686DD00080B80 /* SceneDelegate.swift */,
+				25F7C6EE2614994C001A3F9A /* sevensACTR.swift */,
 				7F244CFA25E686DD00080B80 /* Main.storyboard */,
 				18ABE5822603A761003C0836 /* MenuViewController.swift */,
 				18ABE57A26038BB2003C0836 /* CardInPlayView.swift */,
@@ -163,6 +168,7 @@
 				1847291C25FA466600B2C301 /* PlayingCardView.swift */,
 				7F244CFF25E686E000080B80 /* LaunchScreen.storyboard */,
 				7F244D0225E686E000080B80 /* Info.plist */,
+				25F7C6F326149A67001A3F9A /* sevens.actr */,
 				2549233325EA46E30093A4A1 /* MADSevens.swift */,
 				2549232325EA45B50093A4A1 /* Deck.swift */,
 				2549234025EA7BD30093A4A1 /* Definitions.swift */,
@@ -322,6 +328,7 @@
 				7F244D0125E686E000080B80 /* LaunchScreen.storyboard in Resources */,
 				7F244CFE25E686E000080B80 /* Assets.xcassets in Resources */,
 				7F244CFC25E686DD00080B80 /* Main.storyboard in Resources */,
+				25F7C6F426149A67001A3F9A /* sevens.actr in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,6 +356,7 @@
 				7F244D3A25E6871800080B80 /* BufferCondition.swift in Sources */,
 				7F244D4825E6871800080B80 /* Production.swift in Sources */,
 				7F244D3C25E6871800080B80 /* Procedural.swift in Sources */,
+				25F7C6EF2614994C001A3F9A /* sevensACTR.swift in Sources */,
 				1847291D25FA466600B2C301 /* PlayingCardView.swift in Sources */,
 				18ABE57B26038BB2003C0836 /* CardInPlayView.swift in Sources */,
 				18ABE576260389C4003C0836 /* DeckView.swift in Sources */,

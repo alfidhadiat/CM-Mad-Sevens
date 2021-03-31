@@ -16,16 +16,6 @@
 
 (set-all-baselevels -100 10) ;; Time offset and number of references
 
-;;;; Starting procedure
-(p setup
-    =goal>
-        isa goal
-        state start
-==>
-    +action>
-        isa beginning
-)
-
 ;;;; First few procedures handle legal count procedures
 
 (p drawCard ;; Draw card when there is no legal move
