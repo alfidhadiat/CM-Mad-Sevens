@@ -89,11 +89,15 @@ class MADSevensViewController: UIViewController {
         print("Current player: \(game.getCurrentPlayer()), drawing a card right now!")
 
         game.rememberSuitRank()
-        
+        print("Current player should be player, is now \(game.getCurrentPlayer())")
         game.drawCard()
         game.printGame()
+        checkpoint()
         game.passTurn()
+        print("Current player should be model, is now \(game.getCurrentPlayer())")
         game.modelTurn()
+        checkpoint()
+        print("Current player should be player, is now \(game.getCurrentPlayer())")
         //drawCard2(player: Player.player)
         let newCard = PlayingCardView()
         newCard.setSuit(newSuit: deck.getNewSuit())
@@ -138,13 +142,14 @@ class MADSevensViewController: UIViewController {
         let card = Card(suit: suitStringToSuit(suitString: inputSuit.text!), rank: rankStringToRank(rankString: inputRank.text!))
         print("Playing this card: \(card)")
 //        TODO if a new suit is chosen (in case its a 7 for example), pass that value when playing the card
+        print("Current player should be player, is now \(game.getCurrentPlayer())")
         game.playCard(card: card, newSuit: nil)
         game.passTurn()
+        print("Current player should be model, is now \(game.getCurrentPlayer())")
         checkpoint()
         
-        sleep(10)
-        
         game.modelTurn()
+        print("Current player should be player, is now \(game.getCurrentPlayer())")
         checkpoint()
     }
     

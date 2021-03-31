@@ -39,7 +39,6 @@ class MADSevens {
         } else {
             drawCard()
             print("Invalid move, a card is drawn for you!")
-
         }
     }
     
@@ -146,7 +145,7 @@ class MADSevens {
     func actrTurn() {
         
         // First, put current ACTR hand and top discard into ACTR
-        actr.setHand(newHand: getPlayerHand())
+        actr.setHand(newHand: getModelHand())
         
         // Go through the model's turn to generate a "choice"
         let choice = actr.turn(topCard: getTopDiscardCard())
@@ -160,66 +159,92 @@ class MADSevens {
             
         // When ACT-R has only one legal, the choice is "playOne"
         case "playOne":
-            for card in actr.getHand() {
+            for card in getModelHand() {
                 if deck.legalMove(card: card) == true {
                     let onlyLegal = card
                     let onlyLegalRank = onlyLegal.getRank()
+                    let onlyLegalSuit = onlyLegal.getSuit()
+                    print("Only legal card: \(String(describing: onlyLegalSuit)), \(String(describing: onlyLegalRank))")
                     var newSuit: Suit? = nil
                     if onlyLegalRank == Rank.VII {
+                        print("Predict the suit for VII!")
                         actr.predictSuit()
                         newSuit = actr.getPredictedSuit()
+                        print("The new suit is \(String(describing: newSuit))")
                     }
-                    playCard(card: onlyLegal, newSuit: newSuit)
+                    print("Playing \(String(describing: onlyLegalSuit)), \(String(describing: onlyLegalRank))...")
+                    playCard(card: card, newSuit: newSuit)
+                    break
                 }
             }
+            drawCard()
             
         // When ace is legal against a two, choice is "playAce"
         case "playAce":
             var aceCard: Card
-            for card in actr.getHand() {
+            for card in getModelHand() {
                 let rank = card.getRank()
                 if rank == Rank.Ace {
                     aceCard = card
                     playCard(card: aceCard, newSuit: nil)
+                    break
                 }
             }
+            drawCard()
+
             
         // When choice is "prediction", try play a card with the suit
         case "prediction":
+            print("Predicting now...")
             let predictSuit = actr.getPredictedSuit()
             var suitMatched = "no"
-            var cardToPlay: Card
             
-            for card in actr.getHand() {
+            for card in getModelHand() {
                 let isLegal = deck.legalMove(card: card)
                 let cardSuit = card.getSuit()
-                if cardSuit == predictSuit && isLegal == true {
-                    cardToPlay = card
+                let cardRank = card.getRank()
+                if cardSuit == predictSuit && isLegal {
+                    print("Predicted! Playing a \(String(describing: cardSuit)), \(String(describing: cardRank))")
+                    playCard(card: card, newSuit: nil)
                     suitMatched = "yes"
+                    break
                 }
             }
             if suitMatched == "no" {
-                for card in actr.getHand() {
+                for card in getModelHand() {
                     let isLegal = deck.legalMove(card: card)
                     if isLegal == true {
-                        cardToPlay = card
-                        playCard(card: cardToPlay, newSuit: nil)
+                        let cardSuit = card.getSuit()
+                        let cardRank = card.getRank()
+                        print("Playing a \(String(describing: cardSuit)), \(String(describing: cardRank))")
+                        playCard(card: card, newSuit: nil)
+                        break
                     }
                 }
             }
+            drawCard()
             
         // When not against two and legal option with more than one count,
         // it can only be a rank, so choice is "bestRank"
         case "bestRank":
-            let bestRank = actr.getBestRank()
-            var cards = [Card]()
-            for card in actr.getHand() {
-                let rank = card.getRank()
-                if rank == bestRank {
-                    cards.append(card)
-                    playCard(card: cards[0], newSuit: nil)
+//             Add this function when multiple ranks can be played; for now, just play any legal
+//            let bestRank = actr.getBestRank()
+//            var cards = [Card]()
+//            for card in getModelHand() {
+//                let rank = card.getRank()
+//                if rank == bestRank {
+//                    cards.append(card)
+//                    playCard(card: cards[0], newSuit: nil)
+//                }
+//            }
+            for card in getModelHand() {
+                if deck.legalMove(card: card) {
+                    print("Multiple cards are scary! I'm playing a single card instead...")
+                    playCard(card: card, newSuit: nil)
+                    break
                 }
             }
+            drawCard()
             
         // !!! Need a game method that plays multiple rank cards
         
@@ -227,49 +252,36 @@ class MADSevens {
         case "checkAce":
             // If predict slot is not nil, check if ace suit is in hand
             // TODO: We assume this returns a "nil" if no ace has been played yet
-            var playTwo: Card
 //            var safeTwo: Card
+            print("ACTR recalling if Ace was played to play a II")
+            let aceSuit = suitStringToSuit(suitString: actr.getLastAction()!)
+            print("ACTR recalls \(String(describing: aceSuit))")
             
-            if actr.getLastAction() != nil {
-                let aceSuit = suitStringToSuit(suitString: actr.getLastAction()!)
-//                var twoExists = "no"
-                for card in actr.getHand() {
-                    let cardSuit = card.getSuit()
-                    let cardRank = card.getRank()
-                    if (cardRank == Rank.Ace && cardSuit == aceSuit) {
-                        playTwo = card
-                        playCard(card: playTwo, newSuit: nil)
-//                        twoExists = "yes"
-                    } else {
-                        for card in actr.getHand() {
-                            let cardRank = card.getRank()
-                            if (cardRank == Rank.II) {
-                                playTwo = card
-                                playCard(card: playTwo, newSuit: nil)
-                            }
-                        }
-                    }
-                }
-                // If a II in hand matches suit with ace, play it
-                // Else if no II matches suit, play a random II
-//                if twoExists == "yes" {
-//                    playTwo = safeTwo
-//                } else if twoExists == "no" {
-//
-//                }
-            } else {
-                for card in actr.getHand() {
-                    let cardRank = card.getRank()
-                    if cardRank == Rank.II {
-                        playTwo = card
-                        playCard(card: playTwo, newSuit: nil)
-                    }
+            for card in getModelHand() {
+                let cardSuit = card.getSuit()
+                let cardRank = card.getRank()
+                if (cardRank == Rank.II && cardSuit == aceSuit) {
+                    print("II card matches with recalled Ace!")
+                    print("Playing \(String(describing: cardSuit)), \(String(describing: cardRank))!")
+                    playCard(card: card, newSuit: nil)
+                    break
                 }
             }
+            print("No II in ACTR hand matches the recalled ace...")
+            for card in getModelHand() {
+                let cardSuit = card.getSuit()
+                let cardRank = card.getRank()
+                if cardRank == Rank.II {
+                    print("Playing \(String(describing: cardSuit)), \(String(describing: cardRank)) anyway.")
+                    playCard(card: card, newSuit: nil)
+                    break
+                }
+            }
+            drawCard()
         default:
+            drawCard()
             break
         }
-        passTurn()
     }
     
 }

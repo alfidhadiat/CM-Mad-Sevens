@@ -43,13 +43,7 @@ class sevensACTR {
         self.legals = countLegals(topCard: topCard)
         
         // Add legal string into ACT-R's goal buffer as a state
-        if model.buffers["goal"] == nil {
-            model.run()
-            print("\(String(describing: model.buffers["goal"]))")
-            model.buffers["goal"]!.setSlot(slot: "state", value: self.legals)
-        } else {
-            model.buffers["goal"]!.setSlot(slot: "state", value: self.legals)
-        }
+        model.buffers["goal"]!.setSlot(slot: "state", value: self.legals)
         
         // Run the model until it finds an action
         model.run()
@@ -91,7 +85,9 @@ class sevensACTR {
         let topSuit = topCard.getSuit()
         let topRank = topCard.getRank()
         var legal = 0
-
+        
+        print("Top: \(String(describing: topSuit)), \(String(describing: topRank))")
+        
         // Seperate procedure between Two and Non-Two
         if topRank ==  Rank.II {
             
@@ -108,8 +104,10 @@ class sevensACTR {
                 
                 if rank == Rank.II {
                     legal += 1
+                    print("Legal: \(String(describing: suit)), \(String(describing: rank))")
                 } else if rank == Rank.Ace && suit == topSuit {
                     legal += 1
+                    print("Legal: \(String(describing: suit)), \(String(describing: rank))")
                     self.aceHand = "yes"
                 }
             }
@@ -125,14 +123,16 @@ class sevensACTR {
 
                 let rank = card.getRank()
                 let suit = card.getSuit()
-
-                if rank == topRank {
+                print("Checking \(String(describing: suit)), \(String(describing: rank))")
+                
+                if (rank == topRank || suit == topSuit) {
                     legal += 1
-                } else if suit == topSuit {
-                    legal += 1
+                    print("Legal!")
                 }
             }
         }
+        
+        print("\(String(describing: legal)) legals")
         
         // Turn count of legals into string categories
         if legal == 1 {
@@ -151,7 +151,6 @@ class sevensACTR {
 
         // Run the model to get the prediction
         model.run()
-
     }
 
     // When player draws, remember the top card's suit and rank
@@ -219,7 +218,11 @@ class sevensACTR {
                 let suit = card.getSuit()
 
                 if rank == topRank {
-                    legalCounts[rank.rawValue]! += 1
+                    if legalCounts[rank.rawValue] != nil {
+                        legalCounts[rank.rawValue]! += 1
+                    } else {
+                        legalCounts[rank.rawValue] = 1
+                    }
                 } else if suit == topSuit {
                     // Cannot play multiple suits, so always 1 if present
                     legalCounts[suit.rawValue] = 1
@@ -234,12 +237,14 @@ class sevensACTR {
             for (suitRank, count) in legalCounts {
                 if (count == maxSuitRank) {
                     maxSuitRanks.append(suitRank)
+                    print("\(String(describing: suitRank)) has max count in hand!")
                 }
             }
 
             // If only one suitRank, then clearly a rank with more than one count
             // Play the rank;
             // If more than one suitRank, predictSuit and play card with suit if possible
+            print("There are \(String(describing: maxSuitRanks.count)) legal(s) suitRank(s) with max count.")
             if maxSuitRanks.count == 1 {
                 model.buffers["action"]!.setSlot(slot: "choice", value: "bestRank")
                 model.buffers["action"]!.setSlot(slot: "rank", value: maxSuitRanks[0])
@@ -250,6 +255,7 @@ class sevensACTR {
 
         // Return the choice made
         // If it is a prediction, grab "predict" slot from action buffer for suitRank
+        print("ACTR Choice: \(String(describing: model.lastAction(slot: "choice")!))")
         return model.lastAction(slot: "choice")!
     }
     

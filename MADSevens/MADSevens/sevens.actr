@@ -11,6 +11,10 @@
 		(predVIII isa prediction specific rank suitRank VIII)
 		(predIX isa prediction specific rank suitRank IX)
 		(predX isa prediction specific rank suitRank X)
+        (aceLeaves isa discardedAce aceSuit Leaves)
+        (aceAcorn isa discardedAce aceSuit Acorn)
+        (acePumpkins isa discardedAce aceSuit Pumpkins)
+        (aceHearts isa discardedAce aceSuit Hearts)
         (goal isa goal state start)
 )
 
@@ -73,7 +77,7 @@
 		state chooseSuit
 	=retrieval>
 		isa prediction
-		suitValue =suit
+		suitRank =suit
 ==>
 	+action>
 		isa move

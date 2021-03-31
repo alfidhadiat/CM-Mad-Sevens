@@ -72,8 +72,6 @@ class Deck {
             discard.append(stack.remove(at: stack.startIndex))
         }
     }
-    
-    
 
     func playCard(card: Card, player: Player, newSuit: Suit?) {
         switch player {
@@ -88,7 +86,7 @@ class Deck {
                 discard.append(playerHand.remove(at: index))
             } else {
                 //TODO: what to do now?
-                print("You don't have this card!")
+                print("Player doesn't have this card!")
             }
         case Player.model:
             var index = -1
@@ -101,7 +99,7 @@ class Deck {
                 discard.append(modelHand.remove(at: index))
             } else {
                 //TODO: what to do now?
-                print("You don't have this card!")
+                print("Model doesn't have this card!")
             }
         default:
             print("Unknown who wants to play a card, error!")
