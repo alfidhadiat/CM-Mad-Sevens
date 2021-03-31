@@ -73,14 +73,18 @@ class MADSevensViewController: UIViewController {
         let currentPlayer = game.getCurrentPlayer()
         if currentPlayer == Player.player{
             let newCardView = PlayingCardView()
-//            let newCard = Card(suit: newCardView.suit, rank: newCardView.rank)
-//            if game.legalMove(card: newCard) {
-//                newCardView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(moveCard(_ :))))
-//            }
+            playerCardView.append(newCardView)
             newCardView.setSuit(newSuit: game.getPlayerHand()[game.getPlayerHand().endIndex-1].getSuit())
             newCardView.setRank(newRank: game.getPlayerHand()[game.getPlayerHand().endIndex-1].getRank())
-            newCardView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(moveCard(_:))))
+//            newCardView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(moveCard(_:))))
             newCardView.backgroundColor = UIColor.clear
+            let newCard = Card(suit: newCardView.suit, rank: newCardView.rank)
+            if game.legalMove(card: newCard) {
+                for newCardView in playerCardView {
+                    newCardView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(moveCard(_ :))))
+                }
+            }
+            
             playerStack.autoresizingMask = [.flexibleHeight,.flexibleWidth]
             playerStack.autoresizesSubviews = true
             playerStack.spacing = 0
