@@ -34,6 +34,7 @@ class MADSevens {
     }
     
     func playCard(card: Card, newSuit: Suit?) {
+        print("\(currentPlayer) tries to play this card: \(card)")
         if deck.legalMove(card: card) {
             deck.playCard(card: card, player: currentPlayer, newSuit: newSuit)
         } else {
@@ -149,6 +150,9 @@ class MADSevens {
         
         // Go through the model's turn to generate a "choice"
         let choice = actr.turn(topCard: getTopDiscardCard())
+        print("Choice retrieved from ACTR: \(choice)")
+        
+        var didMove = false
         
         // Switch cases that play out the model's choice
         switch choice {
@@ -156,6 +160,7 @@ class MADSevens {
         // When ACT-R has no legal hand, the choice is "draw"
         case "draw":
             drawCard()
+            didMove = true
             
         // When ACT-R has only one legal, the choice is "playOne"
         case "playOne":
@@ -174,10 +179,12 @@ class MADSevens {
                     }
                     print("Playing \(String(describing: onlyLegalSuit)), \(String(describing: onlyLegalRank))...")
                     playCard(card: card, newSuit: newSuit)
+                    didMove = true
                     break
                 }
             }
-            drawCard()
+//            print("(playOne) Ended up not playing a card.....")
+//            drawCard()
             
         // When ace is legal against a two, choice is "playAce"
         case "playAce":
@@ -187,10 +194,12 @@ class MADSevens {
                 if rank == Rank.Ace {
                     aceCard = card
                     playCard(card: aceCard, newSuit: nil)
+                    didMove = true
                     break
                 }
             }
-            drawCard()
+//            print("(Playace ) Ended up not playing a card.....")
+//            drawCard()
 
             
         // When choice is "prediction", try play a card with the suit
@@ -206,6 +215,7 @@ class MADSevens {
                 if cardSuit == predictSuit && isLegal {
                     print("Predicted! Playing a \(String(describing: cardSuit)), \(String(describing: cardRank))")
                     playCard(card: card, newSuit: nil)
+                    didMove = true
                     suitMatched = "yes"
                     break
                 }
@@ -218,12 +228,14 @@ class MADSevens {
                         let cardRank = card.getRank()
                         print("Playing a \(String(describing: cardSuit)), \(String(describing: cardRank))")
                         playCard(card: card, newSuit: nil)
+                        didMove = true
                         break
                     }
                 }
             }
-            drawCard()
-            
+//            print("(prediction) Ended up not playing a card.....")
+//            drawCard()
+//
         // When not against two and legal option with more than one count,
         // it can only be a rank, so choice is "bestRank"
         case "bestRank":
@@ -241,10 +253,12 @@ class MADSevens {
                 if deck.legalMove(card: card) {
                     print("Multiple cards are scary! I'm playing a single card instead...")
                     playCard(card: card, newSuit: nil)
+                    didMove = true
                     break
                 }
             }
-            drawCard()
+//            print("(Bestrank) Ended up not playing a card.....")
+//            drawCard()
             
         // !!! Need a game method that plays multiple rank cards
         
@@ -264,6 +278,7 @@ class MADSevens {
                     print("II card matches with recalled Ace!")
                     print("Playing \(String(describing: cardSuit)), \(String(describing: cardRank))!")
                     playCard(card: card, newSuit: nil)
+                    didMove = true
                     break
                 }
             }
@@ -274,14 +289,21 @@ class MADSevens {
                 if cardRank == Rank.II {
                     print("Playing \(String(describing: cardSuit)), \(String(describing: cardRank)) anyway.")
                     playCard(card: card, newSuit: nil)
+                    didMove = true
                     break
                 }
             }
-            drawCard()
+//            print("(checkace) Ended up not playing a card.....")
+//            drawCard()
         default:
-            drawCard()
+//            print("(DEFAULT) Ended up not playing a card.....")
+//            drawCard()
             break
         }
+        
+        if !didMove {
+            print("No move has been made yet, we draw a card.")
+            drawCard()
+        }
     }
-    
 }
