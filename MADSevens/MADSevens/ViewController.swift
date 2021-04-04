@@ -17,9 +17,11 @@ class MADSevensViewController: UIViewController {
     @IBOutlet private var DeckView: [DeckView]!
     @IBOutlet weak var playerStack: UIStackView!
     @IBOutlet weak var modelStack: UIStackView!
-    
     @IBOutlet weak var ColorLabel: UILabel!
-    //    @IBOutlet weak var rankField: UITextField!
+    @IBOutlet weak var ColorChoiceStack: UIStackView!
+    @IBOutlet weak var DrawCardButton: UIButton!
+
+//    @IBOutlet weak var rankField: UITextField!
 //    @IBOutlet weak var suitField: UITextField!
     
     override func viewDidLoad() {
@@ -46,10 +48,28 @@ class MADSevensViewController: UIViewController {
         discardCardView.setSuit(newSuit: discardCard.getSuit())
         
         ColorLabel.isHidden = true
+        ColorChoiceStack.isHidden = true
         if discardCard.getRank() == Rank.VII{
-            ColorLabel.isHidden = false
+            ColorChoiceStack.isHidden = false
         }
         
+        let currentPlayer = game.getCurrentPlayer()
+        if currentPlayer == Player.model{
+            if discardCardView.rank == Rank.VII {
+                ColorLabel.isHidden = false
+            } else {
+                ColorLabel.isHidden = false
+            }
+        }
+        
+        
+        DrawCardButton.backgroundColor = UIColor.darkGray
+        DrawCardButton.layer.cornerRadius = DrawCardButton.frame.width / 2
+        DrawCardButton.setTitleColor(UIColor.white, for: .normal)
+        DrawCardButton.layer.shadowColor = UIColor.darkGray.cgColor
+        DrawCardButton.layer.shadowRadius = 4
+        DrawCardButton.layer.shadowOpacity = 0.5
+        DrawCardButton.layer.shadowOffset = CGSize(width: 0, height: 0)
         
         for cardview in playerCardView {
             let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
@@ -144,7 +164,7 @@ class MADSevensViewController: UIViewController {
                                                         self.discardCardView.rank = chosenCardView.rank
                                                         self.discardCardView.suit = chosenCardView.suit
                                                         
-                                                        if self.game.getPlayerHand().count < 3 {
+                                                        if self.game.getPlayerHand().count == 3 {
                                                             self.playerStack.distribution = UIStackView.Distribution.equalSpacing
                                                         }
                                             
@@ -157,11 +177,11 @@ class MADSevensViewController: UIViewController {
 //                                                        }
                                                         
                                                         if self.discardCardView.rank == Rank.VII{
-                                                            self.ColorLabel.isHidden = false
+                                                            self.ColorChoiceStack.isHidden = false
                                                         }
                                                         
                                                         if self.discardCardView.rank != Rank.VII{
-                                                            self.ColorLabel.isHidden = true
+                                                            self.ColorChoiceStack.isHidden = true
                                                         }
                                   
                                                         for cardview in self.playerCardView {
