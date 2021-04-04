@@ -324,6 +324,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="A86-jq-Xf7"/>
                     <connections>
+                        <outlet property="ColorLabel" destination="tV2-Fl-1EP" id="Kxo-9z-vly"/>
                         <outlet property="discardCardView" destination="wK5-dq-BAJ" id="uh6-Yq-4lI"/>
                         <outlet property="modelStack" destination="VsQ-66-vg4" id="yfz-dB-b58"/>
                         <outlet property="playerStack" destination="WYI-PA-kW6" id="UDR-vF-O1K"/>

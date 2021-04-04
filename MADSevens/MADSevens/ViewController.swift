@@ -18,7 +18,8 @@ class MADSevensViewController: UIViewController {
     @IBOutlet weak var playerStack: UIStackView!
     @IBOutlet weak var modelStack: UIStackView!
     
-//    @IBOutlet weak var rankField: UITextField!
+    @IBOutlet weak var ColorLabel: UILabel!
+    //    @IBOutlet weak var rankField: UITextField!
 //    @IBOutlet weak var suitField: UITextField!
     
     override func viewDidLoad() {
@@ -43,6 +44,11 @@ class MADSevensViewController: UIViewController {
         discardCardView.isFaceUp = true
         discardCardView.setRank(newRank: discardCard.getRank())
         discardCardView.setSuit(newSuit: discardCard.getSuit())
+        
+        ColorLabel.isHidden = true
+        if discardCard.getRank() == Rank.VII{
+            ColorLabel.isHidden = false
+        }
         
         
         for cardview in playerCardView {
@@ -150,6 +156,14 @@ class MADSevensViewController: UIViewController {
 //                                                            self.playerStack.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 250).isActive = true
 //                                                        }
                                                         
+                                                        if self.discardCardView.rank == Rank.VII{
+                                                            self.ColorLabel.isHidden = false
+                                                        }
+                                                        
+                                                        if self.discardCardView.rank != Rank.VII{
+                                                            self.ColorLabel.isHidden = true
+                                                        }
+                                  
                                                         for cardview in self.playerCardView {
                                                             let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
                                                             if self.game.legalMove(card: currentCard) {
