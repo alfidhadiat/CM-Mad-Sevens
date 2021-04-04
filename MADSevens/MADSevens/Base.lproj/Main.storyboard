@@ -205,6 +205,14 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNy-bR-wCh">
+                                <rect key="frame" x="284" y="510" width="115" height="46"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <state key="normal" title="End Turn"/>
+                                <connections>
+                                    <action selector="PassTurn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qvo-fA-7wP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="tertiaryLabelColor"/>
@@ -219,18 +227,24 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="vha-o6-n97" secondAttribute="bottom" constant="8" id="8OC-Oj-2ta"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WYI-PA-kW6" secondAttribute="trailing" constant="8" id="9gT-Gu-VYe"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vha-o6-n97" secondAttribute="trailing" constant="8" id="9h3-Of-jqW"/>
+                            <constraint firstItem="bNy-bR-wCh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="98" id="AYX-Ce-t8Z"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="WYI-PA-kW6" secondAttribute="bottom" constant="46" id="Bpv-8Z-cKu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2l6-ID-w83" secondAttribute="trailing" constant="293" id="CLQ-4d-Ubc"/>
                             <constraint firstItem="uTI-QH-DNz" firstAttribute="leading" secondItem="2Ml-Sk-PmV" secondAttribute="trailing" constant="60" id="EY0-At-UEE"/>
                             <constraint firstItem="WYI-PA-kW6" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="250" id="FWy-7A-PfH"/>
                             <constraint firstItem="2Ml-Sk-PmV" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="353" id="FcW-i9-qSg"/>
                             <constraint firstItem="VsQ-66-vg4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="GQX-90-xCY"/>
+                            <constraint firstItem="WYI-PA-kW6" firstAttribute="top" secondItem="bNy-bR-wCh" secondAttribute="bottom" constant="31" id="LL1-ZB-zdv"/>
                             <constraint firstItem="WYI-PA-kW6" firstAttribute="top" secondItem="2l6-ID-w83" secondAttribute="bottom" constant="59" id="Loi-5T-soZ"/>
+                            <constraint firstItem="WYI-PA-kW6" firstAttribute="top" secondItem="bNy-bR-wCh" secondAttribute="bottom" constant="71" id="LqE-ID-Xdx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WYI-PA-kW6" secondAttribute="trailing" constant="389" id="N6v-xQ-hdf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vha-o6-n97" secondAttribute="trailing" constant="8" id="Oox-KH-MRo"/>
                             <constraint firstItem="2Ml-Sk-PmV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="125" id="OzP-So-K8t"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="WYI-PA-kW6" secondAttribute="bottom" constant="8" id="PMJ-Za-4Rr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bNy-bR-wCh" secondAttribute="trailing" constant="15" id="Qdr-dH-SSX"/>
                             <constraint firstItem="uTI-QH-DNz" firstAttribute="leading" secondItem="2Ml-Sk-PmV" secondAttribute="trailing" constant="25" id="R5t-h6-Wob"/>
+                            <constraint firstItem="bNy-bR-wCh" firstAttribute="top" secondItem="VsQ-66-vg4" secondAttribute="bottom" constant="30" id="RgM-6W-55I"/>
+                            <constraint firstItem="bNy-bR-wCh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="284" id="Szv-Mi-fbg"/>
                             <constraint firstItem="VsQ-66-vg4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="Uqh-3F-U99"/>
                             <constraint firstItem="WYI-PA-kW6" firstAttribute="top" secondItem="VsQ-66-vg4" secondAttribute="bottom" constant="107" id="XzO-bH-NDI"/>
                             <constraint firstItem="2l6-ID-w83" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="15" id="YWF-FT-WXk"/>
@@ -238,6 +252,7 @@
                             <constraint firstItem="WYI-PA-kW6" firstAttribute="top" secondItem="uTI-QH-DNz" secondAttribute="bottom" constant="130.5" id="aOg-Dc-eGD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2l6-ID-w83" secondAttribute="bottom" constant="48" id="ab2-Su-S6e"/>
                             <constraint firstItem="2l6-ID-w83" firstAttribute="top" secondItem="2Ml-Sk-PmV" secondAttribute="bottom" constant="2.5" id="atk-bG-Osa"/>
+                            <constraint firstItem="bNy-bR-wCh" firstAttribute="top" secondItem="uTI-QH-DNz" secondAttribute="bottom" constant="13.5" id="bI5-zU-Vf8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="vha-o6-n97" secondAttribute="bottom" constant="8" id="bMO-lO-xUJ"/>
                             <constraint firstItem="WYI-PA-kW6" firstAttribute="top" secondItem="uTI-QH-DNz" secondAttribute="bottom" constant="130.5" id="bPS-E1-Mpt"/>
                             <constraint firstItem="2l6-ID-w83" firstAttribute="top" secondItem="2Ml-Sk-PmV" secondAttribute="bottom" constant="7.5" id="byX-0X-mLC"/>
@@ -253,6 +268,7 @@
                             <constraint firstItem="uTI-QH-DNz" firstAttribute="leading" secondItem="2Ml-Sk-PmV" secondAttribute="trailing" constant="25" id="jbo-z7-0Wv"/>
                             <constraint firstItem="uTI-QH-DNz" firstAttribute="top" secondItem="VsQ-66-vg4" secondAttribute="bottom" constant="158" id="oP2-NJ-SYC"/>
                             <constraint firstItem="WYI-PA-kW6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="pfY-vc-OVI"/>
+                            <constraint firstItem="2Ml-Sk-PmV" firstAttribute="leading" secondItem="bNy-bR-wCh" secondAttribute="trailing" constant="238" id="pkL-ec-a9j"/>
                             <constraint firstItem="uTI-QH-DNz" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="125" id="qIP-Wp-njb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uTI-QH-DNz" secondAttribute="trailing" constant="15" id="qeU-cI-MXJ"/>
                             <constraint firstItem="2Ml-Sk-PmV" firstAttribute="top" secondItem="VsQ-66-vg4" secondAttribute="bottom" constant="158" id="scC-Am-9LD"/>
@@ -273,6 +289,7 @@
                                 <exclude reference="N6v-xQ-hdf"/>
                                 <exclude reference="Oox-KH-MRo"/>
                                 <exclude reference="PMJ-Za-4Rr"/>
+                                <exclude reference="Qdr-dH-SSX"/>
                                 <exclude reference="ab2-Su-S6e"/>
                                 <exclude reference="bMO-lO-xUJ"/>
                                 <exclude reference="cB7-lw-xf1"/>
@@ -289,9 +306,15 @@
                                 <exclude reference="eD8-st-dmt"/>
                                 <exclude reference="erG-pA-Xzm"/>
                                 <exclude reference="ysI-vY-tgS"/>
+                                <exclude reference="AYX-Ce-t8Z"/>
+                                <exclude reference="RgM-6W-55I"/>
+                                <exclude reference="Szv-Mi-fbg"/>
+                                <exclude reference="bI5-zU-Vf8"/>
                                 <exclude reference="2Di-uk-Vqm"/>
                                 <exclude reference="FWy-7A-PfH"/>
+                                <exclude reference="LL1-ZB-zdv"/>
                                 <exclude reference="Loi-5T-soZ"/>
+                                <exclude reference="LqE-ID-Xdx"/>
                                 <exclude reference="XzO-bH-NDI"/>
                                 <exclude reference="Zbc-Wr-EX2"/>
                                 <exclude reference="aOg-Dc-eGD"/>
@@ -304,6 +327,7 @@
                                 <exclude reference="FcW-i9-qSg"/>
                                 <exclude reference="OzP-So-K8t"/>
                                 <exclude reference="jSA-mU-VS7"/>
+                                <exclude reference="pkL-ec-a9j"/>
                                 <exclude reference="scC-Am-9LD"/>
                                 <exclude reference="YWF-FT-WXk"/>
                                 <exclude reference="atk-bG-Osa"/>
@@ -333,12 +357,16 @@
                                 <include reference="Uqh-3F-U99"/>
                                 <include reference="eD8-st-dmt"/>
                                 <include reference="ysI-vY-tgS"/>
+                                <include reference="AYX-Ce-t8Z"/>
+                                <include reference="RgM-6W-55I"/>
                                 <include reference="2Di-uk-Vqm"/>
                                 <include reference="FWy-7A-PfH"/>
+                                <include reference="LL1-ZB-zdv"/>
                                 <include reference="XzO-bH-NDI"/>
                                 <include reference="pfY-vc-OVI"/>
                                 <include reference="4Xk-Yq-PP9"/>
                                 <include reference="OzP-So-K8t"/>
+                                <include reference="pkL-ec-a9j"/>
                                 <include reference="byX-0X-mLC"/>
                                 <include reference="uw9-5W-gY6"/>
                                 <include reference="R5t-h6-Wob"/>
@@ -352,6 +380,7 @@
                                 <include reference="9gT-Gu-VYe"/>
                                 <include reference="Bpv-8Z-cKu"/>
                                 <include reference="Oox-KH-MRo"/>
+                                <include reference="Qdr-dH-SSX"/>
                                 <include reference="cB7-lw-xf1"/>
                                 <include reference="qeU-cI-MXJ"/>
                                 <include reference="yjw-dn-kV2"/>
@@ -359,7 +388,10 @@
                                 <include reference="uOT-4J-vdD"/>
                                 <include reference="cu4-sM-I6S"/>
                                 <include reference="erG-pA-Xzm"/>
+                                <include reference="Szv-Mi-fbg"/>
+                                <include reference="bI5-zU-Vf8"/>
                                 <include reference="Loi-5T-soZ"/>
+                                <include reference="LqE-ID-Xdx"/>
                                 <include reference="Zbc-Wr-EX2"/>
                                 <include reference="aOg-Dc-eGD"/>
                                 <include reference="bPS-E1-Mpt"/>
@@ -382,6 +414,7 @@
                         <outlet property="ColorChoiceStack" destination="2l6-ID-w83" id="F1e-PV-J5O"/>
                         <outlet property="ColorLabel" destination="tV2-Fl-1EP" id="Kxo-9z-vly"/>
                         <outlet property="DrawCardButton" destination="MeD-rw-olk" id="lJc-d1-JRA"/>
+                        <outlet property="EndTurnButton" destination="bNy-bR-wCh" id="Jrj-YA-XBt"/>
                         <outlet property="discardCardView" destination="wK5-dq-BAJ" id="uh6-Yq-4lI"/>
                         <outlet property="modelStack" destination="VsQ-66-vg4" id="yfz-dB-b58"/>
                         <outlet property="playerStack" destination="WYI-PA-kW6" id="UDR-vF-O1K"/>
