@@ -40,7 +40,6 @@ class MADSevensViewController: UIViewController {
             modelCardView[i].setSuit(newSuit: modelCards[i].getSuit())
         }
         
-        
         discardCardView.isFaceUp = true
         discardCardView.setRank(newRank: discardCard.getRank())
         discardCardView.setSuit(newSuit: discardCard.getSuit())
@@ -54,10 +53,6 @@ class MADSevensViewController: UIViewController {
         }
     }
     
-    
-
-    
-        
     /**
     Draws a card for the current player, gives the turn to its opponent.
      TODO: Do we want to enable/disable this button whenever its the models turn?
@@ -76,7 +71,7 @@ class MADSevensViewController: UIViewController {
             playerCardView.append(newCardView)
             newCardView.setSuit(newSuit: game.getPlayerHand()[game.getPlayerHand().endIndex-1].getSuit())
             newCardView.setRank(newRank: game.getPlayerHand()[game.getPlayerHand().endIndex-1].getRank())
-//            newCardView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(moveCard(_:))))
+            newCardView.widthAnchor.constraint(lessThanOrEqualToConstant: 74).isActive = true
             newCardView.backgroundColor = UIColor.clear
             let newCard = Card(suit: newCardView.suit, rank: newCardView.rank)
             if game.legalMove(card: newCard) {
@@ -103,6 +98,19 @@ class MADSevensViewController: UIViewController {
             //deck.drawCard(player: Player.model)
         }
         
+        if self.game.getPlayerHand().count > 3 {
+            self.playerStack.distribution = UIStackView.Distribution.fillEqually
+        } else {
+            self.playerStack.distribution = UIStackView.Distribution.equalSpacing
+
+        }
+        
+//        if self.game.getPlayerHand().count > 2 {
+//            self.playerStack.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 8).isActive = true
+//        } else if game.getPlayerHand().count == 2 {
+//            self.playerStack.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 250).isActive = true
+//        }
+        
         game.printGame()
         game.passTurn()
         game.modelTurn()
@@ -124,11 +132,23 @@ class MADSevensViewController: UIViewController {
                                   completion: { finished in
                                     //let discardCard = self.game.getTopDiscardCard()
                                     UIView.transition(with: self.discardCardView,
-                                                      duration: 0.6,
+                                                      duration: 0.9,
                                                       options: .transitionCurlDown,
                                                       animations:{
                                                         self.discardCardView.rank = chosenCardView.rank
                                                         self.discardCardView.suit = chosenCardView.suit
+                                                        
+                                                        if self.game.getPlayerHand().count < 3 {
+                                                            self.playerStack.distribution = UIStackView.Distribution.equalSpacing
+                                                        }
+                                            
+//                                                        if self.game.getPlayerHand().count > 3 {
+//                                                            self.playerStack.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 8).isActive = true
+//                                                            self.playerStack.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 250).isActive = false
+//                                                        } else {
+//                                                            self.playerStack.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 8).isActive = false
+//                                                            self.playerStack.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 250).isActive = true
+//                                                        }
                                                         
                                                         for cardview in self.playerCardView {
                                                             let currentCard = Card(suit: cardview.suit, rank: cardview.rank)

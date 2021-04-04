@@ -87,7 +87,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="61" height="85"/>
                                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Drawcard"/>
+                                        <state key="normal" title="Draw Card"/>
                                         <connections>
                                             <action selector="drawCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E9j-wf-pWI"/>
                                         </connections>
