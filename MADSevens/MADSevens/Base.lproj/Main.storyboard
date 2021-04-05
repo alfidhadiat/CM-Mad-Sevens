@@ -17,51 +17,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="417" height="1501"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E7C-Rc-S7I">
-                                <rect key="frame" x="0.0" y="0.0" width="417" height="1467"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E7C-Rc-S7I">
+                                <rect key="frame" x="0.0" y="0.0" width="417" height="1501"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="H3f-Lz-lWD">
                                         <rect key="frame" x="8" y="8" width="401" height="1280"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The Four Suits:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Te-qe-zOc">
-                                        <rect key="frame" x="31" y="8" width="246" height="54"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Four Suits:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Te-qe-zOc">
+                                        <rect key="frame" x="31" y="8" width="205.5" height="77.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Acorn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUn-h9-sPq">
-                                        <rect key="frame" x="291" y="69" width="106" height="49"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hearts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBj-Ar-cQY">
+                                        <rect key="frame" x="93" y="142" width="92" height="38.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Leaves" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDd-dK-FSW">
-                                        <rect key="frame" x="291" y="142" width="106" height="49"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pumpkins" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xde-0t-dLG">
+                                        <rect key="frame" x="87" y="65" width="136" height="46.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hearts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBj-Ar-cQY">
-                                        <rect key="frame" x="93" y="142" width="106" height="49"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leaves" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDd-dK-FSW">
+                                        <rect key="frame" x="277.5" y="142" width="97.5" height="38.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pumpkins" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xde-0t-dLG">
-                                        <rect key="frame" x="87" y="65" width="146" height="57"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Acorn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUn-h9-sPq">
+                                        <rect key="frame" x="293" y="69" width="82" height="38.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Acorn" translatesAutoresizingMaskIntoConstraints="NO" id="yF7-kC-BcH">
-                                        <rect key="frame" x="229" y="61" width="54" height="65"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Acorn" translatesAutoresizingMaskIntoConstraints="NO" id="yF7-kC-BcH">
+                                        <rect key="frame" x="229" y="61" width="32" height="54.5"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Leaves" translatesAutoresizingMaskIntoConstraints="NO" id="JmC-tg-kcA">
                                         <rect key="frame" x="229" y="134" width="54" height="65"/>
@@ -71,13 +65,21 @@
                                         <rect key="frame" x="31" y="134" width="54" height="65"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Pumpkins" translatesAutoresizingMaskIntoConstraints="NO" id="lZ8-vd-bF7">
-                                        <rect key="frame" x="31" y="61" width="54" height="65"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pumpkins" translatesAutoresizingMaskIntoConstraints="NO" id="lZ8-vd-bF7">
+                                        <rect key="frame" x="31" y="61" width="32" height="54.5"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The Special Cards" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySi-fW-aL7">
-                                        <rect key="frame" x="31" y="199" width="282" height="54"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgY-Cc-FGQ">
+                                        <rect key="frame" x="25" y="769" width="368" height="212"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <string key="text">Two - results in the opponent drawing two cards. Multiple twos can be played at once. The only immediate legal response when the opponent plays a Two is another Two or an Ace matching the suit of the played two.</string>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="23"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="shadowColor" systemColor="opaqueSeparatorColor"/>
+                                        <size key="shadowOffset" width="-1" height="2"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Special Cards" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySi-fW-aL7">
+                                        <rect key="frame" x="14" y="199" width="250.5" height="43.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -99,7 +101,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sevens - allow you to change the suit. These cards can be played at all times!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSs-Ek-YTO">
-                                        <rect key="frame" x="17" y="403" width="383" height="113"/>
+                                        <rect key="frame" x="8" y="417" width="376" height="148"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="31"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -108,40 +110,150 @@
                                         <size key="shadowOffset" width="-1" height="2"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AcornII" translatesAutoresizingMaskIntoConstraints="NO" id="UpS-Yl-pc4">
-                                        <rect key="frame" x="52" y="509" width="95" height="188"/>
+                                        <rect key="frame" x="52" y="573" width="95" height="188"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LeavesII" translatesAutoresizingMaskIntoConstraints="NO" id="HBM-Jg-T3k">
-                                        <rect key="frame" x="120" y="509" width="95" height="188"/>
+                                        <rect key="frame" x="120" y="573" width="95" height="188"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PumpkinsII" translatesAutoresizingMaskIntoConstraints="NO" id="KMy-s3-cx1">
-                                        <rect key="frame" x="192" y="509" width="95" height="188"/>
+                                        <rect key="frame" x="192" y="573" width="95" height="188"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="HeartsII" translatesAutoresizingMaskIntoConstraints="NO" id="coi-NF-7kC">
-                                        <rect key="frame" x="270" y="509" width="95" height="188"/>
+                                        <rect key="frame" x="270" y="573" width="95" height="188"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgY-Cc-FGQ">
-                                        <rect key="frame" x="29" y="705" width="368" height="212"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="HeartsAce" translatesAutoresizingMaskIntoConstraints="NO" id="9Nd-M0-oQe">
+                                        <rect key="frame" x="52" y="965" width="95" height="188"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <string key="text">Two - results in the opponent drawing two cards. Multiple twos can be played at once. The only immediate legal response when the opponent plays a Two is another Two or an Ace matching the suit of the played two.</string>
-                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="23"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="shadowColor" systemColor="opaqueSeparatorColor"/>
-                                        <size key="shadowOffset" width="-1" height="2"/>
-                                    </label>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PumpkinsAce" translatesAutoresizingMaskIntoConstraints="NO" id="Rfp-cL-7ha">
+                                        <rect key="frame" x="192" y="965" width="95" height="188"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AcornAce" translatesAutoresizingMaskIntoConstraints="NO" id="o8x-m7-cBS">
+                                        <rect key="frame" x="270" y="965" width="95" height="188"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LeavesAce" translatesAutoresizingMaskIntoConstraints="NO" id="cGT-d5-lda">
+                                        <rect key="frame" x="120" y="965" width="95" height="188"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="yF7-kC-BcH" firstAttribute="top" secondItem="E7C-Rc-S7I" secondAttribute="top" constant="61" id="0OU-zd-xZN"/>
+                                    <constraint firstAttribute="bottom" secondItem="yF7-kC-BcH" secondAttribute="bottom" constant="1375" id="0fN-2M-Ngt"/>
+                                    <constraint firstItem="Xde-0t-dLG" firstAttribute="leading" secondItem="E7C-Rc-S7I" secondAttribute="leading" constant="87" id="2cR-7A-XlR"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oBj-Ar-cQY" secondAttribute="trailing" constant="218" id="5gc-sh-7RW">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="20" symbolic="YES"/>
+                                    </constraint>
+                                    <constraint firstAttribute="trailing" secondItem="bUn-h9-sPq" secondAttribute="trailing" constant="20" id="91P-Zi-wGB"/>
+                                    <constraint firstAttribute="bottom" secondItem="1Te-qe-zOc" secondAttribute="bottom" constant="1405" id="Cq4-Dt-K4f"/>
+                                    <constraint firstItem="lZ8-vd-bF7" firstAttribute="top" secondItem="E7C-Rc-S7I" secondAttribute="top" constant="61" id="DBd-h3-Yr3"/>
+                                    <constraint firstItem="oBj-Ar-cQY" firstAttribute="leading" secondItem="E7C-Rc-S7I" secondAttribute="leading" constant="93" id="Fhn-mV-NyF"/>
+                                    <constraint firstItem="Xde-0t-dLG" firstAttribute="top" secondItem="E7C-Rc-S7I" secondAttribute="top" constant="65" id="Kfj-ab-piv"/>
+                                    <constraint firstItem="lZ8-vd-bF7" firstAttribute="leading" secondItem="E7C-Rc-S7I" secondAttribute="leading" constant="31" id="Lfv-Si-cj8"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Xde-0t-dLG" secondAttribute="trailing" constant="184" id="OEQ-lr-2aE">
+                                        <variation key="heightClass=regular-widthClass=compact" symbolic="YES"/>
+                                    </constraint>
+                                    <constraint firstAttribute="bottom" secondItem="ySi-fW-aL7" secondAttribute="bottom" constant="1248" id="OXB-5z-j3U"/>
+                                    <constraint firstAttribute="bottom" secondItem="oBj-Ar-cQY" secondAttribute="bottom" constant="1310" id="Qol-2c-gBs"/>
+                                    <constraint firstAttribute="trailing" secondItem="lZ8-vd-bF7" secondAttribute="trailing" constant="332" id="RNn-g4-wpQ"/>
+                                    <constraint firstItem="ySi-fW-aL7" firstAttribute="leading" secondItem="E7C-Rc-S7I" secondAttribute="leading" constant="14" id="Ttg-98-C4q"/>
+                                    <constraint firstItem="bUn-h9-sPq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="E7C-Rc-S7I" secondAttribute="leading" constant="291" id="UlK-td-rBA">
+                                        <variation key="heightClass=regular-widthClass=compact" symbolic="YES"/>
+                                    </constraint>
+                                    <constraint firstAttribute="bottom" secondItem="DDd-dK-FSW" secondAttribute="bottom" constant="1310" id="W9k-pN-PGu"/>
+                                    <constraint firstAttribute="trailing" secondItem="DDd-dK-FSW" secondAttribute="trailing" constant="20" id="aT4-hg-NQ0"/>
+                                    <constraint firstItem="1Te-qe-zOc" firstAttribute="leading" secondItem="E7C-Rc-S7I" secondAttribute="leading" constant="31" id="bfC-dI-py4"/>
+                                    <constraint firstItem="1Te-qe-zOc" firstAttribute="top" secondItem="E7C-Rc-S7I" secondAttribute="top" constant="8" id="bnL-lJ-SZp"/>
+                                    <constraint firstItem="bUn-h9-sPq" firstAttribute="top" secondItem="E7C-Rc-S7I" secondAttribute="top" constant="69" id="fqs-uS-n10"/>
+                                    <constraint firstItem="DDd-dK-FSW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="E7C-Rc-S7I" secondAttribute="leading" constant="291" id="gXe-dI-DYG">
+                                        <variation key="heightClass=regular-widthClass=compact" symbolic="YES"/>
+                                    </constraint>
+                                    <constraint firstAttribute="bottom" secondItem="lZ8-vd-bF7" secondAttribute="bottom" constant="1375" id="haN-ZR-Y3m"/>
+                                    <constraint firstItem="ySi-fW-aL7" firstAttribute="top" secondItem="E7C-Rc-S7I" secondAttribute="top" constant="199" id="hdA-D4-4I4"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1Te-qe-zOc" secondAttribute="trailing" constant="140" id="l0e-Rw-d1y">
+                                        <variation key="heightClass=regular-widthClass=compact" symbolic="YES"/>
+                                    </constraint>
+                                    <constraint firstItem="yF7-kC-BcH" firstAttribute="leading" secondItem="E7C-Rc-S7I" secondAttribute="leading" constant="229" id="oCT-fi-EN2"/>
+                                    <constraint firstAttribute="bottom" secondItem="bUn-h9-sPq" secondAttribute="bottom" constant="1383" id="pAS-X9-PHg"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ySi-fW-aL7" secondAttribute="trailing" constant="20" symbolic="YES" id="qM2-hy-isD"/>
+                                    <constraint firstItem="DDd-dK-FSW" firstAttribute="top" secondItem="E7C-Rc-S7I" secondAttribute="top" constant="142" id="rtH-ko-nvZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="yF7-kC-BcH" secondAttribute="trailing" constant="134" id="sMF-yl-BHX"/>
+                                    <constraint firstAttribute="bottom" secondItem="Xde-0t-dLG" secondAttribute="bottom" constant="1379" id="x9E-IJ-awS"/>
+                                    <constraint firstItem="oBj-Ar-cQY" firstAttribute="top" secondItem="E7C-Rc-S7I" secondAttribute="top" constant="142" id="xf9-V7-AoC"/>
+                                </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="H3f-Lz-lWD"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <exclude reference="Cq4-Dt-K4f"/>
+                                        <exclude reference="bfC-dI-py4"/>
+                                        <exclude reference="bnL-lJ-SZp"/>
+                                        <exclude reference="l0e-Rw-d1y"/>
+                                        <exclude reference="DBd-h3-Yr3"/>
+                                        <exclude reference="Lfv-Si-cj8"/>
+                                        <exclude reference="RNn-g4-wpQ"/>
+                                        <exclude reference="haN-ZR-Y3m"/>
+                                        <exclude reference="2cR-7A-XlR"/>
+                                        <exclude reference="Kfj-ab-piv"/>
+                                        <exclude reference="OEQ-lr-2aE"/>
+                                        <exclude reference="x9E-IJ-awS"/>
+                                        <exclude reference="5gc-sh-7RW"/>
+                                        <exclude reference="Fhn-mV-NyF"/>
+                                        <exclude reference="Qol-2c-gBs"/>
+                                        <exclude reference="xf9-V7-AoC"/>
+                                        <exclude reference="0OU-zd-xZN"/>
+                                        <exclude reference="0fN-2M-Ngt"/>
+                                        <exclude reference="oCT-fi-EN2"/>
+                                        <exclude reference="sMF-yl-BHX"/>
+                                        <exclude reference="91P-Zi-wGB"/>
+                                        <exclude reference="UlK-td-rBA"/>
+                                        <exclude reference="fqs-uS-n10"/>
+                                        <exclude reference="pAS-X9-PHg"/>
+                                        <exclude reference="W9k-pN-PGu"/>
+                                        <exclude reference="aT4-hg-NQ0"/>
+                                        <exclude reference="gXe-dI-DYG"/>
+                                        <exclude reference="rtH-ko-nvZ"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="subviews">
                                         <include reference="H3f-Lz-lWD"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="Cq4-Dt-K4f"/>
+                                        <include reference="bfC-dI-py4"/>
+                                        <include reference="bnL-lJ-SZp"/>
+                                        <include reference="l0e-Rw-d1y"/>
+                                        <include reference="DBd-h3-Yr3"/>
+                                        <include reference="Lfv-Si-cj8"/>
+                                        <include reference="RNn-g4-wpQ"/>
+                                        <include reference="haN-ZR-Y3m"/>
+                                        <include reference="2cR-7A-XlR"/>
+                                        <include reference="Kfj-ab-piv"/>
+                                        <include reference="OEQ-lr-2aE"/>
+                                        <include reference="x9E-IJ-awS"/>
+                                        <include reference="5gc-sh-7RW"/>
+                                        <include reference="Fhn-mV-NyF"/>
+                                        <include reference="Qol-2c-gBs"/>
+                                        <include reference="xf9-V7-AoC"/>
+                                        <include reference="0OU-zd-xZN"/>
+                                        <include reference="0fN-2M-Ngt"/>
+                                        <include reference="oCT-fi-EN2"/>
+                                        <include reference="sMF-yl-BHX"/>
+                                        <include reference="91P-Zi-wGB"/>
+                                        <include reference="UlK-td-rBA"/>
+                                        <include reference="fqs-uS-n10"/>
+                                        <include reference="pAS-X9-PHg"/>
+                                        <include reference="W9k-pN-PGu"/>
+                                        <include reference="aT4-hg-NQ0"/>
+                                        <include reference="gXe-dI-DYG"/>
+                                        <include reference="rtH-ko-nvZ"/>
                                     </mask>
                                 </variation>
                             </scrollView>
@@ -615,15 +727,19 @@
     </scenes>
     <resources>
         <image name="Acorn" width="26" height="32"/>
+        <image name="AcornAce" width="117" height="194"/>
         <image name="AcornII" width="119" height="191"/>
         <image name="AcornVII" width="117" height="192"/>
         <image name="Hearts" width="30" height="33"/>
+        <image name="HeartsAce" width="119" height="192"/>
         <image name="HeartsII" width="116" height="190"/>
         <image name="HeartsVII" width="117" height="195"/>
         <image name="Leaves" width="27" height="31"/>
+        <image name="LeavesAce" width="118" height="193"/>
         <image name="LeavesII" width="119" height="193"/>
         <image name="LeavesVII" width="117" height="196"/>
         <image name="Pumpkins" width="32" height="34"/>
+        <image name="PumpkinsAce" width="118" height="194"/>
         <image name="PumpkinsII" width="120" height="194"/>
         <image name="PumpkinsVII" width="117" height="196"/>
         <image name="background" width="853" height="1280"/>
