@@ -9,40 +9,160 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Instructions View Controller-->
         <scene sceneID="3TR-ls-y6J">
             <objects>
-                <viewController id="Ifa-7k-d5g" sceneMemberID="viewController">
+                <viewController id="Ifa-7k-d5g" customClass="InstructionsViewController" customModule="MADSevens" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3kM-CC-wfJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="417" height="1501"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="P0T-8s-N84">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How to play:                 " textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="16" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XDl-Ul-N2D">
-                                <rect key="frame" x="20" y="20" width="374" height="726"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E7C-Rc-S7I">
+                                <rect key="frame" x="0.0" y="0.0" width="417" height="1467"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="H3f-Lz-lWD">
+                                        <rect key="frame" x="8" y="8" width="401" height="1280"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The Four Suits:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Te-qe-zOc">
+                                        <rect key="frame" x="31" y="8" width="246" height="54"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Acorn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUn-h9-sPq">
+                                        <rect key="frame" x="291" y="69" width="106" height="49"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Leaves" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDd-dK-FSW">
+                                        <rect key="frame" x="291" y="142" width="106" height="49"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hearts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBj-Ar-cQY">
+                                        <rect key="frame" x="93" y="142" width="106" height="49"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pumpkins" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xde-0t-dLG">
+                                        <rect key="frame" x="87" y="65" width="146" height="57"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Acorn" translatesAutoresizingMaskIntoConstraints="NO" id="yF7-kC-BcH">
+                                        <rect key="frame" x="229" y="61" width="54" height="65"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Leaves" translatesAutoresizingMaskIntoConstraints="NO" id="JmC-tg-kcA">
+                                        <rect key="frame" x="229" y="134" width="54" height="65"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Hearts" translatesAutoresizingMaskIntoConstraints="NO" id="Ceb-2O-F2q">
+                                        <rect key="frame" x="31" y="134" width="54" height="65"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Pumpkins" translatesAutoresizingMaskIntoConstraints="NO" id="lZ8-vd-bF7">
+                                        <rect key="frame" x="31" y="61" width="54" height="65"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The Special Cards" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySi-fW-aL7">
+                                        <rect key="frame" x="31" y="199" width="282" height="54"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AcornVII" translatesAutoresizingMaskIntoConstraints="NO" id="hSE-ba-MKb">
+                                        <rect key="frame" x="61" y="261" width="90" height="148"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LeavesVII" translatesAutoresizingMaskIntoConstraints="NO" id="Z4v-5s-IZL">
+                                        <rect key="frame" x="125" y="261" width="90" height="148"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="HeartsVII" translatesAutoresizingMaskIntoConstraints="NO" id="gUE-mW-YHo">
+                                        <rect key="frame" x="193" y="261" width="90" height="148"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PumpkinsVII" translatesAutoresizingMaskIntoConstraints="NO" id="sjc-tg-F0v">
+                                        <rect key="frame" x="265" y="261" width="90" height="148"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sevens - allow you to change the suit. These cards can be played at all times!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSs-Ek-YTO">
+                                        <rect key="frame" x="17" y="403" width="383" height="113"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="31"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" systemColor="opaqueSeparatorColor"/>
+                                        <size key="shadowOffset" width="-1" height="2"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AcornII" translatesAutoresizingMaskIntoConstraints="NO" id="UpS-Yl-pc4">
+                                        <rect key="frame" x="52" y="509" width="95" height="188"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LeavesII" translatesAutoresizingMaskIntoConstraints="NO" id="HBM-Jg-T3k">
+                                        <rect key="frame" x="120" y="509" width="95" height="188"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PumpkinsII" translatesAutoresizingMaskIntoConstraints="NO" id="KMy-s3-cx1">
+                                        <rect key="frame" x="192" y="509" width="95" height="188"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="HeartsII" translatesAutoresizingMaskIntoConstraints="NO" id="coi-NF-7kC">
+                                        <rect key="frame" x="270" y="509" width="95" height="188"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgY-Cc-FGQ">
+                                        <rect key="frame" x="29" y="705" width="368" height="212"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <string key="text">Two - results in the opponent drawing two cards. Multiple twos can be played at once. The only immediate legal response when the opponent plays a Two is another Two or an Ace matching the suit of the played two.</string>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="23"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="shadowColor" systemColor="opaqueSeparatorColor"/>
+                                        <size key="shadowOffset" width="-1" height="2"/>
+                                    </label>
+                                </subviews>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="H3f-Lz-lWD"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="H3f-Lz-lWD"/>
+                                    </mask>
+                                </variation>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5Z2-iG-H6o"/>
                         <color key="backgroundColor" systemColor="tertiaryLabelColor"/>
                         <constraints>
-                            <constraint firstItem="P0T-8s-N84" firstAttribute="top" secondItem="5Z2-iG-H6o" secondAttribute="top" id="0Ff-F6-2S0"/>
-                            <constraint firstItem="XDl-Ul-N2D" firstAttribute="top" secondItem="3kM-CC-wfJ" secondAttribute="top" constant="20" symbolic="YES" id="8e8-lI-H5n"/>
-                            <constraint firstItem="XDl-Ul-N2D" firstAttribute="leading" secondItem="3kM-CC-wfJ" secondAttribute="leadingMargin" id="Sj7-xM-p0b"/>
-                            <constraint firstItem="P0T-8s-N84" firstAttribute="leading" secondItem="5Z2-iG-H6o" secondAttribute="leading" id="VoI-W1-4n0"/>
-                            <constraint firstItem="XDl-Ul-N2D" firstAttribute="centerX" secondItem="P0T-8s-N84" secondAttribute="centerX" id="bbg-tA-L2S"/>
-                            <constraint firstItem="5Z2-iG-H6o" firstAttribute="trailing" secondItem="P0T-8s-N84" secondAttribute="trailing" id="hUW-Nk-pxT"/>
-                            <constraint firstItem="5Z2-iG-H6o" firstAttribute="bottom" secondItem="P0T-8s-N84" secondAttribute="bottom" id="u23-Dr-eI0"/>
+                            <constraint firstAttribute="trailing" secondItem="E7C-Rc-S7I" secondAttribute="trailing" id="Jg3-Af-bx7"/>
+                            <constraint firstAttribute="bottom" secondItem="E7C-Rc-S7I" secondAttribute="bottom" id="Wbh-hI-OqH"/>
+                            <constraint firstItem="E7C-Rc-S7I" firstAttribute="leading" secondItem="3kM-CC-wfJ" secondAttribute="leading" id="bxM-XS-QEn"/>
+                            <constraint firstItem="E7C-Rc-S7I" firstAttribute="top" secondItem="3kM-CC-wfJ" secondAttribute="top" id="f6u-cN-8mE"/>
                         </constraints>
                     </view>
+                    <size key="freeformSize" width="417" height="1555"/>
+                    <connections>
+                        <outlet property="InstructionView" destination="E7C-Rc-S7I" id="ux0-mu-a8a"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qZ-FJ-fMh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-813" y="467"/>
+            <point key="canvasLocation" x="-813.768115942029" y="466.40625"/>
         </scene>
         <!--Sevens View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -433,7 +553,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-813.04347826086962" y="-203.57142857142856"/>
+            <point key="canvasLocation" x="-813" y="-506"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="Jn6-E7-4nI">
@@ -495,10 +615,21 @@
     </scenes>
     <resources>
         <image name="Acorn" width="26" height="32"/>
+        <image name="AcornII" width="119" height="191"/>
+        <image name="AcornVII" width="117" height="192"/>
         <image name="Hearts" width="30" height="33"/>
+        <image name="HeartsII" width="116" height="190"/>
+        <image name="HeartsVII" width="117" height="195"/>
         <image name="Leaves" width="27" height="31"/>
+        <image name="LeavesII" width="119" height="193"/>
+        <image name="LeavesVII" width="117" height="196"/>
         <image name="Pumpkins" width="32" height="34"/>
+        <image name="PumpkinsII" width="120" height="194"/>
+        <image name="PumpkinsVII" width="117" height="196"/>
         <image name="background" width="853" height="1280"/>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

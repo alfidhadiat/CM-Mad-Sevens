@@ -17,6 +17,7 @@
 		2549233C25EA48B50093A4A1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2549233B25EA48B50093A4A1 /* ViewController.swift */; };
 		2549234125EA7BD30093A4A1 /* Definitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2549234025EA7BD30093A4A1 /* Definitions.swift */; };
 		25F9EB1F260789B900A8EC88 /* ModelCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F9EB1E260789B900A8EC88 /* ModelCardView.swift */; };
+		63D507B0261A8A5F00BE8F8A /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D507AF261A8A5F00BE8F8A /* InstructionsViewController.swift */; };
 		7F244CF525E686DD00080B80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F244CF425E686DD00080B80 /* AppDelegate.swift */; };
 		7F244CF725E686DD00080B80 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F244CF625E686DD00080B80 /* SceneDelegate.swift */; };
 		7F244CFC25E686DD00080B80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F244CFA25E686DD00080B80 /* Main.storyboard */; };
@@ -71,6 +72,7 @@
 		2549233B25EA48B50093A4A1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2549234025EA7BD30093A4A1 /* Definitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Definitions.swift; sourceTree = "<group>"; };
 		25F9EB1E260789B900A8EC88 /* ModelCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCardView.swift; sourceTree = "<group>"; };
+		63D507AF261A8A5F00BE8F8A /* InstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
 		7F244CF125E686DD00080B80 /* MADSevens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MADSevens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F244CF425E686DD00080B80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F244CF625E686DD00080B80 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				7F244CF625E686DD00080B80 /* SceneDelegate.swift */,
 				7F244CFA25E686DD00080B80 /* Main.storyboard */,
 				18ABE5822603A761003C0836 /* MenuViewController.swift */,
+				63D507AF261A8A5F00BE8F8A /* InstructionsViewController.swift */,
 				18ABE57A26038BB2003C0836 /* CardInPlayView.swift */,
 				25F9EB1E260789B900A8EC88 /* ModelCardView.swift */,
 				18ABE575260389C4003C0836 /* DeckView.swift */,
@@ -370,6 +373,7 @@
 				7F244CF725E686DD00080B80 /* SceneDelegate.swift in Sources */,
 				25F9EB1F260789B900A8EC88 /* ModelCardView.swift in Sources */,
 				2549232C25EA45E50093A4A1 /* Card.swift in Sources */,
+				63D507B0261A8A5F00BE8F8A /* InstructionsViewController.swift in Sources */,
 				7F244D3925E6871800080B80 /* SlotAction.swift in Sources */,
 				7F244D4625E6871800080B80 /* Declarative.swift in Sources */,
 				7F244D4225E6871800080B80 /* BufferAction.swift in Sources */,
