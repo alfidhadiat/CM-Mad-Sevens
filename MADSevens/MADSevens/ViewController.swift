@@ -216,7 +216,7 @@ class MADSevensViewController: UIViewController {
             //deck.drawCard(player: Player.model)
         }
         
-        if self.game.getPlayerHand().count > 3 {
+        if self.game.getPlayerHand().count > 4 {
             self.playerStack.distribution = UIStackView.Distribution.fillEqually
         } else {
             self.playerStack.distribution = UIStackView.Distribution.equalSpacing
@@ -277,7 +277,7 @@ class MADSevensViewController: UIViewController {
                                                         self.discardCardView.rank = chosenCardView.rank
                                                         self.discardCardView.suit = chosenCardView.suit
                                                         
-                                                        if self.game.getPlayerHand().count == 3 {
+                                                        if self.game.getPlayerHand().count == 4 {
                                                             self.playerStack.distribution = UIStackView.Distribution.equalSpacing
                                                         }
                                                         
