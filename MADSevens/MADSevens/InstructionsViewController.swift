@@ -13,7 +13,7 @@ class InstructionsViewController: UIViewController {
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews();
-        self.InstructionView.contentSize.height = 1500;
+        self.InstructionView.contentSize.height = 3000;
     }
     
     
