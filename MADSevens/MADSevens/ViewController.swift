@@ -21,8 +21,12 @@ class MADSevensViewController: UIViewController {
     @IBOutlet weak var ColorChoiceStack: UIStackView!
     @IBOutlet weak var DrawCardButton: UIButton!
     @IBOutlet weak var EndTurnButton: UIButton!
+    @IBOutlet weak var ChangeColorPumpkins: UIButton!
+    @IBOutlet weak var ChangeColorLeaves: UIButton!
+    @IBOutlet weak var ChangeColorHearts: UIButton!
+    @IBOutlet weak var ChangeColorAcorn: UIButton!
     
-
+    
 //    @IBOutlet weak var rankField: UITextField!
 //    @IBOutlet weak var suitField: UITextField!
     
@@ -64,6 +68,10 @@ class MADSevensViewController: UIViewController {
             }
         }
         
+        if discardCard.getRank() == Rank.VII{
+            ColorChoiceStack.isHidden = true
+        }
+        
         DrawCardButton.backgroundColor = UIColor.darkGray
         DrawCardButton.layer.cornerRadius = DrawCardButton.frame.width / 2
         DrawCardButton.setTitleColor(UIColor.white, for: .normal)
@@ -80,7 +88,6 @@ class MADSevensViewController: UIViewController {
         EndTurnButton.layer.shadowOpacity = 0.5
         EndTurnButton.layer.shadowOffset = CGSize(width: 0, height: 0)
         
-        
         for cardview in playerCardView {
             let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
             if game.legalMove(card: currentCard) {
@@ -89,6 +96,53 @@ class MADSevensViewController: UIViewController {
         }
     }
     
+    @IBAction func SwitchToAcorn(_ sender: UIButton) {
+        ColorChoiceStack.isHidden = true
+        game.passTurn()
+        modelTurn2()
+        for cardview in self.playerCardView {
+            let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
+            if self.game.legalMove_color(card: currentCard, suit: Suit.Acorn) {
+                cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
+            }
+        }
+    }
+    
+    @IBAction func SwitchToHearts(_ sender: UIButton) {
+        ColorChoiceStack.isHidden = true
+        game.passTurn()
+        modelTurn2()
+        for cardview in self.playerCardView {
+            let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
+            if self.game.legalMove_color(card: currentCard, suit: Suit.Hearts) {
+                cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
+            }
+        }
+    }
+    
+    @IBAction func SwitchToLeaves(_ sender: UIButton) {
+        ColorChoiceStack.isHidden = true
+        game.passTurn()
+        modelTurn2()
+        for cardview in self.playerCardView {
+            let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
+            if self.game.legalMove_color(card: currentCard, suit: Suit.Leaves) {
+                cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
+            }
+        }
+    }
+    
+    @IBAction func SwitchToPumpkins(_ sender: UIButton) {
+        ColorChoiceStack.isHidden = true
+        game.passTurn()
+        modelTurn2()
+        for cardview in self.playerCardView {
+            let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
+            if self.game.legalMove_color(card: currentCard, suit: Suit.Pumpkins) {
+                cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
+            }
+        }
+    }
     
     
     @IBAction func PassTurn(_ sender: UIButton) {

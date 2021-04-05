@@ -782,26 +782,38 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="lAT-aP-4VX">
                                         <rect key="frame" x="0.0" y="0.0" width="64" height="33"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0y-vw-bDD">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0y-vw-bDD" userLabel="Acorn">
                                                 <rect key="frame" x="0.0" y="0.0" width="29" height="33"/>
                                                 <state key="normal" backgroundImage="Acorn"/>
+                                                <connections>
+                                                    <action selector="SwitchToAcorn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U2n-S2-NZw"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="efw-ex-VpL">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="efw-ex-VpL" userLabel="Hearts">
                                                 <rect key="frame" x="34" y="0.0" width="30" height="33"/>
                                                 <state key="normal" backgroundImage="Hearts"/>
+                                                <connections>
+                                                    <action selector="SwitchToHearts:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UhL-nf-Pdo"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="1mz-FK-LjQ">
                                         <rect key="frame" x="0.0" y="35" width="64" height="34"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FZC-Z3-21n">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FZC-Z3-21n" userLabel="Leaves">
                                                 <rect key="frame" x="0.0" y="0.0" width="27" height="34"/>
                                                 <state key="normal" backgroundImage="Leaves"/>
+                                                <connections>
+                                                    <action selector="SwitchToLeaves:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fQc-lb-OUq"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XYf-my-cLs">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XYf-my-cLs" userLabel="Pumpkins">
                                                 <rect key="frame" x="32" y="0.0" width="32" height="34"/>
                                                 <state key="normal" backgroundImage="Pumpkins"/>
+                                                <connections>
+                                                    <action selector="SwitchToPumpkins:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1lT-ej-IFh"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -1013,6 +1025,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="A86-jq-Xf7"/>
                     <connections>
+                        <outlet property="ChangeColorAcorn" destination="c0y-vw-bDD" id="yRx-5k-NBr"/>
+                        <outlet property="ChangeColorHearts" destination="efw-ex-VpL" id="Xyw-S3-gZN"/>
+                        <outlet property="ChangeColorLeaves" destination="FZC-Z3-21n" id="KYE-Ex-Y3Y"/>
+                        <outlet property="ChangeColorPumpkins" destination="XYf-my-cLs" id="1Vc-mK-sEe"/>
                         <outlet property="ColorChoiceStack" destination="2l6-ID-w83" id="F1e-PV-J5O"/>
                         <outlet property="ColorLabel" destination="tV2-Fl-1EP" id="Kxo-9z-vly"/>
                         <outlet property="DrawCardButton" destination="MeD-rw-olk" id="lJc-d1-JRA"/>

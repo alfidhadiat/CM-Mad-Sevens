@@ -165,6 +165,35 @@ class Deck {
         }
         return false
     }
+    
+    // A function for changing the legality of the card based on a color switch
+    func legalMove_color(card: Card, suit: Suit) -> Bool {
+        if suit == Suit.Acorn {
+            if card.getSuit() == Suit.Acorn{
+                return true
+            }
+        }
+        if suit == Suit.Pumpkins {
+            if card.getSuit() == Suit.Pumpkins{
+                return true
+            }
+        }
+        if suit == Suit.Hearts {
+            if card.getSuit() == Suit.Hearts{
+                return true
+            }
+        }
+        if suit == Suit.Leaves {
+            if card.getSuit() == Suit.Leaves{
+                return true
+            }
+        }
+        if card.getRank() == Rank.VII {
+            return true
+        }
+    
+        return false
+    }
 
     func getDeckCount() -> Int {
         return stack.count

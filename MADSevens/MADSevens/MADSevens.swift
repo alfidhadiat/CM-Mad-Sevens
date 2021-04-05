@@ -122,6 +122,10 @@ class MADSevens {
         return deck.updateDeck()
     }
     
+    func legalMove_color(card: Card, suit: Suit) -> Bool {
+        return deck.legalMove_color(card: card, suit: suit)
+    }
+    
     func printGame() {
         print("Current situation:")
         print("Current player: \(currentPlayer)")
