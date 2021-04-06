@@ -105,6 +105,7 @@ class MADSevensViewController: UIViewController {
     
     @IBAction func SwitchToAcorn(_ sender: UIButton) {
         ColorChoiceStack.isHidden = true
+        let count = game.getModelHand().count
         game.passTurn()
         game.modelTurn()
         
@@ -115,6 +116,16 @@ class MADSevensViewController: UIViewController {
                     modelStack.removeArrangedSubview(cardview)
                 }
             }
+        }
+        
+        if count < game.getModelHand().count {
+            let newCardView = ModelCardView()
+            modelCardView.append(newCardView)
+            newCardView.setSuit(newSuit: game.getModelHand()[game.getModelHand().endIndex-1].getSuit())
+            newCardView.setRank(newRank: game.getModelHand()[game.getModelHand().endIndex-1].getRank())
+            newCardView.widthAnchor.constraint(lessThanOrEqualToConstant: 74).isActive = true
+            newCardView.backgroundColor = UIColor.clear
+            modelStack.addArrangedSubview(newCardView)
         }
         
         if self.game.getModelHand().count > 4 {
@@ -136,6 +147,7 @@ class MADSevensViewController: UIViewController {
     
     @IBAction func SwitchToHearts(_ sender: UIButton) {
         ColorChoiceStack.isHidden = true
+        let count = game.getModelHand().count
         game.passTurn()
         game.modelTurn()
 
@@ -146,6 +158,16 @@ class MADSevensViewController: UIViewController {
                     modelStack.removeArrangedSubview(cardview)
                 }
             }
+        }
+        
+        if count < game.getModelHand().count {
+            let newCardView = ModelCardView()
+            modelCardView.append(newCardView)
+            newCardView.setSuit(newSuit: game.getModelHand()[game.getModelHand().endIndex-1].getSuit())
+            newCardView.setRank(newRank: game.getModelHand()[game.getModelHand().endIndex-1].getRank())
+            newCardView.widthAnchor.constraint(lessThanOrEqualToConstant: 74).isActive = true
+            newCardView.backgroundColor = UIColor.clear
+            modelStack.addArrangedSubview(newCardView)
         }
         
         if self.game.getModelHand().count > 4 {
@@ -167,6 +189,7 @@ class MADSevensViewController: UIViewController {
     
     @IBAction func SwitchToLeaves(_ sender: UIButton) {
         ColorChoiceStack.isHidden = true
+        let count = game.getModelHand().count
         game.passTurn()
         game.modelTurn()
         
@@ -177,6 +200,16 @@ class MADSevensViewController: UIViewController {
                     modelStack.removeArrangedSubview(cardview)
                 }
             }
+        }
+        
+        if count < game.getModelHand().count {
+            let newCardView = ModelCardView()
+            modelCardView.append(newCardView)
+            newCardView.setSuit(newSuit: game.getModelHand()[game.getModelHand().endIndex-1].getSuit())
+            newCardView.setRank(newRank: game.getModelHand()[game.getModelHand().endIndex-1].getRank())
+            newCardView.widthAnchor.constraint(lessThanOrEqualToConstant: 74).isActive = true
+            newCardView.backgroundColor = UIColor.clear
+            modelStack.addArrangedSubview(newCardView)
         }
         
         if self.game.getModelHand().count > 4 {
@@ -198,8 +231,19 @@ class MADSevensViewController: UIViewController {
     
     @IBAction func SwitchToPumpkins(_ sender: UIButton) {
         ColorChoiceStack.isHidden = true
+        let count = game.getModelHand().count
         game.passTurn()
         game.modelTurn()
+        
+        if count < game.getModelHand().count {
+            let newCardView = ModelCardView()
+            modelCardView.append(newCardView)
+            newCardView.setSuit(newSuit: game.getModelHand()[game.getModelHand().endIndex-1].getSuit())
+            newCardView.setRank(newRank: game.getModelHand()[game.getModelHand().endIndex-1].getRank())
+            newCardView.widthAnchor.constraint(lessThanOrEqualToConstant: 74).isActive = true
+            newCardView.backgroundColor = UIColor.clear
+            modelStack.addArrangedSubview(newCardView)
+        }
         
         for cardview in modelCardView {
             let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
@@ -230,6 +274,7 @@ class MADSevensViewController: UIViewController {
     
     @IBAction func PassTurn(_ sender: UIButton) {
         sender.isHidden = true
+        let count = game.getModelHand().count
         game.passTurn()
         game.modelTurn()
         
@@ -240,6 +285,16 @@ class MADSevensViewController: UIViewController {
                     modelStack.removeArrangedSubview(cardview)
                 }
             }
+        }
+        
+        if count < game.getModelHand().count {
+            let newCardView = ModelCardView()
+            modelCardView.append(newCardView)
+            newCardView.setSuit(newSuit: game.getModelHand()[game.getModelHand().endIndex-1].getSuit())
+            newCardView.setRank(newRank: game.getModelHand()[game.getModelHand().endIndex-1].getRank())
+            newCardView.widthAnchor.constraint(lessThanOrEqualToConstant: 74).isActive = true
+            newCardView.backgroundColor = UIColor.clear
+            modelStack.addArrangedSubview(newCardView)
         }
         
         if self.game.getModelHand().count > 4 {
@@ -315,6 +370,7 @@ class MADSevensViewController: UIViewController {
             self.playerStack.distribution = UIStackView.Distribution.equalSpacing
         }
         
+        let count = game.getModelHand().count
         game.printGame()
         game.passTurn()
         game.modelTurn()
@@ -326,6 +382,16 @@ class MADSevensViewController: UIViewController {
                     modelStack.removeArrangedSubview(cardview)
                 }
             }
+        }
+        
+        if count < game.getModelHand().count {
+            let newCardView = ModelCardView()
+            modelCardView.append(newCardView)
+            newCardView.setSuit(newSuit: game.getModelHand()[game.getModelHand().endIndex-1].getSuit())
+            newCardView.setRank(newRank: game.getModelHand()[game.getModelHand().endIndex-1].getRank())
+            newCardView.widthAnchor.constraint(lessThanOrEqualToConstant: 74).isActive = true
+            newCardView.backgroundColor = UIColor.clear
+            modelStack.addArrangedSubview(newCardView)
         }
         
         if self.game.getModelHand().count > 4 {
