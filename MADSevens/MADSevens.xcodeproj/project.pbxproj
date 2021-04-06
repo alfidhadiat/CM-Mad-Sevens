@@ -74,6 +74,7 @@
 		2549233B25EA48B50093A4A1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2549234025EA7BD30093A4A1 /* Definitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Definitions.swift; sourceTree = "<group>"; };
 		25F9EB1E260789B900A8EC88 /* ModelCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCardView.swift; sourceTree = "<group>"; };
+		6386BB64261CF93B00FD6C5D /* MADSevens-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MADSevens-Bridging-Header.h"; sourceTree = "<group>"; };
 		63D507AF261A8A5F00BE8F8A /* InstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
 		63E0E97D261CEC0D006EB8A3 /* sevensACTR.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sevensACTR.swift; sourceTree = "<group>"; };
 		63E0E97E261CEC0D006EB8A3 /* sevens.actr */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sevens.actr; sourceTree = "<group>"; };
@@ -165,6 +166,7 @@
 				18ABE5822603A761003C0836 /* MenuViewController.swift */,
 				63D507AF261A8A5F00BE8F8A /* InstructionsViewController.swift */,
 				18ABE57A26038BB2003C0836 /* CardInPlayView.swift */,
+				6386BB64261CF93B00FD6C5D /* MADSevens-Bridging-Header.h */,
 				25F9EB1E260789B900A8EC88 /* ModelCardView.swift */,
 				63E0E97E261CEC0D006EB8A3 /* sevens.actr */,
 				63E0E97D261CEC0D006EB8A3 /* sevensACTR.swift */,
