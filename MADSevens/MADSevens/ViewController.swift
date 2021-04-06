@@ -25,7 +25,8 @@ class MADSevensViewController: UIViewController {
     @IBOutlet weak var ChangeColorLeaves: UIButton!
     @IBOutlet weak var ChangeColorHearts: UIButton!
     @IBOutlet weak var ChangeColorAcorn: UIButton!
-    
+    @IBOutlet weak var PlayerWinsLabel: UILabel!
+    @IBOutlet weak var ModelWinsLabel: UILabel!
     
 //    @IBOutlet weak var rankField: UITextField!
 //    @IBOutlet weak var suitField: UITextField!
@@ -72,6 +73,8 @@ class MADSevensViewController: UIViewController {
             ColorChoiceStack.isHidden = true
         }
         
+        PlayerWinsLabel.isHidden = true
+        ModelWinsLabel.isHidden = true
         DrawCardButton.backgroundColor = UIColor.darkGray
         DrawCardButton.layer.cornerRadius = DrawCardButton.frame.width / 2
         DrawCardButton.setTitleColor(UIColor.white, for: .normal)
@@ -511,10 +514,16 @@ class MADSevensViewController: UIViewController {
         switch checkpoint {
         case "Player":
             print("Player won the game!")
-            game.newGame()
+            EndTurnButton.isHidden = true
+            DrawCardButton.isHidden = true
+            PlayerWinsLabel.isHidden = false
+            //game.newGame()
         case "Model":
             print("Model won the game!")
-            game.newGame()
+            EndTurnButton.isHidden = true
+            DrawCardButton.isHidden = true
+            ModelWinsLabel.isHidden = false
+            //game.newGame()
         default:
             break
         }
