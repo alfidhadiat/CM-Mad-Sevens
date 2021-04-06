@@ -1,0 +1,139 @@
+;;;; ACT-R model of Sevens card game
+;;;;
+
+(add-dm
+        (predLeaves isa prediction specific suit suitRank Leaves)
+        (predAcorn isa predition specific suit suitRank Acorn)
+        (predPumpkins isa prediction specific suit suitRank Pumpkins)
+        (predHearts isa prediction specific suit suitRank Hearts)
+		(predKing isa prediction specific rank suitRank King)
+		(predUnter isa prediction specific rank suitRank Unter)
+		(predVIII isa prediction specific rank suitRank VIII)
+		(predIX isa prediction specific rank suitRank IX)
+		(predX isa prediction specific rank suitRank X)
+        (aceLeaves isa discardedAce aceSuit Leaves)
+        (aceAcorn isa discardedAce aceSuit Acorn)
+        (acePumpkins isa discardedAce aceSuit Pumpkins)
+        (aceHearts isa discardedAce aceSuit Hearts)
+        (goal isa goal state start)
+)
+
+(set-all-baselevels -100 10) ;; Time offset and number of references
+
+(p setup
+    =goal>
+        isa goal
+        state start
+==>
+    +action>
+        isa beginning
+)
+
+(p drawCard
+	=goal>
+		isa goal
+		state noLegal
+==>
+	+action>
+		isa move
+		choice draw
+)
+
+(p playOnlyLegal
+	=goal>
+		isa goal
+		state oneLegal
+==>
+	+action>
+		isa move
+		choice playOne
+)
+
+(p multipleLegalCheck
+	=goal>
+		isa goal
+		state multipleLegal
+==>
+	+action>
+		isa move
+		choice multipleCheck
+)
+
+(p predictSuit
+	=goal>
+		isa goal
+		state predictSuit
+==>
+	=goal>
+		state chooseSuit
+	+retrieval>
+		isa prediction
+		specific suit
+)
+
+(p chooseSuit
+	=goal>
+		isa goal
+		state chooseSuit
+	=retrieval>
+		isa prediction
+		suitRank =suit
+==>
+	+action>
+		isa move
+		choice prediction
+		predict =suit
+)
+
+(p playAceAgainstTwo
+	=goal>
+		isa goal
+		state multipleProcedure
+		two yes
+		ace yes
+==>
+	+action>
+		isa move
+		choice playAce
+)
+
+(p checkPlayedAcesForTwos
+	=goal>
+		isa goal
+		state multipleProcedure
+		two yes
+		ace no
+==>
+	=goal>
+		state checkAce
+	+retrieval>
+		isa discardedAce
+)
+
+(p playSuit
+	=goal>
+		isa goal
+		state checkAce
+	=retrieval>
+		isa discardedAce
+		aceSuit =suit
+==>
+	+action>
+		isa move
+		choice checkAce
+		predict =suit
+)
+
+(p countLegalsInHand
+	=goal>
+		isa goal
+		state multipleProcedure
+		two no
+		ace no
+==>
+	+action>
+		isa move
+		choice countLegals
+)
+
+(goal-focus goal)
