@@ -109,12 +109,12 @@ class MADSevensViewController: UIViewController {
         game.modelTurn()
         discardCardView.rank = game.getTopDiscardCard().getRank()
         discardCardView.suit = game.getTopDiscardCard().getSuit()
-        for cardview in self.playerCardView {
-            let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
-            if self.game.legalMove_color(card: currentCard, suit: Suit.Acorn) {
-                cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
-            }
-        }
+//        for cardview in self.playerCardView {
+//            let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
+//            if self.game.legalMove_color(card: currentCard, suit: Suit.Acorn) {
+//                cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
+//            }
+//        }
     }
     
     @IBAction func SwitchToHearts(_ sender: UIButton) {
@@ -123,12 +123,12 @@ class MADSevensViewController: UIViewController {
         game.modelTurn()
         discardCardView.rank = game.getTopDiscardCard().getRank()
         discardCardView.suit = game.getTopDiscardCard().getSuit()
-        for cardview in self.playerCardView {
-            let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
-            if self.game.legalMove_color(card: currentCard, suit: Suit.Hearts) {
-                cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
-            }
-        }
+//        for cardview in self.playerCardView {
+//            let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
+//            if self.game.legalMove_color(card: currentCard, suit: Suit.Hearts) {
+//                cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
+//            }
+//        }
     }
     
     @IBAction func SwitchToLeaves(_ sender: UIButton) {
@@ -137,12 +137,12 @@ class MADSevensViewController: UIViewController {
         game.modelTurn()
         discardCardView.rank = game.getTopDiscardCard().getRank()
         discardCardView.suit = game.getTopDiscardCard().getSuit()
-        for cardview in self.playerCardView {
-            let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
-            if self.game.legalMove_color(card: currentCard, suit: Suit.Leaves) {
-                cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
-            }
-        }
+//        for cardview in self.playerCardView {
+//            let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
+//            if self.game.legalMove_color(card: currentCard, suit: Suit.Leaves) {
+//                cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
+//            }
+//        }
     }
     
     @IBAction func SwitchToPumpkins(_ sender: UIButton) {
@@ -151,12 +151,12 @@ class MADSevensViewController: UIViewController {
         game.modelTurn()
         discardCardView.rank = game.getTopDiscardCard().getRank()
         discardCardView.suit = game.getTopDiscardCard().getSuit()
-        for cardview in self.playerCardView {
-            let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
-            if self.game.legalMove_color(card: currentCard, suit: Suit.Pumpkins) {
-                cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
-            }
-        }
+//        for cardview in self.playerCardView {
+//            let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
+//            if self.game.legalMove_color(card: currentCard, suit: Suit.Pumpkins) {
+//                cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
+//            }
+//        }
     }
     
     
@@ -198,6 +198,7 @@ class MADSevensViewController: UIViewController {
         print("Current player: \(game.getCurrentPlayer()), drawing a card right now!")
         
         game.drawCard()
+        game.rememberSuitRank()
         
         let currentPlayer = game.getCurrentPlayer()
         if currentPlayer == Player.player{
@@ -220,6 +221,7 @@ class MADSevensViewController: UIViewController {
             playerStack.addArrangedSubview(newCardView)
             //deck.drawCard(player: Player.player)
         }
+        
         if currentPlayer == Player.model{
             let newCardView = ModelCardView()
             newCardView.setSuit(newSuit: game.getModelHand()[game.getModelHand().endIndex-1].getSuit())
@@ -264,22 +266,6 @@ class MADSevensViewController: UIViewController {
         }
     }
     
-    func modelTurn2() {
-        //Here, the model is called, and afterwards his move is executed
-        //E.g. decide to draw a card:
-        print("Model draws a card")
-        game.drawCard()
-        let newCardView = ModelCardView()
-        newCardView.setSuit(newSuit: game.getModelHand()[game.getModelHand().endIndex-1].getSuit())
-        newCardView.setRank(newRank: game.getModelHand()[game.getModelHand().endIndex-1].getRank())
-        newCardView.backgroundColor = UIColor.clear
-        modelStack.autoresizingMask = [.flexibleHeight,.flexibleWidth]
-        modelStack.autoresizesSubviews = true
-        modelStack.spacing = 0
-        modelStack.addArrangedSubview(newCardView)
-        game.printGame()
-        game.passTurn()
-    }
     
     @objc func moveCard(_ recognizer: UITapGestureRecognizer) {
         switch recognizer.state {
