@@ -570,13 +570,15 @@ class MADSevensViewController: UIViewController {
             EndTurnButton.isHidden = true
             DrawCardButton.isHidden = true
             PlayerWinsLabel.isHidden = false
-            //game.newGame()
+//            game.newGame()
+//            TODO: go back to the main menu?
         case "Model":
             print("Model won the game!")
             EndTurnButton.isHidden = true
             DrawCardButton.isHidden = true
             ModelWinsLabel.isHidden = false
-            //game.newGame()
+//            game.newGame()
+//            TODO: go back to the main menu?
         default:
             break
         }

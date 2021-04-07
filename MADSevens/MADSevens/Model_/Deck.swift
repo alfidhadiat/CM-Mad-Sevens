@@ -14,9 +14,11 @@ class Deck {
     private var playerHand = [Card]()
     private var modelHand = [Card]()
     private var discardSuit: Suit?
+    private var numberOfTwos: Int
     
     init() {
         print("INIT Deck! -----------------------------")
+        numberOfTwos = 0
         initialize()
     }
 
@@ -50,13 +52,15 @@ class Deck {
         discard.removeAll()
         playerHand.removeAll()
         modelHand.removeAll()
+        numberOfTwos = 0
         initialize()
     }
     
+    
     /** When someone wants to draw a card, first we check if there are any cards left in the stack. If not, we shuffle the discardpile (except for the top card) and add them to the stack. If there are no cards in the discardpile, we reached an impasse and the game will be terminated.
     */
-    
-    func drawCard(player: Player) {
+    func drawOneCard(player: Player) {
+        print("In func drawOneCard!")
         if stack.isEmpty {
             shuffleDiscardPile()
         }
@@ -75,8 +79,26 @@ class Deck {
         }
     }
     
+    /**
+     Draw a single card if no two on top, draw two times the number of two's on top of the discardpile othersiwe.
+     */
+    func drawCard(player: Player) {
+        print("In func drawCard!")
+        drawOneCard(player: player)
+        while numberOfTwos > 0 {
+            print("There is a two on top!")
+            numberOfTwos -= 1
+            drawOneCard(player: player)
+            // for the top two, take only one extra card
+            if numberOfTwos != 0 {
+                drawOneCard(player: player)
+            }
+        }
+    }
     
-
+    /**
+     Play a card for a certain player, in case of a seven also update the value of newSuit to reflect the chosen suit.
+     */
     func playCard(card: Card, player: Player, newSuit: Suit?) {
         switch player {
         case Player.player:
@@ -88,9 +110,11 @@ class Deck {
             }
             if (index != -1) {
                 discard.append(playerHand.remove(at: index))
+                if card.getRank() == Rank.II {
+                    numberOfTwos += 1
+                }
             } else {
-                //TODO: what to do now?
-                print("You don't have this card!")
+                print("Player doesn't have this card!")
             }
         case Player.model:
             var index = -1
@@ -101,13 +125,18 @@ class Deck {
             }
             if (index != -1) {
                 discard.append(modelHand.remove(at: index))
+                if card.getRank() == Rank.II {
+                    numberOfTwos += 1
+                }
             } else {
                 //TODO: what to do now?
-                print("You don't have this card!")
+                print("Model doesn't have this card!")
             }
         default:
             print("Unknown who wants to play a card, error!")
         }
+        // Update value of discardSuit
+        discardSuit = nil
         if newSuit != nil {
             discardSuit = newSuit
         }
@@ -153,7 +182,18 @@ class Deck {
         return modelHand.isEmpty
     }
     
+    /**
+     Returns true in case a card is considered a legal move.
+     */
     func legalMove(card: Card) -> Bool {
+        if getCurrentRank() == Rank.II {
+            if card.getRank() == Rank.II {
+                return true
+            }
+            if card.getRank() == Rank.Ace && card.getSuit() == getCurrentSuit() {
+                return true
+            }
+        }
         if card.getRank() == getCurrentRank() {
             return true
         }
@@ -166,49 +206,18 @@ class Deck {
         return false
     }
     
-    // A function for changing the legality of the card based on a color switch
-    func legalMove_color(card: Card, suit: Suit) -> Bool {
-        if suit == Suit.Acorn {
-            if card.getSuit() == Suit.Acorn{
-                return true
-            }
-        }
-        if suit == Suit.Pumpkins {
-            if card.getSuit() == Suit.Pumpkins{
-                return true
-            }
-        }
-        if suit == Suit.Hearts {
-            if card.getSuit() == Suit.Hearts{
-                return true
-            }
-        }
-        if suit == Suit.Leaves {
-            if card.getSuit() == Suit.Leaves{
-                return true
-            }
-        }
-        if card.getRank() == Rank.VII {
+    /**
+     Returns true in case this card is a legal move to play as a second card, i.e. when someone already played an eight of hearts, an eight of acorns/leaves/pumpkins is considered a legal move.
+     */
+    func secondLegalMove(card: Card) -> {
+        if card.getRank() == getCurrentRank() {
             return true
         }
-    
         return false
-    }
-
-    func getDeckCount() -> Int {
-        return stack.count
     }
     
     func getCurrentRank() -> Rank {
         return discard[discard.endIndex-1].getRank()
-    }
-    
-    func getNewRank() -> Rank {
-        return stack[stack.startIndex].getRank()
-    }
-    
-    func getNewSuit() -> Suit {
-        return stack[stack.startIndex].getSuit()
     }
     
     func getCurrentSuit() -> Suit {
@@ -219,6 +228,10 @@ class Deck {
         }
     }
     
+    func setNewSuit(newSuit: Suit) {
+        this.discardSuit = newSuit
+    }
+    
     func getPlayerHand() -> [Card] {
         return playerHand
     }
@@ -226,6 +239,50 @@ class Deck {
     func getModelHand() -> [Card] {
         return modelHand
     }
+    
+    func getDeckCount() -> Int {
+        return stack.count
+    }
+    
+    func getNewRank() -> Rank {
+        return stack[stack.startIndex].getRank()
+    }
+    
+    func getNewSuit() -> Suit {
+        return stack[stack.startIndex].getSuit()
+    }
+    
+    func getTopDiscardCard() -> Card {
+        return discard[discard.endIndex-1]
+    }
+    
+    // A function for changing the legality of the card based on a color switch
+//    func legalMove_color(card: Card, suit: Suit) -> Bool {
+//        if suit == Suit.Acorn {
+//            if card.getSuit() == Suit.Acorn{
+//                return true
+//            }
+//        }
+//        if suit == Suit.Pumpkins {
+//            if card.getSuit() == Suit.Pumpkins{
+//                return true
+//            }
+//        }
+//        if suit == Suit.Hearts {
+//            if card.getSuit() == Suit.Hearts{
+//                return true
+//            }
+//        }
+//        if suit == Suit.Leaves {
+//            if card.getSuit() == Suit.Leaves{
+//                return true
+//            }
+//        }
+//        if card.getRank() == Rank.VII {
+//            return true
+//        }
+//        return false
+//    }
     
     
 //    func playFirstCard(player: CurrentPlayer) {
@@ -237,8 +294,5 @@ class Deck {
 //        }
 //    }
     
-    func getTopDiscardCard() -> Card {
-        return discard[discard.endIndex-1]
-    }
-    
+
 }

@@ -133,9 +133,9 @@ class MADSevens {
         return deck.getNewSuit()
     }
     
-    func legalMove_color(card: Card, suit: Suit) -> Bool {
-        return deck.legalMove_color(card: card, suit: suit)
-    }
+//    func legalMove_color(card: Card, suit: Suit) -> Bool {
+//        return deck.legalMove_color(card: card, suit: suit)
+//    }
     
     func getDeckState() -> String {
         return deck.updateDeck()
@@ -155,6 +155,7 @@ class MADSevens {
             print("\(playerhand[i].getSuit()) - \(playerhand[i].getRank())")
         }
         print("\n Top of the discard pile: \(deck.getTopDiscardCard().getSuit()) - \(deck.getTopDiscardCard().getRank())")
+        print(" The current suit is: \(deck.getCurrentSuit())")
     }
     
     /*************************
