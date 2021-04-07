@@ -114,6 +114,7 @@ class MADSevensViewController: UIViewController {
         game.modelTurn()
         checkpoint()
         DrawCardButton.isHidden = false
+        ColorLabel.isHidden = true
         
         for cardview in modelCardView {
             let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
@@ -143,6 +144,14 @@ class MADSevensViewController: UIViewController {
         discardCardView.rank = game.getTopDiscardCard().getRank()
         discardCardView.suit = game.getTopDiscardCard().getSuit()
         
+        if count > game.getModelHand().count {
+            if discardCardView.rank == Rank.VII {
+                ColorLabel.isHidden = false
+            } else {
+                ColorLabel.isHidden = true
+            }
+        }
+        
         for cardview in self.playerCardView {
             let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
             if self.game.legalMove(card: currentCard) {
@@ -158,6 +167,7 @@ class MADSevensViewController: UIViewController {
         game.modelTurn()
         checkpoint()
         DrawCardButton.isHidden = false
+        ColorLabel.isHidden = true
 
         for cardview in modelCardView {
             let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
@@ -187,6 +197,15 @@ class MADSevensViewController: UIViewController {
         discardCardView.rank = game.getTopDiscardCard().getRank()
         discardCardView.suit = game.getTopDiscardCard().getSuit()
         
+        if count > game.getModelHand().count {
+            if discardCardView.rank == Rank.VII {
+                ColorLabel.isHidden = false
+            } else {
+                ColorLabel.isHidden = true
+            }
+        }
+        
+        
         for cardview in self.playerCardView {
             let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
             if self.game.legalMove(card: currentCard) {
@@ -202,6 +221,7 @@ class MADSevensViewController: UIViewController {
         game.modelTurn()
         checkpoint()
         DrawCardButton.isHidden = false
+        ColorLabel.isHidden = true
         
         for cardview in modelCardView {
             let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
@@ -230,6 +250,14 @@ class MADSevensViewController: UIViewController {
         
         discardCardView.rank = game.getTopDiscardCard().getRank()
         discardCardView.suit = game.getTopDiscardCard().getSuit()
+        
+        if count > game.getModelHand().count {
+            if discardCardView.rank == Rank.VII {
+                ColorLabel.isHidden = false
+            } else {
+                ColorLabel.isHidden = true
+            }
+        }
         
         for cardview in self.playerCardView {
             let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
@@ -246,6 +274,7 @@ class MADSevensViewController: UIViewController {
         game.modelTurn()
         checkpoint()
         DrawCardButton.isHidden = false
+        ColorLabel.isHidden = true
         
         if count < game.getModelHand().count {
             let newCardView = ModelCardView()
@@ -274,6 +303,14 @@ class MADSevensViewController: UIViewController {
         
         discardCardView.rank = game.getTopDiscardCard().getRank()
         discardCardView.suit = game.getTopDiscardCard().getSuit()
+        
+        if count > game.getModelHand().count {
+            if discardCardView.rank == Rank.VII {
+                ColorLabel.isHidden = false
+            } else {
+                ColorLabel.isHidden = true
+            }
+        }
         
         for cardview in self.playerCardView {
             let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
@@ -291,6 +328,7 @@ class MADSevensViewController: UIViewController {
         game.modelTurn()
         checkpoint()
         DrawCardButton.isHidden = false
+        
         
         for cardview in modelCardView {
             let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
@@ -468,10 +506,12 @@ class MADSevensViewController: UIViewController {
                                                         
                                                         if self.discardCardView.rank == Rank.VII{
                                                             self.ColorChoiceStack.isHidden = false
+                                                            self.EndTurnButton.isHidden = true
                                                         }
                                                         
                                                         if self.discardCardView.rank != Rank.VII{
                                                             self.ColorChoiceStack.isHidden = true
+                                                            self.EndTurnButton.isHidden = false
                                                         }
                                   
                                                         for cardview in self.playerCardView {
