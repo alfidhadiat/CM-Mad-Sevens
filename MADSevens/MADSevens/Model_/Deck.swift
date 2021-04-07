@@ -209,7 +209,8 @@ class Deck {
     /**
      Returns true in case this card is a legal move to play as a second card, i.e. when someone already played an eight of hearts, an eight of acorns/leaves/pumpkins is considered a legal move.
      */
-    func secondLegalMove(card: Card) -> {
+    
+    func secondLegalMove(card: Card) -> Bool {
         if card.getRank() == getCurrentRank() {
             return true
         }
@@ -229,7 +230,7 @@ class Deck {
     }
     
     func setNewSuit(newSuit: Suit) {
-        this.discardSuit = newSuit
+        discardSuit = newSuit
     }
     
     func getPlayerHand() -> [Card] {

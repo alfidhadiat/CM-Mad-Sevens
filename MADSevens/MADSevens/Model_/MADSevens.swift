@@ -26,6 +26,10 @@ class MADSevens {
         deck.drawCard(player: currentPlayer)
     }
     
+    func setNewSuit(newsuit: Suit) {
+        deck.setNewSuit(newSuit: newsuit)
+    }
+    
     func playCard(card: Card, newSuit: Suit?) {
         print("\(currentPlayer) tries to play this card: \(card)")
         if deck.legalMove(card: card) {

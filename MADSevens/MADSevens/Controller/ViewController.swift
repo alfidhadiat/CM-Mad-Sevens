@@ -109,6 +109,7 @@ class MADSevensViewController: UIViewController {
     
     @IBAction func SwitchToAcorn(_ sender: UIButton) {
         ColorChoiceStack.isHidden = true
+        game.setNewSuit(newsuit: Suit.Acorn)
         let count = game.getModelHand().count
         game.passTurn()
         game.modelTurn()
@@ -162,6 +163,7 @@ class MADSevensViewController: UIViewController {
     
     @IBAction func SwitchToHearts(_ sender: UIButton) {
         ColorChoiceStack.isHidden = true
+        game.setNewSuit(newsuit: Suit.Hearts)
         let count = game.getModelHand().count
         game.passTurn()
         game.modelTurn()
@@ -216,6 +218,7 @@ class MADSevensViewController: UIViewController {
     
     @IBAction func SwitchToLeaves(_ sender: UIButton) {
         ColorChoiceStack.isHidden = true
+        game.setNewSuit(newsuit: Suit.Leaves)
         let count = game.getModelHand().count
         game.passTurn()
         game.modelTurn()
@@ -269,6 +272,7 @@ class MADSevensViewController: UIViewController {
     
     @IBAction func SwitchToPumpkins(_ sender: UIButton) {
         ColorChoiceStack.isHidden = true
+        game.setNewSuit(newsuit: Suit.Pumpkins)
         let count = game.getModelHand().count
         game.passTurn()
         game.modelTurn()
@@ -436,7 +440,26 @@ class MADSevensViewController: UIViewController {
             }
         }
         
-        if count < game.getModelHand().count {
+        let newCount = game.getModelHand().count
+        
+//        if game.getTopDiscardCard().getRank() == Rank.II {
+//            if count < newCount {
+//                let newCardView2 = PlayingCardView()
+//                playerCardView.append(newCardView2)
+//                newCardView2.setSuit(newSuit: game.getPlayerHand()[game.getPlayerHand().endIndex-2].getSuit())
+//                newCardView2.setRank(newRank: game.getPlayerHand()[game.getPlayerHand().endIndex-2].getRank())
+//                newCardView2.widthAnchor.constraint(lessThanOrEqualToConstant: 74).isActive = true
+//                newCardView2.backgroundColor = UIColor.clear
+//                let newCard = Card(suit: newCardView2.suit, rank: newCardView2.rank)
+//                if game.legalMove(card: newCard) {
+//                    for newCardView2 in playerCardView {
+//                        newCardView2.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(moveCard(_ :))))
+//                    }
+//                }
+//            }
+//        }
+        
+        if count < newCount {
             let newCardView = ModelCardView()
             modelCardView.append(newCardView)
             newCardView.setSuit(newSuit: game.getModelHand()[game.getModelHand().endIndex-1].getSuit())
@@ -445,6 +468,7 @@ class MADSevensViewController: UIViewController {
             newCardView.backgroundColor = UIColor.clear
             modelStack.addArrangedSubview(newCardView)
         }
+        
         
         if self.game.getModelHand().count > 4 {
             self.modelStack.distribution = UIStackView.Distribution.fillEqually
