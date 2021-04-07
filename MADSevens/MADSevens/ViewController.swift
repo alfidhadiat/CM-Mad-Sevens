@@ -90,6 +90,7 @@ class MADSevensViewController: UIViewController {
         EndTurnButton.layer.shadowRadius = 4
         EndTurnButton.layer.shadowOpacity = 0.5
         EndTurnButton.layer.shadowOffset = CGSize(width: 0, height: 0)
+        EndTurnButton.isHidden = true
         
         ColorLabel.backgroundColor = UIColor.systemBlue
         ColorLabel.layer.cornerRadius = EndTurnButton.frame.height / 2
@@ -111,6 +112,8 @@ class MADSevensViewController: UIViewController {
         let count = game.getModelHand().count
         game.passTurn()
         game.modelTurn()
+        checkpoint()
+        DrawCardButton.isHidden = false
         
         for cardview in modelCardView {
             let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
@@ -153,6 +156,8 @@ class MADSevensViewController: UIViewController {
         let count = game.getModelHand().count
         game.passTurn()
         game.modelTurn()
+        checkpoint()
+        DrawCardButton.isHidden = false
 
         for cardview in modelCardView {
             let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
@@ -195,6 +200,8 @@ class MADSevensViewController: UIViewController {
         let count = game.getModelHand().count
         game.passTurn()
         game.modelTurn()
+        checkpoint()
+        DrawCardButton.isHidden = false
         
         for cardview in modelCardView {
             let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
@@ -237,6 +244,8 @@ class MADSevensViewController: UIViewController {
         let count = game.getModelHand().count
         game.passTurn()
         game.modelTurn()
+        checkpoint()
+        DrawCardButton.isHidden = false
         
         if count < game.getModelHand().count {
             let newCardView = ModelCardView()
@@ -280,6 +289,8 @@ class MADSevensViewController: UIViewController {
         let count = game.getModelHand().count
         game.passTurn()
         game.modelTurn()
+        checkpoint()
+        DrawCardButton.isHidden = false
         
         for cardview in modelCardView {
             let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
@@ -326,8 +337,6 @@ class MADSevensViewController: UIViewController {
 //                }
 //            }
         }
-        
-        sender.isHidden = false
         print(modelStack.arrangedSubviews.count)
     }
     
@@ -377,6 +386,8 @@ class MADSevensViewController: UIViewController {
         game.printGame()
         game.passTurn()
         game.modelTurn()
+        checkpoint()
+        DrawCardButton.isHidden = false
         
         for cardview in modelCardView {
             let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
@@ -448,6 +459,8 @@ class MADSevensViewController: UIViewController {
                                                       animations:{
                                                         self.discardCardView.rank = chosenCardView.rank
                                                         self.discardCardView.suit = chosenCardView.suit
+                                                        self.DrawCardButton.isHidden = true
+                                                        self.EndTurnButton.isHidden = false
                                                         
                                                         if self.game.getPlayerHand().count == 4 {
                                                             self.playerStack.distribution = UIStackView.Distribution.equalSpacing
