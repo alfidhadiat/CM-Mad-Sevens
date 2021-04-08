@@ -79,3 +79,20 @@ func rankStringToRank(rankString: String) -> Rank {
         return Rank.II
     }
 }
+
+func SuitToString(suitString: Suit) -> String {
+    switch suitString {
+    case Suit.Hearts:
+        return "Hearts"
+    case Suit.Acorn:
+        return "Acorn"
+    case Suit.Leaves:
+        return "Leaves"
+    case Suit.Pumpkins:
+        return "Pumpkin"
+//    default:
+//        print("Error, used default suit: Hearts")
+//        return "Hearts"
+    }
+}
+
