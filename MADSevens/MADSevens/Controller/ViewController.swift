@@ -71,6 +71,8 @@ class MADSevensViewController: UIViewController {
         
         if discardCard.getRank() == Rank.VII{
             ColorChoiceStack.isHidden = true
+            ColorLabel.isHidden = false
+            ColorLabel.text = SuitToString(suitString: game.getCurrentSuit())
         }
         
         PlayerWinsLabel.isHidden = true
@@ -490,8 +492,6 @@ class MADSevensViewController: UIViewController {
                 }
             }
         }
-        
-//        let modelhandViewCount = modelStack.subviews.count
                 
         if count < newCount {
             let newCardView = ModelCardView()
@@ -502,8 +502,6 @@ class MADSevensViewController: UIViewController {
             newCardView.backgroundColor = UIColor.clear
             modelStack.addArrangedSubview(newCardView)
         }
-        
-
         
         if self.game.getModelHand().count > 4 {
             self.modelStack.distribution = UIStackView.Distribution.fillEqually
@@ -516,11 +514,6 @@ class MADSevensViewController: UIViewController {
             if game.legalMove(card: currentCard) {
                 cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
             }
-//            if !game.legalMove(card: currentCard) {
-//                for recognizer in cardview.gestureRecognizers ?? [] {
-//                    cardview.removeGestureRecognizer(recognizer)
-//                }
-//            }
         }
         
         DeckView[0].state = game.getDeckState()
