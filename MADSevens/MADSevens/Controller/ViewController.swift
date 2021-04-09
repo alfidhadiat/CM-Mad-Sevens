@@ -156,6 +156,18 @@ class MADSevensViewController: UIViewController {
         discardCardView.rank = game.getTopDiscardCard().getRank()
         discardCardView.suit = game.getTopDiscardCard().getSuit()
         
+        for cardview in self.playerCardView {
+            let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
+            if self.game.legalMove(card: currentCard) {
+                cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
+            }
+            if !game.legalMove(card: currentCard) {
+                for recognizer in cardview.gestureRecognizers ?? [] {
+                    cardview.removeGestureRecognizer(recognizer)
+                }
+            }
+        }
+        
         if count > game.getModelHand().count {
             if discardCardView.rank == Rank.VII {
                 ColorLabel.isHidden = false
@@ -163,13 +175,6 @@ class MADSevensViewController: UIViewController {
                 ColorChoiceStack.isHidden = true
             } else {
                 ColorLabel.isHidden = true
-            }
-        }
-        
-        for cardview in self.playerCardView {
-            let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
-            if self.game.legalMove(card: currentCard) {
-                cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
             }
         }
     }
@@ -220,6 +225,18 @@ class MADSevensViewController: UIViewController {
         
         discardCardView.rank = game.getTopDiscardCard().getRank()
         discardCardView.suit = game.getTopDiscardCard().getSuit()
+            
+        for cardview in self.playerCardView {
+            let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
+            if self.game.legalMove(card: currentCard) {
+                cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
+            }
+            if !game.legalMove(card: currentCard) {
+                for recognizer in cardview.gestureRecognizers ?? [] {
+                    cardview.removeGestureRecognizer(recognizer)
+                }
+            }
+        }
         
         if count > game.getModelHand().count {
             if discardCardView.rank == Rank.VII {
@@ -228,14 +245,6 @@ class MADSevensViewController: UIViewController {
                 ColorChoiceStack.isHidden = true
             } else {
                 ColorLabel.isHidden = true
-            }
-        }
-        
-        
-        for cardview in self.playerCardView {
-            let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
-            if self.game.legalMove(card: currentCard) {
-                cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
             }
         }
     }
@@ -287,6 +296,19 @@ class MADSevensViewController: UIViewController {
         discardCardView.rank = game.getTopDiscardCard().getRank()
         discardCardView.suit = game.getTopDiscardCard().getSuit()
         
+        
+        for cardview in self.playerCardView {
+            let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
+            if self.game.legalMove(card: currentCard) {
+                cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
+            }
+            if !game.legalMove(card: currentCard) {
+                for recognizer in cardview.gestureRecognizers ?? [] {
+                    cardview.removeGestureRecognizer(recognizer)
+                }
+            }
+        }
+        
         if count > game.getModelHand().count {
             if discardCardView.rank == Rank.VII {
                 ColorLabel.isHidden = false
@@ -294,13 +316,6 @@ class MADSevensViewController: UIViewController {
                 ColorChoiceStack.isHidden = true
             } else {
                 ColorLabel.isHidden = true
-            }
-        }
-        
-        for cardview in self.playerCardView {
-            let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
-            if self.game.legalMove(card: currentCard) {
-                cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
             }
         }
     }
@@ -352,6 +367,18 @@ class MADSevensViewController: UIViewController {
         discardCardView.rank = game.getTopDiscardCard().getRank()
         discardCardView.suit = game.getTopDiscardCard().getSuit()
         
+        for cardview in self.playerCardView {
+            let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
+            if self.game.legalMove(card: currentCard) {
+                cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
+            }
+            if !game.legalMove(card: currentCard) {
+                for recognizer in cardview.gestureRecognizers ?? [] {
+                    cardview.removeGestureRecognizer(recognizer)
+                }
+            }
+        }
+        
         if count > game.getModelHand().count {
             if discardCardView.rank == Rank.VII {
                 ColorLabel.isHidden = false
@@ -359,13 +386,6 @@ class MADSevensViewController: UIViewController {
                 ColorChoiceStack.isHidden = true
             } else {
                 ColorLabel.isHidden = true
-            }
-        }
-        
-        for cardview in self.playerCardView {
-            let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
-            if self.game.legalMove(card: currentCard) {
-                cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
             }
         }
     }
@@ -418,18 +438,42 @@ class MADSevensViewController: UIViewController {
         discardCardView.rank = game.getTopDiscardCard().getRank()
         discardCardView.suit = game.getTopDiscardCard().getSuit()
         
-        if discardCardView.rank == Rank.VII {
-            ColorLabel.isHidden = false
-            ColorLabel.text = SuitToString(suitString: game.getCurrentSuit())
-        }
-        
         for cardview in playerCardView {
             let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
             if game.legalMove(card: currentCard) {
                 cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
             }
+            if !game.legalMove(card: currentCard) {
+                for recognizer in cardview.gestureRecognizers ?? [] {
+                    cardview.removeGestureRecognizer(recognizer)
+                }
+            }
         }
-        print(modelStack.arrangedSubviews.count)
+        
+        if discardCardView.rank == Rank.VII {
+            ColorLabel.isHidden = false
+            ColorLabel.text = SuitToString(suitString: game.getCurrentSuit())
+        }
+        
+        if discardCardView.rank == Rank.II  {
+            if count > newcount {
+                for cardview in playerCardView {
+                    let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
+                    if currentCard.getRank() != Rank.II {
+                        for recognizer in cardview.gestureRecognizers ?? [] {
+                            cardview.removeGestureRecognizer(recognizer)
+                        }
+                    }
+                    if currentCard.getRank() == Rank.Ace {
+                        if currentCard.getSuit() != game.getCurrentSuit() {
+                            for recognizer in cardview.gestureRecognizers ?? [] {
+                                cardview.removeGestureRecognizer(recognizer)
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     
     
@@ -479,7 +523,7 @@ class MADSevensViewController: UIViewController {
         game.passTurn()
         game.modelTurn()
         checkpoint()
-        DrawCardButton.isHidden = false
+        sender.isHidden = false
         let newCount = game.getModelHand().count
 
         if count > newCount {
@@ -513,6 +557,11 @@ class MADSevensViewController: UIViewController {
             let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
             if game.legalMove(card: currentCard) {
                 cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
+            }
+            if !game.legalMove(card: currentCard) {
+                for recognizer in cardview.gestureRecognizers ?? [] {
+                    cardview.removeGestureRecognizer(recognizer)
+                }
             }
         }
         
