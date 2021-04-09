@@ -1068,8 +1068,11 @@
                         <outlet property="DrawCardButton" destination="MeD-rw-olk" id="lJc-d1-JRA"/>
                         <outlet property="EndTurnButton" destination="bNy-bR-wCh" id="Jrj-YA-XBt"/>
                         <outlet property="LeadingConstraint" destination="fUV-2x-QW9" id="25H-HH-A7C"/>
+                        <outlet property="ModelLeadingConstraint" destination="GQX-90-xCY" id="FMz-60-2mQ"/>
+                        <outlet property="ModelTrailingConstraint" destination="yjw-dn-kV2" id="FmS-IN-FdF"/>
                         <outlet property="ModelWinsLabel" destination="dCb-iR-zgS" id="rYK-PQ-ez5"/>
                         <outlet property="PlayerWinsLabel" destination="aL0-Yv-Njd" id="89I-T4-VrO"/>
+                        <outlet property="TrailingConstraint" destination="9gT-Gu-VYe" id="Ghb-9m-Jqp"/>
                         <outlet property="discardCardView" destination="wK5-dq-BAJ" id="uh6-Yq-4lI"/>
                         <outlet property="modelStack" destination="VsQ-66-vg4" id="yfz-dB-b58"/>
                         <outlet property="playerStack" destination="WYI-PA-kW6" id="UDR-vF-O1K"/>

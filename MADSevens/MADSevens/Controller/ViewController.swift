@@ -28,6 +28,9 @@ class MADSevensViewController: UIViewController {
     @IBOutlet weak var PlayerWinsLabel: UILabel!
     @IBOutlet weak var ModelWinsLabel: UILabel!
     @IBOutlet weak var LeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var TrailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var ModelTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var ModelLeadingConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,8 +51,14 @@ class MADSevensViewController: UIViewController {
             modelCardView[i].setRank(newRank: modelCards[i].getRank())
             modelCardView[i].setSuit(newSuit: modelCards[i].getSuit())
         }
-        // diplay the card on top of the discard pile
+        
+        // set constraints
         LeadingConstraint.constant = 8
+        TrailingConstraint.constant = 8
+        ModelTrailingConstraint.constant = 8
+        ModelLeadingConstraint.constant = 8
+        
+        // diplay the card on top of the discard pile
         discardCardView.isFaceUp = true
         discardCardView.setRank(newRank: discardCard.getRank())
         discardCardView.setSuit(newSuit: discardCard.getSuit())
@@ -153,6 +162,14 @@ class MADSevensViewController: UIViewController {
             self.modelStack.distribution = UIStackView.Distribution.fillEqually
         } else {
             self.modelStack.distribution = UIStackView.Distribution.equalSpacing
+        }
+        
+        if game.getModelHand().count == 1 {
+            ModelTrailingConstraint.constant = 140
+            ModelLeadingConstraint.constant = 140
+        } else {
+            ModelTrailingConstraint.constant = 8
+            ModelLeadingConstraint.constant = 8
         }
         
         // update the deck's view and display the played card
@@ -268,6 +285,14 @@ class MADSevensViewController: UIViewController {
             }
         }
         
+        if game.getModelHand().count == 1 {
+            ModelTrailingConstraint.constant = 140
+            ModelLeadingConstraint.constant = 140
+        } else {
+            ModelTrailingConstraint.constant = 8
+            ModelLeadingConstraint.constant = 8
+        }
+        
         if discardCardView.rank == Rank.II  {
             if count > newcount {
                 for cardview in playerCardView {
@@ -354,6 +379,14 @@ class MADSevensViewController: UIViewController {
                 ColorLabel.text = SuitToString(suitString: game.getCurrentSuit())
                 ColorChoiceStack.isHidden = true
             }
+        }
+        
+        if game.getModelHand().count == 1 {
+            ModelTrailingConstraint.constant = 140
+            ModelLeadingConstraint.constant = 140
+        } else {
+            ModelTrailingConstraint.constant = 8
+            ModelLeadingConstraint.constant = 8
         }
         
         if discardCardView.rank == Rank.II  {
@@ -443,6 +476,14 @@ class MADSevensViewController: UIViewController {
             }
         }
         
+        if game.getModelHand().count == 1 {
+            ModelTrailingConstraint.constant = 140
+            ModelLeadingConstraint.constant = 140
+        } else {
+            ModelTrailingConstraint.constant = 8
+            ModelLeadingConstraint.constant = 8
+        }
+        
         if discardCardView.rank == Rank.II  {
             if count > newcount {
                 for cardview in playerCardView {
@@ -513,6 +554,14 @@ class MADSevensViewController: UIViewController {
             self.modelStack.distribution = UIStackView.Distribution.equalSpacing
         }
         
+        if game.getModelHand().count == 1 {
+            ModelTrailingConstraint.constant = 140
+            ModelLeadingConstraint.constant = 140
+        } else {
+            ModelTrailingConstraint.constant = 8
+            ModelLeadingConstraint.constant = 8
+        }
+        
         DeckView[0].state = game.getDeckState()
         discardCardView.rank = game.getTopDiscardCard().getRank()
         discardCardView.suit = game.getTopDiscardCard().getSuit()
@@ -532,6 +581,7 @@ class MADSevensViewController: UIViewController {
         if game.getTopDiscardCard().getRank() == Rank.VII {
             ColorLabel.isHidden = false
             ColorLabel.text = SuitToString(suitString: game.getCurrentSuit())
+            ColorLabel.adjustsFontSizeToFitWidth = true
         }
         
         if discardCardView.rank == Rank.II  {
@@ -567,7 +617,10 @@ class MADSevensViewController: UIViewController {
         let playerHandCount = game.getPlayerHand().count
         game.drawCard()
         game.rememberSuitRank()
-        self.LeadingConstraint.constant = 8
+        LeadingConstraint.constant = 8
+        TrailingConstraint.constant = 8
+        ModelTrailingConstraint.constant = 8
+        ModelLeadingConstraint.constant = 8
 
         let playerHandCount2 = game.getPlayerHand().count
         
@@ -625,6 +678,14 @@ class MADSevensViewController: UIViewController {
             modelStack.addArrangedSubview(newCardView)
         }
         
+        if game.getModelHand().count == 1 {
+            ModelTrailingConstraint.constant = 140
+            ModelLeadingConstraint.constant = 140
+        } else {
+            ModelTrailingConstraint.constant = 8
+            ModelLeadingConstraint.constant = 8
+        }
+        
         if self.game.getModelHand().count > 4 {
             self.modelStack.distribution = UIStackView.Distribution.fillEqually
         } else {
@@ -669,6 +730,7 @@ class MADSevensViewController: UIViewController {
         if game.getTopDiscardCard().getRank() == Rank.VII {
             ColorLabel.isHidden = false
             ColorLabel.text = SuitToString(suitString: game.getCurrentSuit())
+            ColorLabel.adjustsFontSizeToFitWidth = true
             ColorChoiceStack.isHidden = true
         }
     }
@@ -706,7 +768,8 @@ class MADSevensViewController: UIViewController {
                                                         }
                                                         
                                                         if self.game.getPlayerHand().count == 1 {
-                                                            self.LeadingConstraint.constant = 275
+                                                            self.LeadingConstraint.constant = 140
+                                                            self.TrailingConstraint.constant = 140
                                                         }
 
                                                         if self.discardCardView.rank == Rank.VII{
