@@ -177,6 +177,24 @@ class MADSevensViewController: UIViewController {
                 ColorLabel.isHidden = true
             }
         }
+        
+        if discardCardView.rank == Rank.II  {
+            if count > newcount {
+                for cardview in playerCardView {
+                    let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
+                    if currentCard.getRank() != Rank.II {
+                        for recognizer in cardview.gestureRecognizers ?? [] {
+                            cardview.removeGestureRecognizer(recognizer)
+                        }
+                    }
+                    if currentCard.getRank() == Rank.Ace {
+                        if currentCard.getSuit() == game.getCurrentSuit() {
+                            cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
+                        }
+                    }
+                }
+            }
+        }
     }
     
     @IBAction func SwitchToHearts(_ sender: UIButton) {
@@ -245,6 +263,24 @@ class MADSevensViewController: UIViewController {
                 ColorChoiceStack.isHidden = true
             } else {
                 ColorLabel.isHidden = true
+            }
+        }
+        
+        if discardCardView.rank == Rank.II  {
+            if count > newcount {
+                for cardview in playerCardView {
+                    let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
+                    if currentCard.getRank() != Rank.II {
+                        for recognizer in cardview.gestureRecognizers ?? [] {
+                            cardview.removeGestureRecognizer(recognizer)
+                        }
+                    }
+                    if currentCard.getRank() == Rank.Ace {
+                        if currentCard.getSuit() == game.getCurrentSuit() {
+                            cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
+                        }
+                    }
+                }
             }
         }
     }
@@ -318,6 +354,24 @@ class MADSevensViewController: UIViewController {
                 ColorLabel.isHidden = true
             }
         }
+        
+        if discardCardView.rank == Rank.II  {
+            if count > newcount {
+                for cardview in playerCardView {
+                    let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
+                    if currentCard.getRank() != Rank.II {
+                        for recognizer in cardview.gestureRecognizers ?? [] {
+                            cardview.removeGestureRecognizer(recognizer)
+                        }
+                    }
+                    if currentCard.getRank() == Rank.Ace {
+                        if currentCard.getSuit() == game.getCurrentSuit() {
+                            cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
+                        }
+                    }
+                }
+            }
+        }
     }
     
     @IBAction func SwitchToPumpkins(_ sender: UIButton) {
@@ -386,6 +440,24 @@ class MADSevensViewController: UIViewController {
                 ColorChoiceStack.isHidden = true
             } else {
                 ColorLabel.isHidden = true
+            }
+        }
+        
+        if discardCardView.rank == Rank.II  {
+            if count > newcount {
+                for cardview in playerCardView {
+                    let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
+                    if currentCard.getRank() != Rank.II {
+                        for recognizer in cardview.gestureRecognizers ?? [] {
+                            cardview.removeGestureRecognizer(recognizer)
+                        }
+                    }
+                    if currentCard.getRank() == Rank.Ace {
+                        if currentCard.getSuit() == game.getCurrentSuit() {
+                            cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
+                        }
+                    }
+                }
             }
         }
     }
@@ -465,10 +537,8 @@ class MADSevensViewController: UIViewController {
                         }
                     }
                     if currentCard.getRank() == Rank.Ace {
-                        if currentCard.getSuit() != game.getCurrentSuit() {
-                            for recognizer in cardview.gestureRecognizers ?? [] {
-                                cardview.removeGestureRecognizer(recognizer)
-                            }
+                        if currentCard.getSuit() == game.getCurrentSuit() {
+                            cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
                         }
                     }
                 }
@@ -575,6 +645,25 @@ class MADSevensViewController: UIViewController {
             ColorChoiceStack.isHidden = true
         } else {
             ColorLabel.isHidden = true
+        }
+        
+        if discardCardView.rank == Rank.II  {
+            if count > newCount {
+                for cardview in playerCardView {
+                    let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
+                    if currentCard.getRank() != Rank.II {
+                        for recognizer in cardview.gestureRecognizers ?? [] {
+                            cardview.removeGestureRecognizer(recognizer)
+                        }
+                    }
+                    if currentCard.getRank() == Rank.Ace {
+                        if currentCard.getSuit() == game.getCurrentSuit() {
+                            cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
+
+                        }
+                    }
+                }
+            }
         }
         
     }
