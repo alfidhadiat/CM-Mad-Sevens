@@ -85,11 +85,11 @@ func SuitToString(suitString: Suit) -> String {
     case Suit.Hearts:
         return "Hearts"
     case Suit.Acorn:
-        return "Acorn"
+        return "Acorns"
     case Suit.Leaves:
         return "Leaves"
     case Suit.Pumpkins:
-        return "Pumpkin"
+        return "Pumpkins"
 //    default:
 //        print("Error, used default suit: Hearts")
 //        return "Hearts"

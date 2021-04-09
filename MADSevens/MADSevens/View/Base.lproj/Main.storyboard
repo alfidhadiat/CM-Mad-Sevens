@@ -599,7 +599,7 @@
                                 <rect key="frame" x="15" y="353" width="72" height="143.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MeD-rw-olk">
-                                        <rect key="frame" x="0.0" y="0.0" width="72" height="91.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="72" height="87"/>
                                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Draw Card"/>
@@ -608,9 +608,9 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Color: " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tV2-Fl-1EP" userLabel="Color:">
-                                        <rect key="frame" x="0.0" y="99.5" width="72" height="44"/>
+                                        <rect key="frame" x="0.0" y="95" width="72" height="48.5"/>
                                         <color key="backgroundColor" systemColor="systemTealColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>

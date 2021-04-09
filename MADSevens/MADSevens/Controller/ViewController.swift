@@ -54,20 +54,9 @@ class MADSevensViewController: UIViewController {
         discardCardView.setRank(newRank: discardCard.getRank())
         discardCardView.setSuit(newSuit: discardCard.getSuit())
         
-        ColorLabel.isHidden = true
+        ColorLabel.isHidden = false
+        ColorLabel.text = SuitToString(suitString: game.getCurrentSuit())
         ColorChoiceStack.isHidden = true
-        if discardCard.getRank() == Rank.VII{
-            ColorChoiceStack.isHidden = false
-        }
-        
-        let currentPlayer = game.getCurrentPlayer()
-        if currentPlayer == Player.model{
-            if discardCardView.rank == Rank.VII {
-                ColorLabel.isHidden = false
-            } else {
-                ColorLabel.isHidden = true
-            }
-        }
         
         if discardCard.getRank() == Rank.VII{
             ColorChoiceStack.isHidden = true
@@ -75,6 +64,8 @@ class MADSevensViewController: UIViewController {
             ColorLabel.text = SuitToString(suitString: game.getCurrentSuit())
         }
         
+        playerStack.distribution = UIStackView.Distribution.equalSpacing
+        modelStack.distribution = UIStackView.Distribution.equalSpacing
         PlayerWinsLabel.isHidden = true
         ModelWinsLabel.isHidden = true
         DrawCardButton.backgroundColor = UIColor.darkGray
@@ -169,12 +160,10 @@ class MADSevensViewController: UIViewController {
         }
         
         if count > game.getModelHand().count {
-            if discardCardView.rank == Rank.VII {
+            if game.getTopDiscardCard().getRank() == Rank.VII {
                 ColorLabel.isHidden = false
                 ColorLabel.text = SuitToString(suitString: game.getCurrentSuit())
                 ColorChoiceStack.isHidden = true
-            } else {
-                ColorLabel.isHidden = true
             }
         }
         
@@ -204,7 +193,6 @@ class MADSevensViewController: UIViewController {
         game.passTurn()
         game.modelTurn()
         checkpoint()
-        DrawCardButton.isHidden = false
         ColorLabel.isHidden = true
         let newcount = game.getModelHand().count
         
@@ -257,12 +245,10 @@ class MADSevensViewController: UIViewController {
         }
         
         if count > game.getModelHand().count {
-            if discardCardView.rank == Rank.VII {
+            if game.getTopDiscardCard().getRank() == Rank.VII {
                 ColorLabel.isHidden = false
                 ColorLabel.text = SuitToString(suitString: game.getCurrentSuit())
                 ColorChoiceStack.isHidden = true
-            } else {
-                ColorLabel.isHidden = true
             }
         }
         
@@ -283,6 +269,7 @@ class MADSevensViewController: UIViewController {
                 }
             }
         }
+        DrawCardButton.isHidden = false
     }
     
     @IBAction func SwitchToLeaves(_ sender: UIButton) {
@@ -292,7 +279,6 @@ class MADSevensViewController: UIViewController {
         game.passTurn()
         game.modelTurn()
         checkpoint()
-        DrawCardButton.isHidden = false
         ColorLabel.isHidden = true
         let newcount = game.getModelHand().count
         
@@ -346,12 +332,10 @@ class MADSevensViewController: UIViewController {
         }
         
         if count > game.getModelHand().count {
-            if discardCardView.rank == Rank.VII {
+            if game.getTopDiscardCard().getRank() == Rank.VII {
                 ColorLabel.isHidden = false
                 ColorLabel.text = SuitToString(suitString: game.getCurrentSuit())
                 ColorChoiceStack.isHidden = true
-            } else {
-                ColorLabel.isHidden = true
             }
         }
         
@@ -372,6 +356,7 @@ class MADSevensViewController: UIViewController {
                 }
             }
         }
+        DrawCardButton.isHidden = false
     }
     
     @IBAction func SwitchToPumpkins(_ sender: UIButton) {
@@ -381,7 +366,6 @@ class MADSevensViewController: UIViewController {
         game.passTurn()
         game.modelTurn()
         checkpoint()
-        DrawCardButton.isHidden = false
         ColorLabel.isHidden = true
         let newcount = game.getModelHand().count
         
@@ -434,12 +418,10 @@ class MADSevensViewController: UIViewController {
         }
         
         if count > game.getModelHand().count {
-            if discardCardView.rank == Rank.VII {
+            if game.getTopDiscardCard().getRank() == Rank.VII {
                 ColorLabel.isHidden = false
                 ColorLabel.text = SuitToString(suitString: game.getCurrentSuit())
                 ColorChoiceStack.isHidden = true
-            } else {
-                ColorLabel.isHidden = true
             }
         }
         
@@ -460,6 +442,7 @@ class MADSevensViewController: UIViewController {
                 }
             }
         }
+        DrawCardButton.isHidden = false
     }
     
     
@@ -469,7 +452,6 @@ class MADSevensViewController: UIViewController {
         game.passTurn()
         game.modelTurn()
         checkpoint()
-        DrawCardButton.isHidden = false
         let newcount = game.getModelHand().count
         
         
@@ -522,7 +504,7 @@ class MADSevensViewController: UIViewController {
             }
         }
         
-        if discardCardView.rank == Rank.VII {
+        if game.getTopDiscardCard().getRank() == Rank.VII {
             ColorLabel.isHidden = false
             ColorLabel.text = SuitToString(suitString: game.getCurrentSuit())
         }
@@ -544,6 +526,7 @@ class MADSevensViewController: UIViewController {
                 }
             }
         }
+        DrawCardButton.isHidden = false
     }
     
     
@@ -582,7 +565,7 @@ class MADSevensViewController: UIViewController {
         }
         
         
-        if self.game.getPlayerHand().count > 4 {
+        if self.game.getPlayerHand().count > 5 {
             self.playerStack.distribution = UIStackView.Distribution.fillEqually
         } else {
             self.playerStack.distribution = UIStackView.Distribution.equalSpacing
@@ -593,7 +576,6 @@ class MADSevensViewController: UIViewController {
         game.passTurn()
         game.modelTurn()
         checkpoint()
-        sender.isHidden = false
         let newCount = game.getModelHand().count
 
         if count > newCount {
@@ -639,12 +621,10 @@ class MADSevensViewController: UIViewController {
         discardCardView.rank = game.getTopDiscardCard().getRank()
         discardCardView.suit = game.getTopDiscardCard().getSuit()
         
-        if discardCardView.rank == Rank.VII {
+        if game.getTopDiscardCard().getRank() == Rank.VII {
             ColorLabel.isHidden = false
             ColorLabel.text = SuitToString(suitString: game.getCurrentSuit())
             ColorChoiceStack.isHidden = true
-        } else {
-            ColorLabel.isHidden = true
         }
         
         if discardCardView.rank == Rank.II  {
@@ -665,7 +645,7 @@ class MADSevensViewController: UIViewController {
                 }
             }
         }
-        
+        sender.isHidden = false
     }
     
     
@@ -691,7 +671,7 @@ class MADSevensViewController: UIViewController {
                                                         self.DrawCardButton.isHidden = true
                                                         self.EndTurnButton.isHidden = false
                                                         
-                                                        if self.game.getPlayerHand().count == 4 {
+                                                        if self.game.getPlayerHand().count == 5 {
                                                             self.playerStack.distribution = UIStackView.Distribution.equalSpacing
                                                         }
                                                         
