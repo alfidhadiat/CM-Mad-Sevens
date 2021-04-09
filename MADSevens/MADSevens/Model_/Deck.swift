@@ -14,11 +14,11 @@ class Deck {
     private var playerHand = [Card]()
     private var modelHand = [Card]()
     private var discardSuit: Suit?
-    private var numberOfTwos: Int
+    private var numberOfActiveTwos: Int
     
     init() {
         print("INIT Deck! -----------------------------")
-        numberOfTwos = 0
+        numberOfActiveTwos = 0
         initialize()
     }
 
@@ -52,7 +52,7 @@ class Deck {
         discard.removeAll()
         playerHand.removeAll()
         modelHand.removeAll()
-        numberOfTwos = 0
+        numberOfActiveTwos = 0
         initialize()
     }
     
@@ -85,12 +85,12 @@ class Deck {
     func drawCard(player: Player) {
         print("In func drawCard!")
         drawOneCard(player: player)
-        while numberOfTwos > 0 {
+        while numberOfActiveTwos > 0 {
             print("There is a two on top!")
-            numberOfTwos -= 1
+            numberOfActiveTwos -= 1
             drawOneCard(player: player)
             // for the top two, take only one extra card
-            if numberOfTwos != 0 {
+            if numberOfActiveTwos != 0 {
                 drawOneCard(player: player)
             }
         }
@@ -100,6 +100,11 @@ class Deck {
      Play a card for a certain player, in case of a seven also update the value of newSuit to reflect the chosen suit.
      */
     func playCard(card: Card, player: Player, newSuit: Suit?) {
+        if !legalMove(card: card) {
+            print("How did you do this, shouldn't be possible. Drawing a card.")
+            drawCard(player: player)
+            return
+        }
         switch player {
         case Player.player:
             var index = -1
@@ -111,7 +116,9 @@ class Deck {
             if (index != -1) {
                 discard.append(playerHand.remove(at: index))
                 if card.getRank() == Rank.II {
-                    numberOfTwos += 1
+                    numberOfActiveTwos += 1
+                } else {
+                    numberOfActiveTwos = 0
                 }
             } else {
                 print("Player doesn't have this card!")
@@ -126,7 +133,9 @@ class Deck {
             if (index != -1) {
                 discard.append(modelHand.remove(at: index))
                 if card.getRank() == Rank.II {
-                    numberOfTwos += 1
+                    numberOfActiveTwos += 1
+                } else {
+                    numberOfActiveTwos = 0
                 }
             } else {
                 //TODO: what to do now?
@@ -294,6 +303,4 @@ class Deck {
 //            discard.append(playerHand.remove(at: 0))
 //        }
 //    }
-    
-
 }

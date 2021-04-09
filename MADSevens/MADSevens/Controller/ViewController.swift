@@ -583,6 +583,7 @@ class MADSevensViewController: UIViewController {
                                   })
                 if !game.playCard2(card: chosenCard, newSuit: nil) {
                     print("Invalid move, a card is drawn for you!")
+                    game.drawCard()
                 }
                 checkpoint()
                 game.printGame()
