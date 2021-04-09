@@ -659,8 +659,9 @@
                                             <constraint firstAttribute="width" relation="lessThanOrEqual" priority="750" constant="74" id="X6W-fv-QHo"/>
                                         </constraints>
                                     </view>
-                                    <view opaque="NO" contentMode="redraw" layoutMarginsFollowReadableWidth="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="220-jD-0rB" customClass="PlayingCardView" customModule="MADSevens" customModuleProvider="target">
+                                    <view opaque="NO" contentMode="redraw" layoutMarginsFollowReadableWidth="YES" insetsLayoutMarginsFromSafeArea="NO" id="220-jD-0rB" customClass="PlayingCardView" customModule="MADSevens" customModuleProvider="target">
                                         <rect key="frame" x="79.5" y="0.0" width="79.5" height="135"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="lessThanOrEqual" priority="750" constant="74" id="WFm-SA-6v2"/>
@@ -1066,6 +1067,7 @@
                         <outlet property="ColorLabel" destination="tV2-Fl-1EP" id="Kxo-9z-vly"/>
                         <outlet property="DrawCardButton" destination="MeD-rw-olk" id="lJc-d1-JRA"/>
                         <outlet property="EndTurnButton" destination="bNy-bR-wCh" id="Jrj-YA-XBt"/>
+                        <outlet property="LeadingConstraint" destination="fUV-2x-QW9" id="25H-HH-A7C"/>
                         <outlet property="ModelWinsLabel" destination="dCb-iR-zgS" id="rYK-PQ-ez5"/>
                         <outlet property="PlayerWinsLabel" destination="aL0-Yv-Njd" id="89I-T4-VrO"/>
                         <outlet property="discardCardView" destination="wK5-dq-BAJ" id="uh6-Yq-4lI"/>

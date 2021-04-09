@@ -27,6 +27,7 @@ class MADSevensViewController: UIViewController {
     @IBOutlet weak var ChangeColorAcorn: UIButton!
     @IBOutlet weak var PlayerWinsLabel: UILabel!
     @IBOutlet weak var ModelWinsLabel: UILabel!
+    @IBOutlet weak var LeadingConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,7 @@ class MADSevensViewController: UIViewController {
             modelCardView[i].setSuit(newSuit: modelCards[i].getSuit())
         }
         // diplay the card on top of the discard pile
+        LeadingConstraint.constant = 8
         discardCardView.isFaceUp = true
         discardCardView.setRank(newRank: discardCard.getRank())
         discardCardView.setSuit(newSuit: discardCard.getSuit())
@@ -565,7 +567,8 @@ class MADSevensViewController: UIViewController {
         let playerHandCount = game.getPlayerHand().count
         game.drawCard()
         game.rememberSuitRank()
-        
+        self.LeadingConstraint.constant = 8
+
         let playerHandCount2 = game.getPlayerHand().count
         
         for i in 1...(playerHandCount2-playerHandCount) {
@@ -702,6 +705,10 @@ class MADSevensViewController: UIViewController {
                                                             self.playerStack.distribution = UIStackView.Distribution.equalSpacing
                                                         }
                                                         
+                                                        if self.game.getPlayerHand().count == 1 {
+                                                            self.LeadingConstraint.constant = 275
+                                                        }
+
                                                         if self.discardCardView.rank == Rank.VII{
                                                             self.ColorChoiceStack.isHidden = false
                                                             self.EndTurnButton.isHidden = true
@@ -714,7 +721,6 @@ class MADSevensViewController: UIViewController {
                                                         }
                                   
                                                         for cardview in self.playerCardView {
-//                                                            let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
                                                             if self.discardCardView.rank == cardview.rank {
                                                                 cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
                                                             }
