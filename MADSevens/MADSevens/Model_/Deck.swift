@@ -192,28 +192,30 @@ class Deck {
     }
     
     /**
-     Returns true in case a card is considered a legal move.
-     */
-    func legalMove(card: Card) -> Bool {
-        if getCurrentRank() == Rank.II {
-            if card.getRank() == Rank.II {
-                return true
+         Returns true in case a card is considered a legal move.
+         */
+        func legalMove(card: Card) -> Bool {
+            if getCurrentRank() == Rank.II  && numberOfActiveTwos > 0 {
+                if card.getRank() == Rank.II {
+                    return true
+                }
+                if card.getRank() == Rank.Ace && card.getSuit() == getCurrentSuit() {
+                    return true
+                }
+            } else {
+                if card.getRank() == getCurrentRank() {
+                    return true
+                }
+                if card.getSuit() == getCurrentSuit() {
+                    return true
+                }
+                if card.getRank() == Rank.VII {
+                    return true
+                }
             }
-            if card.getRank() == Rank.Ace && card.getSuit() == getCurrentSuit() {
-                return true
-            }
+            
+            return false
         }
-        if card.getRank() == getCurrentRank() {
-            return true
-        }
-        if card.getSuit() == getCurrentSuit() {
-            return true
-        }
-        if card.getRank() == Rank.VII {
-            return true
-        }
-        return false
-    }
     
     /**
      Returns true in case this card is a legal move to play as a second card, i.e. when someone already played an eight of hearts, an eight of acorns/leaves/pumpkins is considered a legal move.
@@ -264,6 +266,10 @@ class Deck {
     
     func getTopDiscardCard() -> Card {
         return discard[discard.endIndex-1]
+    }
+    
+    func getActiveTwos() -> Int {
+        return numberOfActiveTwos
     }
     
     // A function for changing the legality of the card based on a color switch

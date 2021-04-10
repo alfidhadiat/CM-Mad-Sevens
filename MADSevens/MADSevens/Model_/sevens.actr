@@ -49,6 +49,31 @@
 		choice playOne
 )
 
+(p trickRankPredict
+    =goal>
+        isa goal
+        state TrickRankPlay
+==>
+    =goal>
+        state trickRankPredict
+    +retrieval>
+        isa prediction
+        specific suit
+)
+
+(p trickRankPlay
+    =goal>
+        isa goal
+        state trickRankPredict
+    =retrieval>
+        suitRank =suit
+==>
+    +action>
+        isa move
+        choice trickRank
+        predict =suit
+)
+
 (p multipleLegalCheck
 	=goal>
 		isa goal
@@ -110,7 +135,7 @@
 		isa discardedAce
 )
 
-(p playSuit
+(p aceCheck
 	=goal>
 		isa goal
 		state checkAce
