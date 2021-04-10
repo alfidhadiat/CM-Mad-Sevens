@@ -30,19 +30,19 @@ class sevensACTR {
     // --------------------
     
     // Function that runs the model's turn
-    func turn(topCard: Card) -> String {
+    func turn(currentRank: Rank, currentSuit: Suit) -> String {
 
         // Go through hand to remember aces and majority suits
         checkHandForAce()
         countSuitsInHand()
         
         // Check if top was ace
-        if topCard.getRank() == Rank.Ace {
-            storeAce(topCard: topCard)
+        if currentRank == Rank.Ace {
+            storeAce(currentRank: currentRank, currentSuit: currentSuit)
         }
         
         // Count the legal moves in ACT-R's hand
-        self.legals = countLegals(topCard: topCard)
+        self.legals = countLegals(currentRank: currentRank, currentSuit: currentSuit)
         
         // Add legal string into ACT-R's goal buffer as a state
         model.buffers["goal"]!.setSlot(slot: "state", value: self.legals)
@@ -60,7 +60,7 @@ class sevensACTR {
         case "trickRank":
             return self.choice
         case "multipleCheck":
-            self.choice = multipleLegals(topCard: topCard)
+            self.choice = multipleLegals(currentRank: currentRank, currentSuit: currentSuit)
             return self.choice
         default:
             //TODO: ALfid, something went wrong
@@ -115,14 +115,12 @@ class sevensACTR {
     }
     
     // Function that counts legal cards in ACT-R hand
-    func countLegals(topCard: Card) -> String{
+    func countLegals(currentRank: Rank, currentSuit: Suit) -> String{
         
-        let topSuit = topCard.getSuit()
-        let topRank = topCard.getRank()
         var trickRankCount = 0
         var legal = 0
         
-        print("Top: \(String(describing: topSuit)), \(String(describing: topRank))")
+        print("Top: \(String(describing: currentSuit)), \(String(describing: currentRank))")
         
         // Seperate procedure between Two and Non-Two
         if activeTwos > 0 {
@@ -142,7 +140,7 @@ class sevensACTR {
                 if rank == Rank.II {
                     legal += 1
                     print("Legal: \(String(describing: suit)), \(String(describing: rank))")
-                } else if rank == Rank.Ace && suit == topSuit {
+                } else if rank == Rank.Ace && suit == currentSuit {
                     legal += 1
                     print("Legal: \(String(describing: suit)), \(String(describing: rank))")
                     self.aceHand = "yes"
@@ -157,14 +155,14 @@ class sevensACTR {
             self.aceHand = "no"
 
             // Count all cards that match in suit and rank of top card
-            trickRankCount = checkTrickRankPlay(topCard: topCard)
+            trickRankCount = checkTrickRankPlay(currentRank: currentRank, currentSuit: currentSuit)
             for card in hand {
 
                 let rank = card.getRank()
                 let suit = card.getSuit()
                 print("Checking \(String(describing: suit)), \(String(describing: rank))...")
                 
-                if (rank == topRank || suit == topSuit || rank == Rank.VII) {
+                if (rank == currentRank || suit == currentSuit || rank == Rank.VII) {
                     legal += 1
                     print("Legal!")
                 }
@@ -217,18 +215,16 @@ class sevensACTR {
     }
 
     // Function that generates a chunk of an ace if it has been used
-    func storeAce(topCard: Card) {
+    func storeAce(currentRank: Rank, currentSuit: Suit) {
 
         // Double check if top really was ace
-        let topRank = topCard.getRank()
-        if topRank == Rank.Ace {
+        if currentRank == Rank.Ace {
             
             // Generate chunk of ace that holds the ace's suit
-            let topSuit = topCard.getSuit()
-            let aceSuit = "ace" + topSuit.rawValue
+            let aceSuit = "ace" + currentSuit.rawValue
             let aceChunk = Chunk(s: aceSuit, m: model)
             aceChunk.setSlot(slot: "isa", value: "discardedAce")
-            aceChunk.setSlot(slot: "aceSuit", value: topSuit.rawValue)
+            aceChunk.setSlot(slot: "aceSuit", value: currentSuit.rawValue)
 
             // Add ace chunk into model
             model.dm.addToDM(aceChunk)
@@ -236,7 +232,7 @@ class sevensACTR {
     }
     
     // Function that runs when there are multiple legals
-    func multipleLegals(topCard: Card) -> String {
+    func multipleLegals(currentRank: Rank, currentSuit: Suit) -> String {
         
         // Set goal state, if two was played, and if ace is in hand
         model.buffers["goal"]!.setSlot(slot: "state", value: "multipleProcedure")
@@ -251,21 +247,19 @@ class sevensACTR {
             
             // Count all legal options into a dictionary
             var legalCounts = [String:Int]()
-            let topRank = topCard.getRank()
-            let topSuit = topCard.getSuit()
 
             for card in hand {
                 
                 let rank = card.getRank()
                 let suit = card.getSuit()
                 
-                if (rank == topRank || rank == Rank.VII) {
+                if (rank == currentRank || rank == Rank.VII) {
                     if legalCounts[rank.rawValue] != nil {
                         legalCounts[rank.rawValue]! += 1
                     } else {
                         legalCounts[rank.rawValue] = 1
                     }
-                } else if suit == topSuit {
+                } else if suit == currentSuit {
                     // Cannot play multiple suits, so always 1 if present
                     legalCounts[suit.rawValue] = 1
                 }
@@ -301,9 +295,8 @@ class sevensACTR {
         return model.lastAction(slot: "choice")!
     }
     
-    func checkTrickRankPlay(topCard: Card) -> Int {
+    func checkTrickRankPlay(currentRank: Rank, currentSuit: Suit) -> Int {
         var rankCounter = [String:Int]()
-        let topSuit = topCard.getSuit()
         var finalCount: Int = 0
         for card in hand {
             let rank = card.getRank()
@@ -318,7 +311,7 @@ class sevensACTR {
                 for card in hand {
                     let cardRank = card.getRank()
                     let cardSuit = card.getSuit()
-                    if (cardRank.rawValue == rank && cardSuit == topSuit) {
+                    if (cardRank.rawValue == rank && cardSuit == currentSuit) {
                         if count > finalCount {
                             finalCount = count
                         }

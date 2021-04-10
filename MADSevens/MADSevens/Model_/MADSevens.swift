@@ -192,7 +192,7 @@ class MADSevens {
         actr.setActiveTwos(numberOfActiveTwos: deck.getActiveTwos())
         
         // Go through the model's turn to generate a "choice"
-        let choice = actr.turn(topCard: getTopDiscardCard())
+        let choice = actr.turn(currentRank: deck.getCurrentRank(), currentSuit: deck.getCurrentSuit())
         print("Choice retrieved from ACTR: \(choice)")
         
         var didMove = false
