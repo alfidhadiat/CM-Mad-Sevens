@@ -31,6 +31,8 @@ class MADSevensViewController: UIViewController {
     @IBOutlet weak var TrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var ModelTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var ModelLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var BackModelWins: UIButton!
+    @IBOutlet weak var BackPlayerWins: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,6 +84,26 @@ class MADSevensViewController: UIViewController {
         DrawCardButton.layer.shadowRadius = 4
         DrawCardButton.layer.shadowOpacity = 0.5
         DrawCardButton.layer.shadowOffset = CGSize(width: 0, height: 0)
+        
+        // setting up and customizing the back button
+        BackModelWins.backgroundColor = UIColor.lightGray
+        BackModelWins.layer.cornerRadius = EndTurnButton.frame.height / 2
+        BackModelWins.setTitleColor(UIColor.white, for: .normal)
+        BackModelWins.layer.shadowColor = UIColor.darkGray.cgColor
+        BackModelWins.layer.shadowRadius = 4
+        BackModelWins.layer.shadowOpacity = 0.5
+        BackModelWins.layer.shadowOffset = CGSize(width: 0, height: 0)
+        BackModelWins.isHidden = true
+        
+        // setting up and customizing the back button
+        BackPlayerWins.backgroundColor = UIColor.lightGray
+        BackPlayerWins.layer.cornerRadius = EndTurnButton.frame.height / 2
+        BackPlayerWins.setTitleColor(UIColor.white, for: .normal)
+        BackPlayerWins.layer.shadowColor = UIColor.darkGray.cgColor
+        BackPlayerWins.layer.shadowRadius = 4
+        BackPlayerWins.layer.shadowOpacity = 0.5
+        BackPlayerWins.layer.shadowOffset = CGSize(width: 0, height: 0)
+        BackPlayerWins.isHidden = true
         
         // setting up and customizing the end turn button
         EndTurnButton.backgroundColor = UIColor.lightGray
@@ -389,6 +411,7 @@ class MADSevensViewController: UIViewController {
             EndTurnButton.isHidden = true
             DrawCardButton.isHidden = true
             PlayerWinsLabel.isHidden = false
+            BackPlayerWins.isHidden = false
 //            game.newGame()
 //            TODO: go back to the main menu?
         case "Model":
@@ -396,6 +419,7 @@ class MADSevensViewController: UIViewController {
             EndTurnButton.isHidden = true
             DrawCardButton.isHidden = true
             ModelWinsLabel.isHidden = false
+            BackModelWins.isHidden = false
 //            game.newGame()
 //            TODO: go back to the main menu?
         default:
