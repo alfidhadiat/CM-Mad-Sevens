@@ -173,7 +173,7 @@ class sevensACTR {
         print("Trick rank play of \(String(describing: trickRankCount))")
         
         // Turn count of legals into string categories
-        if trickRankCount >= legal {
+        if trickRankCount >= legal && trickRankCount > 0 {
             return "TrickRankPlay"
         } else if legal > 1 {
             return "multipleLegal"

@@ -268,6 +268,10 @@ class Deck {
         return discard[discard.endIndex-1]
     }
     
+    func getAnyDiscardCard(index: Int) -> Card {
+        return discard[discard.endIndex-index]
+    }
+    
     func getActiveTwos() -> Int {
         return numberOfActiveTwos
     }

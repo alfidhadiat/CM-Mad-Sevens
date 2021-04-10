@@ -46,7 +46,7 @@ class MADSevens {
     func playCard(card: Card, newSuit: Suit?) -> Bool{
         print("\(currentPlayer) tries to play this card: \(card)")
         if currentPlayer == Player.model {
-            sleep(1)
+            usleep(250000)
         }
         if deck.legalMove(card: card) {
             deck.playCard(card: card, player: currentPlayer, newSuit: newSuit)
@@ -70,7 +70,7 @@ class MADSevens {
     func modelTurn() {
         //Here, the model is called, and afterwards his move is executed
         //E.g. decide to draw a card:
-        sleep(1)
+        usleep(250000)
         actrTurn()
         printGame()
         passTurn()
@@ -119,6 +119,10 @@ class MADSevens {
     
     func getTopDiscardCard() -> Card {
         return deck.getTopDiscardCard()
+    }
+    
+    func getAnyDiscardCard(index: Int) -> Card {
+        return deck.getAnyDiscardCard(index: index)
     }
     
     func getCurrentSuit() -> Suit {
@@ -314,7 +318,7 @@ class MADSevens {
             }
             for card in sortedCards {
                 playCard(card: card, newSuit: nil)
-                sleep(1)
+                usleep(250000)
             }
             didMove = true
             break

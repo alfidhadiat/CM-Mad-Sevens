@@ -111,7 +111,8 @@ class MADSevensViewController: UIViewController {
     }
     
     // Setting up the color switching buttons.
-    // When one of the color switches is pressed the suit is set to the chosen suit, passes the turn to the model
+    // When one of the color switches is pressed the suit is set to the chosen suit a function updates the UI
+    // To do this it passes the turn to the model
     // after the model plays its turn the buttons and possibly labels relevant for the player get displayed again and
     // gesture recognizers get added to the legal cards and removed from not legal ones.
     // the same mechanism gets triggered by each color switching button
@@ -119,391 +120,26 @@ class MADSevensViewController: UIViewController {
     @IBAction func SwitchToAcorn(_ sender: UIButton) {
         ColorChoiceStack.isHidden = true
         game.setNewSuit(newsuit: Suit.Acorn)
-        // get the model hand count before the model's turn
-        let count = game.getModelHand().count
-        game.passTurn()
-        game.modelTurn()
-        checkpoint()
-        DrawCardButton.isHidden = false
-        ColorLabel.isHidden = true
-        // get the model hand count after the model's turn
-        let newcount = game.getModelHand().count
-        
-        // if the nr of cards in the model's hand decreased remove the card that has been played
-        if count > newcount{
-            for cardview in modelCardView {
-                let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
-                if currentCard.getRank() == game.getTopDiscardCard().getRank() {
-                    if currentCard.getSuit() == game.getTopDiscardCard().getSuit() {
-                        modelStack.removeArrangedSubview(cardview)
-                    }
-                }
-            }
-        }
-
-        // if the nr of cards in the model's hand increased add the new cards to the model's hand
-        if count < newcount {
-            for i in 1...(newcount-count) {
-                let newCardView = ModelCardView()
-                modelCardView.append(newCardView)
-                newCardView.backgroundColor = UIColor.clear
-                newCardView.setSuit(newSuit: game.getModelHand()[game.getModelHand().endIndex-i].getSuit())
-                newCardView.setRank(newRank: game.getModelHand()[game.getModelHand().endIndex-i].getRank())
-                newCardView.widthAnchor.constraint(lessThanOrEqualToConstant: 74).isActive = true
-                modelStack.autoresizingMask = [.flexibleHeight,.flexibleWidth]
-                modelStack.autoresizesSubviews = true
-                modelStack.spacing = 0
-                modelStack.addArrangedSubview(newCardView)
-            }
-        }
-        
-        // the distribution of how the cards are layed out changes depending on the nr of current cards
-        if self.game.getModelHand().count > 4 {
-            self.modelStack.distribution = UIStackView.Distribution.fillEqually
-        } else {
-            self.modelStack.distribution = UIStackView.Distribution.equalSpacing
-        }
-        
-        if game.getModelHand().count == 1 {
-            ModelTrailingConstraint.constant = 140
-            ModelLeadingConstraint.constant = 140
-        } else {
-            ModelTrailingConstraint.constant = 8
-            ModelLeadingConstraint.constant = 8
-        }
-        
-        // update the deck's view and display the played card
-        DeckView[0].state = game.getDeckState()
-        discardCardView.rank = game.getTopDiscardCard().getRank()
-        discardCardView.suit = game.getTopDiscardCard().getSuit()
-        
-        for cardview in self.playerCardView {
-            let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
-            if self.game.legalMove(card: currentCard) {
-                cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
-            }
-            if !game.legalMove(card: currentCard) {
-                for recognizer in cardview.gestureRecognizers ?? [] {
-                    cardview.removeGestureRecognizer(recognizer)
-                }
-            }
-        }
-        
-        // if the model played a card and that card is a seven display the color label
-        if count > game.getModelHand().count {
-            if game.getTopDiscardCard().getRank() == Rank.VII {
-                ColorLabel.isHidden = false
-                ColorLabel.text = SuitToString(suitString: game.getCurrentSuit())
-                ColorChoiceStack.isHidden = true
-            }
-        }
-        
-        // if the model played a card and that card is a two only add gesture recognizers to the legal cards
-        if discardCardView.rank == Rank.II  {
-            if count > newcount {
-                for cardview in playerCardView {
-                    let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
-                    if currentCard.getRank() != Rank.II {
-                        for recognizer in cardview.gestureRecognizers ?? [] {
-                            cardview.removeGestureRecognizer(recognizer)
-                        }
-                    }
-                    if currentCard.getRank() == Rank.Ace {
-                        if currentCard.getSuit() == game.getCurrentSuit() {
-                            cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
-                        }
-                    }
-                }
-            }
-        }
+        UpdateViewAfterModelTurn()
     }
     
     @IBAction func SwitchToHearts(_ sender: UIButton) {
         ColorChoiceStack.isHidden = true
         game.setNewSuit(newsuit: Suit.Hearts)
-        let count = game.getModelHand().count
-        game.passTurn()
-        game.modelTurn()
-        checkpoint()
-        ColorLabel.isHidden = true
-        let newcount = game.getModelHand().count
-        
-        if count > newcount{
-            for cardview in modelCardView {
-                let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
-                if currentCard.getRank() == game.getTopDiscardCard().getRank() {
-                    if currentCard.getSuit() == game.getTopDiscardCard().getSuit() {
-                        modelStack.removeArrangedSubview(cardview)
-                    }
-                }
-            }
-        }
-
-        
-        if count < newcount {
-            for i in 1...(newcount-count) {
-                let newCardView = ModelCardView()
-                modelCardView.append(newCardView)
-                newCardView.backgroundColor = UIColor.clear
-                newCardView.setSuit(newSuit: game.getModelHand()[game.getModelHand().endIndex-i].getSuit())
-                newCardView.setRank(newRank: game.getModelHand()[game.getModelHand().endIndex-i].getRank())
-                newCardView.widthAnchor.constraint(lessThanOrEqualToConstant: 74).isActive = true
-                modelStack.autoresizingMask = [.flexibleHeight,.flexibleWidth]
-                modelStack.autoresizesSubviews = true
-                modelStack.spacing = 0
-                modelStack.addArrangedSubview(newCardView)
-            }
-        }
-        
-        if self.game.getModelHand().count > 4 {
-            self.modelStack.distribution = UIStackView.Distribution.fillEqually
-        } else {
-            self.modelStack.distribution = UIStackView.Distribution.equalSpacing
-        }
-        
-        DeckView[0].state = game.getDeckState()
-        discardCardView.rank = game.getTopDiscardCard().getRank()
-        discardCardView.suit = game.getTopDiscardCard().getSuit()
-            
-        for cardview in self.playerCardView {
-            let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
-            if self.game.legalMove(card: currentCard) {
-                cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
-            }
-            if !game.legalMove(card: currentCard) {
-                for recognizer in cardview.gestureRecognizers ?? [] {
-                    cardview.removeGestureRecognizer(recognizer)
-                }
-            }
-        }
-        
-        if count > game.getModelHand().count {
-            if game.getTopDiscardCard().getRank() == Rank.VII {
-                ColorLabel.isHidden = false
-                ColorLabel.text = SuitToString(suitString: game.getCurrentSuit())
-                ColorChoiceStack.isHidden = true
-            }
-        }
-        
-        if game.getModelHand().count == 1 {
-            ModelTrailingConstraint.constant = 140
-            ModelLeadingConstraint.constant = 140
-        } else {
-            ModelTrailingConstraint.constant = 8
-            ModelLeadingConstraint.constant = 8
-        }
-        
-        if discardCardView.rank == Rank.II  {
-            if count > newcount {
-                for cardview in playerCardView {
-                    let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
-                    if currentCard.getRank() != Rank.II {
-                        for recognizer in cardview.gestureRecognizers ?? [] {
-                            cardview.removeGestureRecognizer(recognizer)
-                        }
-                    }
-                    if currentCard.getRank() == Rank.Ace {
-                        if currentCard.getSuit() == game.getCurrentSuit() {
-                            cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
-                        }
-                    }
-                }
-            }
-        }
-        DrawCardButton.isHidden = false
+        UpdateViewAfterModelTurn()
     }
     
     @IBAction func SwitchToLeaves(_ sender: UIButton) {
         ColorChoiceStack.isHidden = true
         game.setNewSuit(newsuit: Suit.Leaves)
-        let count = game.getModelHand().count
-        game.passTurn()
-        game.modelTurn()
-        checkpoint()
-        ColorLabel.isHidden = true
-        let newcount = game.getModelHand().count
-        
-        if count > newcount{
-            for cardview in modelCardView {
-                let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
-                if currentCard.getRank() == game.getTopDiscardCard().getRank() {
-                    if currentCard.getSuit() == game.getTopDiscardCard().getSuit() {
-                        modelStack.removeArrangedSubview(cardview)
-                    }
-                }
-            }
-        }
-
-        
-        if count < newcount {
-            for i in 1...(newcount-count) {
-                let newCardView = ModelCardView()
-                modelCardView.append(newCardView)
-                newCardView.backgroundColor = UIColor.clear
-                newCardView.setSuit(newSuit: game.getModelHand()[game.getModelHand().endIndex-i].getSuit())
-                newCardView.setRank(newRank: game.getModelHand()[game.getModelHand().endIndex-i].getRank())
-                newCardView.widthAnchor.constraint(lessThanOrEqualToConstant: 74).isActive = true
-                modelStack.autoresizingMask = [.flexibleHeight,.flexibleWidth]
-                modelStack.autoresizesSubviews = true
-                modelStack.spacing = 0
-                modelStack.addArrangedSubview(newCardView)
-            }
-        }
-        
-        if self.game.getModelHand().count > 4 {
-            self.modelStack.distribution = UIStackView.Distribution.fillEqually
-        } else {
-            self.modelStack.distribution = UIStackView.Distribution.equalSpacing
-        }
-        
-        DeckView[0].state = game.getDeckState()
-        discardCardView.rank = game.getTopDiscardCard().getRank()
-        discardCardView.suit = game.getTopDiscardCard().getSuit()
-        
-        
-        for cardview in self.playerCardView {
-            let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
-            if self.game.legalMove(card: currentCard) {
-                cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
-            }
-            if !game.legalMove(card: currentCard) {
-                for recognizer in cardview.gestureRecognizers ?? [] {
-                    cardview.removeGestureRecognizer(recognizer)
-                }
-            }
-        }
-        
-        if count > game.getModelHand().count {
-            if game.getTopDiscardCard().getRank() == Rank.VII {
-                ColorLabel.isHidden = false
-                ColorLabel.text = SuitToString(suitString: game.getCurrentSuit())
-                ColorChoiceStack.isHidden = true
-            }
-        }
-        
-        if game.getModelHand().count == 1 {
-            ModelTrailingConstraint.constant = 140
-            ModelLeadingConstraint.constant = 140
-        } else {
-            ModelTrailingConstraint.constant = 8
-            ModelLeadingConstraint.constant = 8
-        }
-        
-        if discardCardView.rank == Rank.II  {
-            if count > newcount {
-                for cardview in playerCardView {
-                    let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
-                    if currentCard.getRank() != Rank.II {
-                        for recognizer in cardview.gestureRecognizers ?? [] {
-                            cardview.removeGestureRecognizer(recognizer)
-                        }
-                    }
-                    if currentCard.getRank() == Rank.Ace {
-                        if currentCard.getSuit() == game.getCurrentSuit() {
-                            cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
-                        }
-                    }
-                }
-            }
-        }
-        DrawCardButton.isHidden = false
+        UpdateViewAfterModelTurn()
     }
     
     @IBAction func SwitchToPumpkins(_ sender: UIButton) {
         ColorChoiceStack.isHidden = true
         game.setNewSuit(newsuit: Suit.Pumpkins)
-        let count = game.getModelHand().count
-        game.passTurn()
-        game.modelTurn()
-        checkpoint()
-        ColorLabel.isHidden = true
-        let newcount = game.getModelHand().count
-        
-        if count > newcount{
-            for cardview in modelCardView {
-                let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
-                if currentCard.getRank() == game.getTopDiscardCard().getRank() {
-                    if currentCard.getSuit() == game.getTopDiscardCard().getSuit() {
-                        modelStack.removeArrangedSubview(cardview)
-                    }
-                }
-            }
-        }
-
-        
-        if count < newcount {
-            for i in 1...(newcount-count) {
-                let newCardView = ModelCardView()
-                modelCardView.append(newCardView)
-                newCardView.backgroundColor = UIColor.clear
-                newCardView.setSuit(newSuit: game.getModelHand()[game.getModelHand().endIndex-i].getSuit())
-                newCardView.setRank(newRank: game.getModelHand()[game.getModelHand().endIndex-i].getRank())
-                newCardView.widthAnchor.constraint(lessThanOrEqualToConstant: 74).isActive = true
-                modelStack.autoresizingMask = [.flexibleHeight,.flexibleWidth]
-                modelStack.autoresizesSubviews = true
-                modelStack.spacing = 0
-                modelStack.addArrangedSubview(newCardView)
-            }
-        }
-        
-        if self.game.getModelHand().count > 4 {
-            self.modelStack.distribution = UIStackView.Distribution.fillEqually
-        } else {
-            self.modelStack.distribution = UIStackView.Distribution.equalSpacing
-        }
-        
-        DeckView[0].state = game.getDeckState()
-        discardCardView.rank = game.getTopDiscardCard().getRank()
-        discardCardView.suit = game.getTopDiscardCard().getSuit()
-        
-        for cardview in self.playerCardView {
-            let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
-            if self.game.legalMove(card: currentCard) {
-                cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
-            }
-            if !game.legalMove(card: currentCard) {
-                for recognizer in cardview.gestureRecognizers ?? [] {
-                    cardview.removeGestureRecognizer(recognizer)
-                }
-            }
-        }
-        
-        if count > game.getModelHand().count {
-            if game.getTopDiscardCard().getRank() == Rank.VII {
-                ColorLabel.isHidden = false
-                ColorLabel.text = SuitToString(suitString: game.getCurrentSuit())
-                ColorChoiceStack.isHidden = true
-            }
-        }
-        
-        if game.getModelHand().count == 1 {
-            ModelTrailingConstraint.constant = 140
-            ModelLeadingConstraint.constant = 140
-        } else {
-            ModelTrailingConstraint.constant = 8
-            ModelLeadingConstraint.constant = 8
-        }
-        
-        if discardCardView.rank == Rank.II  {
-            if count > newcount {
-                for cardview in playerCardView {
-                    let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
-                    if currentCard.getRank() != Rank.II {
-                        for recognizer in cardview.gestureRecognizers ?? [] {
-                            cardview.removeGestureRecognizer(recognizer)
-                        }
-                    }
-                    if currentCard.getRank() == Rank.Ace {
-                        if currentCard.getSuit() == game.getCurrentSuit() {
-                            cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
-                        }
-                    }
-                }
-            }
-        }
-        DrawCardButton.isHidden = false
+        UpdateViewAfterModelTurn()
     }
-    
     
     // When the end turn button is pressed the following takes place: the model's turn starts
     // the player relevant buttons and labels get hidden then displayed accordingly.
@@ -513,95 +149,7 @@ class MADSevensViewController: UIViewController {
     
     @IBAction func PassTurn(_ sender: UIButton) {
         sender.isHidden = true
-        let count = game.getModelHand().count
-        game.passTurn()
-        game.modelTurn()
-        checkpoint()
-        let newcount = game.getModelHand().count
-        
-        
-        if count > newcount{
-            for cardview in modelCardView {
-                let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
-                if currentCard.getRank() == game.getTopDiscardCard().getRank() {
-                    if currentCard.getSuit() == game.getTopDiscardCard().getSuit() {
-                        modelStack.removeArrangedSubview(cardview)
-                    }
-                }
-            }
-        }
-
-        
-        if count < newcount {
-            for i in 1...(newcount-count) {
-                let newCardView = ModelCardView()
-                modelCardView.append(newCardView)
-                newCardView.backgroundColor = UIColor.clear
-                newCardView.setSuit(newSuit: game.getModelHand()[game.getModelHand().endIndex-i].getSuit())
-                newCardView.setRank(newRank: game.getModelHand()[game.getModelHand().endIndex-i].getRank())
-                newCardView.widthAnchor.constraint(lessThanOrEqualToConstant: 74).isActive = true
-                modelStack.autoresizingMask = [.flexibleHeight,.flexibleWidth]
-                modelStack.autoresizesSubviews = true
-                modelStack.spacing = 0
-                modelStack.addArrangedSubview(newCardView)
-            }
-        }
- 
-        
-        if self.game.getModelHand().count > 4 {
-            self.modelStack.distribution = UIStackView.Distribution.fillEqually
-        } else {
-            self.modelStack.distribution = UIStackView.Distribution.equalSpacing
-        }
-        
-        if game.getModelHand().count == 1 {
-            ModelTrailingConstraint.constant = 140
-            ModelLeadingConstraint.constant = 140
-        } else {
-            ModelTrailingConstraint.constant = 8
-            ModelLeadingConstraint.constant = 8
-        }
-        
-        DeckView[0].state = game.getDeckState()
-        discardCardView.rank = game.getTopDiscardCard().getRank()
-        discardCardView.suit = game.getTopDiscardCard().getSuit()
-        
-        for cardview in playerCardView {
-            let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
-            if game.legalMove(card: currentCard) {
-                cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
-            }
-            if !game.legalMove(card: currentCard) {
-                for recognizer in cardview.gestureRecognizers ?? [] {
-                    cardview.removeGestureRecognizer(recognizer)
-                }
-            }
-        }
-        
-        if game.getTopDiscardCard().getRank() == Rank.VII {
-            ColorLabel.isHidden = false
-            ColorLabel.text = SuitToString(suitString: game.getCurrentSuit())
-            ColorLabel.adjustsFontSizeToFitWidth = true
-        }
-        
-        if discardCardView.rank == Rank.II  {
-            if count > newcount {
-                for cardview in playerCardView {
-                    let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
-                    if currentCard.getRank() != Rank.II {
-                        for recognizer in cardview.gestureRecognizers ?? [] {
-                            cardview.removeGestureRecognizer(recognizer)
-                        }
-                    }
-                    if currentCard.getRank() == Rank.Ace {
-                        if currentCard.getSuit() == game.getCurrentSuit() {
-                            cardview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.moveCard(_ :))))
-                        }
-                    }
-                }
-            }
-        }
-        DrawCardButton.isHidden = false
+        UpdateViewAfterModelTurn()
     }
     
     // when the draw card button is pressed the following events take place:
@@ -612,8 +160,15 @@ class MADSevensViewController: UIViewController {
     @IBAction func drawCard(_ sender: UIButton) {
         // draw card, add it to hand
         // give turn to next player
-        //TODO: since button is pressed, it's always the player calling this function
+        drawCardforPlayerHand()
+        sender.isHidden = false
+        UpdateViewAfterModelTurn()
+    }
+    
+    
+    func drawCardforPlayerHand() {
         print("Current player: \(game.getCurrentPlayer()), drawing a card right now!")
+        ColorLabel.isHidden = true
         let playerHandCount = game.getPlayerHand().count
         game.drawCard()
         game.rememberSuitRank()
@@ -650,32 +205,48 @@ class MADSevensViewController: UIViewController {
             self.playerStack.distribution = UIStackView.Distribution.equalSpacing
         }
         
+        if game.getTopDiscardCard().getRank() == Rank.VII {
+            ColorLabel.isHidden = false
+            ColorLabel.text = SuitToString(suitString: game.getCurrentSuit())
+            ColorLabel.adjustsFontSizeToFitWidth = true
+            ColorChoiceStack.isHidden = true
+        }
+    }
+    
+    func UpdateViewAfterModelTurn() {
         let count = game.getModelHand().count
         game.printGame()
         game.passTurn()
         game.modelTurn()
         checkpoint()
-        let newCount = game.getModelHand().count
+        let newcount = game.getModelHand().count
 
-        if count > newCount {
+        if count > newcount {
             for cardview in modelCardView {
                 let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
-                if currentCard.getRank() == game.getTopDiscardCard().getRank() {
-                    if currentCard.getSuit() == game.getTopDiscardCard().getSuit() {
-                        modelStack.removeArrangedSubview(cardview)
+                for i in 1...(count-newcount) {
+                    if currentCard.getRank() == game.getAnyDiscardCard(index: i).getRank() {
+                        if currentCard.getSuit() == game.getAnyDiscardCard(index: i).getSuit() {
+                            modelStack.removeArrangedSubview(cardview)
+                        }
                     }
                 }
             }
         }
                 
-        if count < newCount {
-            let newCardView = ModelCardView()
-            modelCardView.append(newCardView)
-            newCardView.setSuit(newSuit: game.getModelHand()[game.getModelHand().endIndex-1].getSuit())
-            newCardView.setRank(newRank: game.getModelHand()[game.getModelHand().endIndex-1].getRank())
-            newCardView.widthAnchor.constraint(lessThanOrEqualToConstant: 74).isActive = true
-            newCardView.backgroundColor = UIColor.clear
-            modelStack.addArrangedSubview(newCardView)
+        if count < newcount {
+            for i in 1...(newcount-count) {
+                let newCardView = ModelCardView()
+                modelCardView.append(newCardView)
+                newCardView.backgroundColor = UIColor.clear
+                newCardView.setSuit(newSuit: game.getModelHand()[game.getModelHand().endIndex-i].getSuit())
+                newCardView.setRank(newRank: game.getModelHand()[game.getModelHand().endIndex-i].getRank())
+                newCardView.widthAnchor.constraint(lessThanOrEqualToConstant: 74).isActive = true
+                modelStack.autoresizingMask = [.flexibleHeight,.flexibleWidth]
+                modelStack.autoresizesSubviews = true
+                modelStack.spacing = 0
+                modelStack.addArrangedSubview(newCardView)
+            }
         }
         
         if game.getModelHand().count == 1 {
@@ -688,6 +259,7 @@ class MADSevensViewController: UIViewController {
         
         if self.game.getModelHand().count > 4 {
             self.modelStack.distribution = UIStackView.Distribution.fillEqually
+            self.modelStack.spacing = 0
         } else {
             self.modelStack.distribution = UIStackView.Distribution.equalSpacing
         }
@@ -709,7 +281,7 @@ class MADSevensViewController: UIViewController {
         discardCardView.suit = game.getTopDiscardCard().getSuit()
         
         if discardCardView.rank == Rank.II  {
-            if count > newCount {
+            if count > newcount {
                 for cardview in playerCardView {
                     let currentCard = Card(suit: cardview.suit, rank: cardview.rank)
                     if currentCard.getRank() != Rank.II {
@@ -726,14 +298,15 @@ class MADSevensViewController: UIViewController {
                 }
             }
         }
-        sender.isHidden = false
         if game.getTopDiscardCard().getRank() == Rank.VII {
             ColorLabel.isHidden = false
             ColorLabel.text = SuitToString(suitString: game.getCurrentSuit())
             ColorLabel.adjustsFontSizeToFitWidth = true
             ColorChoiceStack.isHidden = true
         }
+        DrawCardButton.isHidden = false
     }
+    
     
     // Function for animating card movement, called by the gesture recognizer added to the player's cards
     // Based on previous codes, the only cards tappable are legal moves. As a first step the tapped legal card view
@@ -806,30 +379,7 @@ class MADSevensViewController: UIViewController {
             break
         }
     }
-
-    /**
-     The selected card (TODO: multiple cards yet to be implemented) will be taken from the player's hand and added to the
-     discard pile. The turn is now given to the model.
-     */
-//    @IBAction func doMove(_ sender: UIButton) {
-//        //TODO figure out how to find a selected card
-//
-//        // do the move
-//        let inputRank = rankField!
-//        let inputSuit = suitField!
-//        print("inputRank: \(inputRank.text!), inputSuit: \(inputSuit.text!)")
-//        let card = Card(suit: suitStringToSuit(suitString: inputSuit.text!), rank: rankStringToRank(rankString: inputRank.text!))
-//        print("Playing this card: \(card)")
-////        TODO if a new suit is chosen (in case its a 7 for example), pass that value when playing the card
-//        if !game.playCard(card: card, newSuit: nil) {
-//            print("Invalid move, a card is drawn for you!")
-//    }
-//        game.passTurn()
-//        checkpoint()
-//        game.modelTurn()
-//        checkpoint()
-//    }
-//
+    
     func checkpoint() {
         //TODO: Convert print statements to popups
         let checkpoint = game.checkpoint()
@@ -852,32 +402,4 @@ class MADSevensViewController: UIViewController {
             break
         }
     }
-    
-    
-    
-    //    /**
-    //     Just a test function
-    //     */
-    //    @IBAction func topDiscardCard(_ sender: UIButton) {
-    //        print("topcard: \(game.getTopDiscardCard())")
-    //    }
-    //
-        
-        
-        //    func getHand(player: Player) -> [Card] {
-        //        if player == Player.model {
-        //            return game.getModelHand()
-        //        } else {
-        //            return game.getPlayerHand()
-        //        }
-        //    }
-        
-        
-    //    @IBAction func PlayFirstCard(_ sender: UIButton) {
-    //        game.deck.playFirstCard(player: game.currentPlayer)
-    //        print("A card has been added to the discard pile")
-    //        print("Playerhand: \n \(game.deck.playerHand))")
-    //        print("Modelhand: \n \(game.deck.modelHand))")
-    //        print("Discardpile: \n \(game.deck.discard)")
-    //    }
-    }
+}
