@@ -33,6 +33,8 @@ class MADSevensViewController: UIViewController {
     @IBOutlet weak var ModelLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var BackModelWins: UIButton!
     @IBOutlet weak var BackPlayerWins: UIButton!
+    @IBOutlet weak var LandscapePlayerConstraint: NSLayoutConstraint!
+    @IBOutlet weak var LandscapeModelConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +61,8 @@ class MADSevensViewController: UIViewController {
         TrailingConstraint.constant = 8
         ModelTrailingConstraint.constant = 8
         ModelLeadingConstraint.constant = 8
+        LandscapePlayerConstraint.constant = 8
+        LandscapeModelConstraint.constant = 8
         
         // diplay the card on top of the discard pile
         discardCardView.isFaceUp = true
@@ -191,6 +195,7 @@ class MADSevensViewController: UIViewController {
         TrailingConstraint.constant = 8
         ModelTrailingConstraint.constant = 8
         ModelLeadingConstraint.constant = 8
+        LandscapePlayerConstraint.constant = 8
 
         let playerHandCount2 = game.getPlayerHand().count
         
@@ -270,9 +275,11 @@ class MADSevensViewController: UIViewController {
         if game.getModelHand().count == 1 {
             ModelTrailingConstraint.constant = 140
             ModelLeadingConstraint.constant = 140
+            LandscapeModelConstraint.constant = 250
         } else {
             ModelTrailingConstraint.constant = 8
             ModelLeadingConstraint.constant = 8
+            LandscapeModelConstraint.constant = 8
         }
         
         if self.game.getModelHand().count > 4 {
@@ -362,6 +369,7 @@ class MADSevensViewController: UIViewController {
                                                         if self.game.getPlayerHand().count == 1 {
                                                             self.LeadingConstraint.constant = 140
                                                             self.TrailingConstraint.constant = 140
+                                                            self.LandscapePlayerConstraint.constant = 250
                                                         }
 
                                                         if self.discardCardView.rank == Rank.VII{
