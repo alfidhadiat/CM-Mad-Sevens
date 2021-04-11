@@ -317,14 +317,17 @@ class MADSevensViewController: UIViewController {
             }
         }
         if game.getTopDiscardCard().getRank() == Rank.VII {
-            ColorLabel.isHidden = false
-            ColorLabel.text = SuitToString(suitString: game.getCurrentSuit())
-            ColorLabel.adjustsFontSizeToFitWidth = true
-            ColorChoiceStack.isHidden = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                self.ColorLabel.isHidden = false
+                self.ColorLabel.text = SuitToString(suitString: self.game.getCurrentSuit())
+                self.ColorLabel.adjustsFontSizeToFitWidth = true
+                self.ColorChoiceStack.isHidden = true}
         } else {
             ColorLabel.isHidden = true
         }
-        DrawCardButton.isHidden = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            self.DrawCardButton.isHidden = false
+        }
     }
     
     /**
