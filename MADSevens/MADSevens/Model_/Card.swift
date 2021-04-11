@@ -7,8 +7,10 @@
 
 import Foundation
 
+/**
+ The card struct contains a cards suit and rank, including getters for these values.
+ */
 struct Card {
-    //Reminder: value semantics!
     
     private var suit: Suit
     private var rank: Rank

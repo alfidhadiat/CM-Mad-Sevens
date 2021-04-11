@@ -132,13 +132,9 @@ class MADSevensViewController: UIViewController {
         }
     }
     
-    // Setting up the color switching buttons.
-    // When one of the color switches is pressed the suit is set to the chosen suit a function updates the UI
-    // To do this it passes the turn to the model
-    // after the model plays its turn the buttons and possibly labels relevant for the player get displayed again and
-    // gesture recognizers get added to the legal cards and removed from not legal ones.
-    // the same mechanism gets triggered by each color switching button
-    
+    /**
+     Setting up the color switching buttons. When one of the color switches is pressed the suit is set to the chosen suit a function updates the UI. To do this it passes the turn to the model after the model plays its turn the buttons and possibly labels relevant for the player get displayed again and gesture recognizers get added to the legal cards and removed from not legal ones. The same mechanism gets triggered by each color switching button
+     */
     @IBAction func SwitchToAcorn(_ sender: UIButton) {
         ColorChoiceStack.isHidden = true
         game.setNewSuit(newsuit: Suit.Acorn)
@@ -163,22 +159,19 @@ class MADSevensViewController: UIViewController {
         UpdateViewAfterModelTurn()
     }
     
-    // When the end turn button is pressed the following takes place: the model's turn starts
-    // the player relevant buttons and labels get hidden then displayed accordingly.
-    // depending on the model's move a card is removed from or added to the model's hand
-    // the player's hand gets "refreshed" based on the action of the model, meaning that gesture recognizers get
-    // added to legal cards and removed from not legal ones.
+
     
+    /**
+     When the end turn button is pressed the following takes place: the model's turn starts the player relevant buttons and labels get hidden then displayed accordingly. Depending on the model's move a card is removed from or added to the model's hand the player's hand get "refreshed" based on the action of the model, meaning that gesture recognizers get added to legal cards and removed from not legal ones.
+     */
     @IBAction func PassTurn(_ sender: UIButton) {
         sender.isHidden = true
         UpdateViewAfterModelTurn()
     }
     
-    // when the draw card button is pressed the following events take place:
-    // player gets dealt the right amount of cards (fx if a 2 is played by the model and the player has no response
-    // two cards get drawn). After this the turn gets passed to the model, and the model's hand and the top of the discard
-    // pile are also updated based on the card played by the model.
-    
+    /**
+     When the draw card button is pressed the following events take place: player gets dealt the right amount of cards (fx if a 2 is played by the model and the player has no response two cards get drawn). After this the turn gets passed to the model, and the model's hand and the top of the discard pile are also updated based on the card played by the model.
+     */
     @IBAction func drawCard(_ sender: UIButton) {
         // draw card, add it to hand
         // give turn to next player
@@ -187,7 +180,9 @@ class MADSevensViewController: UIViewController {
         UpdateViewAfterModelTurn()
     }
     
-    
+    /**
+     Called whenever the player decides to draw a card
+     */
     func drawCardforPlayerHand() {
         print("Current player: \(game.getCurrentPlayer()), drawing a card right now!")
         ColorLabel.isHidden = true
@@ -235,6 +230,9 @@ class MADSevensViewController: UIViewController {
         }
     }
     
+    /**
+     Updates the view after turn
+     */
     func UpdateViewAfterModelTurn() {
         let count = game.getModelHand().count
         game.printGame()
@@ -329,13 +327,9 @@ class MADSevensViewController: UIViewController {
         DrawCardButton.isHidden = false
     }
     
-    
-    // Function for animating card movement, called by the gesture recognizer added to the player's cards
-    // Based on previous codes, the only cards tappable are legal moves. As a first step the tapped legal card view
-    // is transfered to the discard card view and gets displayed there. As soon as this animation finishes, hide the buttons
-    // and labels which are not relevant after a card has already been played. Based on the played card refresh the player's hand
-    // and add gesture recognizer to those cards that match the rank of the played card, enabling a possible sequence of cards.
-    
+    /**
+     Function for animating card movement, called by the gesture recognizer added to the player's cards based on previous codes, the only cards tappable are legal moves. As a first step the tapped legal card view is transfered to the discard card view and gets displayed there. As soon as this animation finishes, hide the buttons and labels which are not relevant after a card has already been played. Based on the played card refresh the player's hand and add gesture recognizer to those cards that match the rank of the played card, enabling a possible sequence of cards.
+     */
     @objc func moveCard(_ recognizer: UITapGestureRecognizer) {
         switch recognizer.state {
         case .ended:
@@ -390,7 +384,7 @@ class MADSevensViewController: UIViewController {
                                                         }
                                                       })
                                   })
-                if !game.playCard2(card: chosenCard, newSuit: nil) {
+                if !game.playCard(card: chosenCard, newSuit: nil) {
                     print("Invalid move, a card is drawn for you!")
                     game.drawCard()
                 }
@@ -402,8 +396,11 @@ class MADSevensViewController: UIViewController {
         }
     }
     
+    
+    /**
+     Checkpoint which displays the winner in case someone emptied his hand.
+     */
     func checkpoint() {
-        //TODO: Convert print statements to popups
         let checkpoint = game.checkpoint()
         switch checkpoint {
         case "Player":
@@ -412,16 +409,12 @@ class MADSevensViewController: UIViewController {
             DrawCardButton.isHidden = true
             PlayerWinsLabel.isHidden = false
             BackPlayerWins.isHidden = false
-//            game.newGame()
-//            TODO: go back to the main menu?
         case "Model":
             print("Model won the game!")
             EndTurnButton.isHidden = true
             DrawCardButton.isHidden = true
             ModelWinsLabel.isHidden = false
             BackModelWins.isHidden = false
-//            game.newGame()
-//            TODO: go back to the main menu?
         default:
             break
         }

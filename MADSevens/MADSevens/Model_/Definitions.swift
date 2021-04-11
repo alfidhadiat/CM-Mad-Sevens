@@ -40,6 +40,9 @@ enum Rank: String, CaseIterable {
     case X
 }
 
+/**
+ Returns the Suit value of a string. In case the string doesn't contain a real suitname (e.g. caused by a typo), the default of hearts is returned.
+ */
 func suitStringToSuit(suitString: String) -> Suit {
     switch suitString {
     case "Hearts":
@@ -56,6 +59,9 @@ func suitStringToSuit(suitString: String) -> Suit {
     }
 }
 
+/**
+ Returns the Rank value of a string. In case the string doesn't contain a real rankname (e.g. caused by a typo), the default of X is returned.
+ */
 func rankStringToRank(rankString: String) -> Rank {
     switch rankString {
     case "II":
@@ -75,11 +81,14 @@ func rankStringToRank(rankString: String) -> Rank {
     case "King":
         return Rank.King
     default:
-        print("Error, used default rank: II")
-        return Rank.II
+        print("Error, used default rank: X")
+        return Rank.X
     }
 }
 
+/**
+ Returns the string value of a Suit.
+ */
 func SuitToString(suitString: Suit) -> String {
     switch suitString {
     case Suit.Hearts:
@@ -90,9 +99,6 @@ func SuitToString(suitString: Suit) -> String {
         return "Leaves"
     case Suit.Pumpkins:
         return "Pumpkins"
-//    default:
-//        print("Error, used default suit: Hearts")
-//        return "Hearts"
     }
 }
 

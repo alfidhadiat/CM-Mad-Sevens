@@ -29,10 +29,6 @@ class PlayingCardView: UIView {
                 BackImage.draw(in: bounds.zoom(by: SizeRatio.faceCardImageSizeToBoundsSize))
             }
         }
-        
-        
-        
-        
     }
     
     func setRank(newRank: Rank) {

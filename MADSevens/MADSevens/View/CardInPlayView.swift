@@ -34,11 +34,7 @@ class CardInPlayView: UIView {
     }
     
     func setRank(newRank: Rank) {
-//        print("Setting the value of new cards")
-//        print("Current values: \(self.rank), \(self.suit)")
         self.rank = newRank
-//        print("New values: \(self.rank), \(self.suit)")
-
     }
     
     func setSuit(newSuit: Suit) {

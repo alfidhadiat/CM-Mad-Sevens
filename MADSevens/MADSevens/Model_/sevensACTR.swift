@@ -322,6 +322,8 @@ class sevensACTR {
         return finalCount
     }
     
+    
+    // -----------------------------------Getters and Setters-----------------------------------
     func getHand() -> [Card] {
         return hand
     }

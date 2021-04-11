@@ -29,12 +29,7 @@ class DeckView: UIView {
                 BackImage.draw(in: bounds.zoom(by: SizeRatio.faceCardImageSizeToBoundsSize))
             }
         }
-        
-        
-        
-        
     }
-        
 }
     
 // Extension with simple but useful utilities

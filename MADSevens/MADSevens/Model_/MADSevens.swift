@@ -1,11 +1,17 @@
 import Foundation
 
+/**
+ The MADSevens game holds the deck of the game, keeps track of whose turn it is and contains the ACT-R model. 
+ */
 class MADSevens {
     
     private var deck: Deck
     private var currentPlayer: Player
     private var actr: sevensACTR
     
+    /**
+     Upon initialization, create a deck, an ACT-R model and set the current player to be the player. For clarity the game is also printed.
+     */
     init() {
         print("Intitializing MADSevens game (INIT OF MADSevens)")
         deck = Deck()
@@ -14,35 +20,19 @@ class MADSevens {
         printGame()
     }
     
+    /**
+     When a new game is started, the deck is refreshed and the current player is again set to be the player. For clarity the game is also printed.
+     */
     func newGame() {
         print("Starting new MADSevens game")
         deck.newGame()
         currentPlayer = Player.player
-        print("Started a new MADSevens game, this is the current situation")
         printGame()
     }
     
-    func drawCard() {
-        deck.drawCard(player: currentPlayer)
-    }
-    
-    func setNewSuit(newsuit: Suit) {
-        deck.setNewSuit(newSuit: newsuit)
-    }
-    
-//    func playCard(card: Card, newSuit: Suit?) {
-//        if currentPlayer == Player.model {
-//            sleep(1)
-//        }
-//        print("\(currentPlayer) tries to play this card: \(card)")
-//        if deck.legalMove(card: card) {
-//            deck.playCard(card: card, player: currentPlayer, newSuit: newSuit)
-//        } else {
-//            drawCard()
-//            print("Invalid move, a card is drawn for you!")
-//        }
-//    }
-    
+    /**
+     Play the card that is passed along, in case a new suit can be chosen (when a seven is played) this new Suit is passed in the newSuit variable.
+     */
     func playCard(card: Card, newSuit: Suit?) -> Bool{
         print("\(currentPlayer) tries to play this card: \(card)")
         if currentPlayer == Player.model {
@@ -58,18 +48,10 @@ class MADSevens {
         return false
     }
 
-//    TODO: remove
-    func playCard2(card: Card, newSuit: Suit?) -> Bool {
-        if deck.legalMove(card: card) {
-            deck.playCard(card: card, player: currentPlayer, newSuit: newSuit)
-            return true
-        }
-        return false
-    }
-
+    /**
+     Calls function actrTurn to execute the models turn, after which it gives the turn back to the player.
+     */
     func modelTurn() {
-        //Here, the model is called, and afterwards his move is executed
-        //E.g. decide to draw a card:
         usleep(250000)
         actrTurn()
         printGame()
@@ -101,9 +83,33 @@ class MADSevens {
         return "None"
     }
     
-    //    func done() -> Bool {
-    //        return finished
-    //    }
+    /**
+     Prints the current status of the game.
+     */
+    func printGame() {
+        print("Current situation:")
+        print("Current player: \(currentPlayer)")
+        let modelhand = deck.getModelHand()
+        let playerhand = deck.getPlayerHand()
+        print("\n Model's hand:")
+        for i in 0..<modelhand.endIndex {
+            print("\(modelhand[i].getSuit()) - \(modelhand[i].getRank())")
+        }
+        print("\n Player's hand:")
+        for i in 0..<playerhand.endIndex {
+            print("\(playerhand[i].getSuit()) - \(playerhand[i].getRank())")
+        }
+        print("\n Top of the discard pile: \(deck.getTopDiscardCard().getSuit()) - \(deck.getTopDiscardCard().getRank())")
+        print(" The current suit is: \(deck.getCurrentSuit())")
+    }
+    
+    func drawCard() {
+        deck.drawCard(player: currentPlayer)
+    }
+
+    func rememberSuitRank() {
+        actr.rememberSuitRank(topCard: deck.getTopDiscardCard())
+    }
     
     func legalMove(card: Card) -> Bool {
         return deck.legalMove(card: card)
@@ -117,6 +123,8 @@ class MADSevens {
         return deck.modelHandEmpty()
     }
     
+    
+    // -----------------------------------Getters, Setters and -----------------------------------
     func getTopDiscardCard() -> Card {
         return deck.getTopDiscardCard()
     }
@@ -149,10 +157,6 @@ class MADSevens {
         return deck.getModelHand()
     }
     
-    func rememberSuitRank() {
-        actr.rememberSuitRank(topCard: deck.getTopDiscardCard())
-    }
-    
     func getNewRank() -> Rank {
         return deck.getNewRank()
     }
@@ -161,34 +165,17 @@ class MADSevens {
         return deck.getNewSuit()
     }
     
-//    func legalMove_color(card: Card, suit: Suit) -> Bool {
-//        return deck.legalMove_color(card: card, suit: suit)
-//    }
-    
     func getDeckState() -> String {
         return deck.updateDeck()
     }
     
-    func printGame() {
-        print("Current situation:")
-        print("Current player: \(currentPlayer)")
-        let modelhand = deck.getModelHand()
-        let playerhand = deck.getPlayerHand()
-        print("\n Model's hand:")
-        for i in 0..<modelhand.endIndex {
-            print("\(modelhand[i].getSuit()) - \(modelhand[i].getRank())")
-        }
-        print("\n Player's hand:")
-        for i in 0..<playerhand.endIndex {
-            print("\(playerhand[i].getSuit()) - \(playerhand[i].getRank())")
-        }
-        print("\n Top of the discard pile: \(deck.getTopDiscardCard().getSuit()) - \(deck.getTopDiscardCard().getRank())")
-        print(" The current suit is: \(deck.getCurrentSuit())")
+    func setNewSuit(newsuit: Suit) {
+        deck.setNewSuit(newSuit: newsuit)
     }
     
-    /*************************
-     The procedure for the ACT-R's turn
-     *************************/
+
+    
+    // -----------------------------------The procedure for the ACT-R's turn-----------------------------------
     func actrTurn() {
         
         // First, put current ACTR hand and number of active twos in hand
@@ -225,13 +212,12 @@ class MADSevens {
                         print("The new suit is \(String(describing: newSuit))")
                     }
                     print("Playing \(String(describing: onlyLegalSuit)), \(String(describing: onlyLegalRank))...")
-                    playCard(card: onlyLegal, newSuit: newSuit)
-                    didMove = true
+                    if playCard(card: onlyLegal, newSuit: newSuit) {
+                        didMove = true
+                    }
                     break
                 }
             }
-//            print("(playOne) Ended up not playing a card.....")
-//            drawCard()
             
         // When ace is legal against a two, choice is "playAce"
         case "playAce":
@@ -241,8 +227,9 @@ class MADSevens {
                 let isLegal = deck.legalMove(card: card)
                 if (rank == Rank.Ace && isLegal) {
                     aceCard = card
-                    playCard(card: aceCard, newSuit: nil)
-                    didMove = true
+                    if playCard(card: aceCard, newSuit: nil) {
+                        didMove = true
+                    }
                     break
                 }
             }
@@ -266,13 +253,15 @@ class MADSevens {
                         actr.predictSuit()
                         let predictedSuit = actr.getPredictedSuit()
                         print("Playing a VII with \(String(describing: predictedSuit))")
-                        playCard(card: card, newSuit: predictedSuit)
-                        didMove = true
+                        if playCard(card: card, newSuit: predictedSuit) {
+                            didMove = true
+                        }
                         suitMatched = "yes"
                         break
                     } else {
-                        playCard(card: card, newSuit: nil)
-                        didMove = true
+                        if playCard(card: card, newSuit: nil) {
+                            didMove = true
+                        }
                         suitMatched = "yes"
                         break
                     }
@@ -285,8 +274,9 @@ class MADSevens {
                         let cardSuit = card.getSuit()
                         let cardRank = card.getRank()
                         print("Playing a \(String(describing: cardSuit)), \(String(describing: cardRank))")
-                        playCard(card: card, newSuit: nil)
-                        didMove = true
+                        if playCard(card: card, newSuit: nil) {
+                            didMove = true
+                        }
                         break
                     }
                 }
@@ -317,38 +307,16 @@ class MADSevens {
                 }
             }
             for card in sortedCards {
-                playCard(card: card, newSuit: nil)
+                if playCard(card: card, newSuit: nil) {
+                    didMove = true
+                }
                 usleep(250000)
             }
-            didMove = true
             break
-            
-            
-//             Add this function when multiple ranks can be played; for now, just play any legal
-//            let bestRank = actr.getBestRank()
-//            var cards = [Card]()
-//            for card in getModelHand() {
-//                let rank = card.getRank()
-//                if rank == bestRank {
-//                    cards.append(card)
-//                    playCard(card: cards[0], newSuit: nil)
-//                }
-//            }
-//            for card in getModelHand() {
-//                if deck.legalMove(card: card) {
-//                    print("Multiple cards are scary! I'm playing a single card instead...")
-//                    playCard(card: card, newSuit: nil)
-//                    didMove = true
-//                    break
-//                }
-//            }
-//            print("(Bestrank) Ended up not playing a card.....")
         
         // If II played and no ace available, choice is "checkAce"
         case "checkAce":
             // If predict slot is not nil, check if ace suit is in hand
-            // TODO: We assume this returns a "nil" if no ace has been played yet
-//            var safeTwo: Card
             print("ACTR recalling if Ace was played to play a II")
             let aceSuit = suitStringToSuit(suitString: actr.getLastAction()!)
             print("ACTR recalls \(String(describing: aceSuit))")
@@ -359,8 +327,9 @@ class MADSevens {
                 if (cardRank == Rank.II && cardSuit == aceSuit) {
                     print("II card matches with recalled Ace!")
                     print("Playing \(String(describing: cardSuit)), \(String(describing: cardRank))!")
-                    playCard(card: card, newSuit: nil)
-                    didMove = true
+                    if playCard(card: card, newSuit: nil) {
+                        didMove = true
+                    }
                     break
                 }
             }
@@ -370,8 +339,9 @@ class MADSevens {
                 let cardRank = card.getRank()
                 if cardRank == Rank.II {
                     print("Playing \(String(describing: cardSuit)), \(String(describing: cardRank)) anyway.")
-                    playCard(card: card, newSuit: nil)
-                    didMove = true
+                    if playCard(card: card, newSuit: nil) {
+                        didMove = true
+                    }
                     break
                 }
             }
@@ -393,7 +363,9 @@ class MADSevens {
                         let cardRank = card.getRank()
                         let cardSuit = card.getSuit()
                         if (cardRank.rawValue == rank && cardSuit == topSuit) {
-                            playCard(card: card, newSuit: nil)
+                            if playCard(card: card, newSuit: nil) {
+                                didMove = true
+                            }
                             break
                         }
                     }
@@ -414,19 +386,16 @@ class MADSevens {
                 }
             }
             for card in cards {
-                playCard(card: card, newSuit: nil)
+                if playCard(card: card, newSuit: nil) {
+                    didMove = true
+                }
             }
-            didMove = true
-            
-//            print("(checkace) Ended up not playing a card.....")
-//            drawCard()
         default:
-//            print("(DEFAULT) Ended up not playing a card.....")
-//            drawCard()
+            print("(DEFAULT) ACT-R ended up not playing a card.....")
             break
         }
-    
         
+        //Catching possible exception, if the ACT-R failed to do a move, a card will be drawn
         if !didMove {
             print("No move has been made yet, we draw a card.")
             drawCard()
