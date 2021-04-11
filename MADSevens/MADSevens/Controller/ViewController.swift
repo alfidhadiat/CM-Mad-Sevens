@@ -323,6 +323,8 @@ class MADSevensViewController: UIViewController {
             ColorLabel.text = SuitToString(suitString: game.getCurrentSuit())
             ColorLabel.adjustsFontSizeToFitWidth = true
             ColorChoiceStack.isHidden = true
+        } else {
+            ColorLabel.isHidden = true
         }
         DrawCardButton.isHidden = false
     }
@@ -404,17 +406,24 @@ class MADSevensViewController: UIViewController {
         let checkpoint = game.checkpoint()
         switch checkpoint {
         case "Player":
-            print("Player won the game!")
-            EndTurnButton.isHidden = true
-            DrawCardButton.isHidden = true
-            PlayerWinsLabel.isHidden = false
-            BackPlayerWins.isHidden = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15 ) {
+                print("Player won the game!")
+                self.EndTurnButton.isHidden = true
+                self.DrawCardButton.isHidden = true
+                self.ColorChoiceStack.isHidden = true
+                self.PlayerWinsLabel.isHidden = false
+                self.BackPlayerWins.isHidden = false
+                
+            }
         case "Model":
             print("Model won the game!")
-            EndTurnButton.isHidden = true
-            DrawCardButton.isHidden = true
-            ModelWinsLabel.isHidden = false
-            BackModelWins.isHidden = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.35 ) {
+                self.EndTurnButton.isHidden = true
+                self.DrawCardButton.isHidden = true
+                self.ModelWinsLabel.isHidden = false
+                self.BackModelWins.isHidden = false
+                self.discardCardView.isHidden = true
+            }
         default:
             break
         }
