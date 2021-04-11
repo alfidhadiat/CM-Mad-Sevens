@@ -159,8 +159,6 @@ class MADSevensViewController: UIViewController {
         UpdateViewAfterModelTurn()
     }
     
-
-    
     /**
      When the end turn button is pressed the following takes place: the model's turn starts the player relevant buttons and labels get hidden then displayed accordingly. Depending on the model's move a card is removed from or added to the model's hand the player's hand get "refreshed" based on the action of the model, meaning that gesture recognizers get added to legal cards and removed from not legal ones.
      */
@@ -398,7 +396,6 @@ class MADSevensViewController: UIViewController {
         }
     }
     
-    
     /**
      Checkpoint which displays the winner in case someone emptied his hand.
      */
@@ -423,6 +420,7 @@ class MADSevensViewController: UIViewController {
                 self.ModelWinsLabel.isHidden = false
                 self.BackModelWins.isHidden = false
                 self.discardCardView.isHidden = true
+                self.ColorLabel.isHidden = true
             }
         default:
             break
